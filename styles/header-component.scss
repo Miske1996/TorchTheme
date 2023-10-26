@@ -1,17 +1,18 @@
 @import "responsiveDim.scss";
 .header_component_container {
-    width: 100%;
+    width: 100vw;
     height: respDim(97);
     background: black;
     color: white;
     display: flex;
     padding-left: respDim(122);
     padding-right: respDim(122);
-    align-items: center;
+    position: relative;
     & .logo_container{
         width: respDim(28);
         height: respDim(28);
         display: flex;
+        margin-top: respDim(25);
         & img{
             width: 100%;
             height: 100%;
@@ -20,28 +21,130 @@
     }
 
     & .navigation_container{
-        width: 40%;
+        align-self: center;
+        width: 50%;
         height: respDim(30);
         margin-left: respDim(350);
         display: flex;
-        padding-left: auto;
-        padding-right: auto;
-        a{
-            text-align: center;
-            font-size: respDim(12);
+      
+        .link_navigation_top_container{
+            width: fit-content;
+            height: 100%;
             display: flex;
-            justify-content: center;
-            align-items: center;
-            padding-left: respDim(30);
-            padding-right: respDim(30);
-            cursor: pointer;
-            span{
-                display: block;
+
+            & > a{
+                text-align: center;
+                width: respDim(150);
+                font-size: respDim(12);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                color: white;
             }
-            &:hover{
+           
+            & > a span{
+                width: 100%;
+                height: 100%;
+                display: block;
+                cursor: pointer;
+            }
+            &:hover {
                 border-bottom: 3.5px solid white;
             }
+            & > a:hover ~ .mega_menu_container {
+                display: flex;
+            }
+        
+           
+            & .mega_menu_container{
+                position: absolute;
+                top: 63.5%;
+                left: 0;
+                width: 100vw;
+                height: 70vh;
+                display: none;
+                cursor: initial;
+                &:hover{
+                    display: flex;
+                }
+                .inner_mega_menu_container{
+                    width: 100%;
+                    height: 100%;
+                    background-color: #FFFEFE; 
+                    display: flex;
+
+                    .card_collection_menu{
+                        width: respDim(300);
+                        height: respDim(400);
+                        margin-top: respDim(50);
+                        margin-left: respDim(122);
+                        .collection_image_container{
+                            width: 100%;
+                            height: respDim(300);
+                            display: flex;
+                            img{
+                                width: 100%;
+                                height: 100%;
+                                object-fit: contain;
+                            }
+                        }
+                        .title_collection{
+                            width: 100%;
+                            height: respDim(30);
+                            display: flex;
+                            align-items: center;
+                            span{
+                                color:black;
+                                font-weight: 600;
+                                font-size: respDim(16);
+                            }
+                        }
+                        .cta_link_collection{
+                            width: 100%;
+                            height: respDim(15);
+                            display: flex;
+                            align-items: center;
+                            span{
+                                color:#757774;
+                                font-weight: 400;
+                                font-size: respDim(13);
+                                text-decoration: underline;
+                            }
+                        }
+                    }
+
+                    .link_column_container  {
+                        width: fit-content;
+                        height: fit-content;
+                        margin-top: respDim(50);
+                        margin-left: respDim(50);
+                        display: flex;
+                        flex-direction: column;
+
+                        .submenu_title{
+                            width: 100%;
+                            display: flex;
+                            span{
+                                color:black;
+                                font-weight: 600;
+                                font-size: respDim(16);
+                            }
+                        }
+                        a{
+                            width: 100%;
+                            display: flex;
+                            margin-top: respDim(20);
+                            span{
+                                color:#757774;
+                                font-weight: 400;
+                                font-size: respDim(13);
+                            }
+                        }
+                    }
+                }   
+            }
         }
+       
         
     }
     .cart_icon_container{
@@ -49,6 +152,8 @@
         height: respDim(20);
         display: flex;
         margin-left: auto;
+        align-self: center;
+        cursor: pointer;
         & img{
             width: 100%;
             height: 100%;

@@ -2,15 +2,43 @@
 <section class="header_component_container">
   <div class="logo_container"><img src="{{'theme-logo.png' |  asset_url}}" alt=""></div>
   <nav class="navigation_container">
-    {% for link in linklists.main-mega-menu.links %}
+    {% for link in linklists['main-mega-menu'].links %}
       <!-- menu content -->
-      <a>
-        <span>{{ link.title }}</span>
-        {% if link.levels > 1 %}
-          <div class="mega_menu_container"></div>
-        {% endif %}
+      <div class="link_navigation_top_container">
+        <a href="{{ link.url }}">
+          <span>{{ link.title }}</span>
+        </a>
+        {% if link.levels > 0 %}
+          <div class="mega_menu_container">
+            <div class="inner_mega_menu_container">
+              <div class="card_collection_menu">
+                <div class="collection_image_container">
+                  <img src="{{'menu-collection-image.webp' |  asset_url}}" alt="">
+                </div>
+                <div class="title_collection">
+                  <span>Member Exclusive</span>
+                </div>
+                <div class="cta_link_collection">
+                  <span>Join UA Rewards</span>
+                </div>
+              </div>
+              {% for submenu in link.links %}
+                <div class="link_column_container">
+                  <a class="submenu_title" href="{{ submenu.url }}">
+                    <span>{{ submenu.title }}</span>
+                  </a>
+                  {% for submenu_item in submenu.links %}
+                    <a class="submenu_link" href="{{ submenu_item.url }}">
+                      <span>{{ submenu_item.title }}</span>
+                    </a>
+                  {% endfor %}
+                </div>
+              {% endfor %}
 
-      </a>
+            </div>
+          </div>
+        {% endif %}
+      </div>
     {% endfor %}
   </nav>
   <div class="cart_icon_container"><img src="{{'cart-logo.png' |  asset_url}}" alt=""></div>

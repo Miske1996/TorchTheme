@@ -1,0 +1,25 @@
+{% render 'header-component' %}
+{% schema %}
+  {
+    "name": "t:sections.header.name",
+    "class": "section-header",
+    "max_blocks": 3,
+    "settings": [
+      {
+        "type": "link_list",
+        "id": "menu",
+        "default": "main-mega-menu",
+        "label": "Mega Menu"
+      },
+      {
+        "type": "collection",
+        "id": "mega_menu_collection"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "@app"
+      }
+    ]
+  }
+{% endschema %}
