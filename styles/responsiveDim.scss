@@ -1,0 +1,4 @@
+@function respDim($dim) {
+    $dim: round(($dim/1440) * 100vw * 100) / 100;
+    @return $dim;
+  }

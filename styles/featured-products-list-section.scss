@@ -1,0 +1,9 @@
+@import "responsiveDim.scss";
+.new_products_section_container {
+    width: 100%;
+    height: respDim(2159);
+    margin-top: respDim(0);
+    margin-left: respDim(0);
+    border-radius: respDim(0);
+    background: rgba(211.43749594688416, 147.1252629160881, 205.00632584095, 1);
+  }

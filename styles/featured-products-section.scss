@@ -1,0 +1,14 @@
+@import "responsiveDim.scss";
+.featured_product_section_container {
+    width: 100%;
+    height: respDim(524);
+    margin-top: respDim(0);
+    margin-left: respDim(0);
+    border-radius: respDim(0);
+    background: rgba(
+      192.93671429157257,
+      220.76230198144913,
+      232.68750607967377,
+      1
+    );
+  }

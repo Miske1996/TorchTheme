@@ -1,10 +1,30 @@
 {
   "sections": {
-    "main":{
-      "type": "section-tmp"
+    "hero":{
+      "type": "hero"
+    },
+    "feat-products-cards":{
+      "type": "featured-products-section"
+    },
+    "list-new-products":{
+      "type": "featured-products-list-section"
+    },
+    "feat-products-1":{
+      "type": "featured-products-card-section"
+    },
+    "feat-products-2":{
+      "type": "featured-products-card-section"
+    },
+    "testimony":{
+      "type": "testimony-section"
     }
   },
   "order": [
-   "main"
+   "hero",
+   "feat-products-cards",
+   "list-new-products",
+   "feat-products-1",
+   "feat-products-2",
+   "testimony"
   ]
 }

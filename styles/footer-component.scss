@@ -1,0 +1,15 @@
+@import "responsiveDim.scss";
+ 
+.footer_component_container {
+    width: 100%;
+    height: respDim(299);
+    margin-top: respDim(0);
+    margin-left: respDim(0);
+    border-radius: respDim(0);
+    background: rgba(
+      194.695685505867,
+      186.94686770439148,
+      216.75000607967377,
+      1
+    );
+  }

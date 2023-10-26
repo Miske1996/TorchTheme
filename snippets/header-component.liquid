@@ -1,0 +1,17 @@
+{{ 'header-component.css' | asset_url | stylesheet_tag }}
+<section class="header_component_container">
+  <div class="logo_container"><img src="{{'theme-logo.png' |  asset_url}}" alt=""></div>
+  <nav class="navigation_container">
+    {% for link in linklists.main-mega-menu.links %}
+      <!-- menu content -->
+      <a>
+        <span>{{ link.title }}</span>
+        {% if link.levels > 1 %}
+          <div class="mega_menu_container"></div>
+        {% endif %}
+
+      </a>
+    {% endfor %}
+  </nav>
+  <div class="cart_icon_container"><img src="{{'cart-logo.png' |  asset_url}}" alt=""></div>
+</section>

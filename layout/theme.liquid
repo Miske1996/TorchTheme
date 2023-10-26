@@ -9,10 +9,12 @@
 
     <title></title>
     {{ content_for_header }}
-
+    {{ 'global.css' | asset_url | stylesheet_tag }}
   </head>
 
   <body>
-    {{ content_for_layout }}
+    {% render 'header-component' %}
+    <main class="main_content_layout">{{ content_for_layout }}</main>
+    {% render 'footer-component' %}
   </body>
 </html>

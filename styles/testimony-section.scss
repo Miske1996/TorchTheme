@@ -1,0 +1,14 @@
+@import "responsiveDim.scss";
+.testimony_section_container {
+    width: 100%;
+    height: respDim(883);
+    margin-top: respDim(0);
+    margin-left: respDim(0);
+    border-radius: respDim(0);
+    background: rgba(
+      203.41687113046646,
+      209.31249797344208,
+      186.6369867324829,
+      1
+    );
+  }

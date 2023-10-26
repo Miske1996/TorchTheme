@@ -1,13 +1,32 @@
-$color:#ffffff;
-
-.hello{
-    & .there{
-        color:$color;
-    }
-    & .here{
-        background-color: red;
-    }
-    & .somewhere{
-        backdrop-filter: filter(40px);
-    }
+body,
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'LatoRegular';
+}
+@font-face {
+    font-family: 'LatoBlack';
+    src: url('Lato-Black.ttf');
+    font-weight: 700;
+}
+@font-face {
+    font-family: 'LatoBold';
+    src: url('Lato-Bold.ttf');
+    font-weight: 600;
+}
+@font-face {
+    font-family: 'LatoRegular';
+    src: url('Lato-Regular.ttf');
+    font-weight: 500;
+}
+@font-face {
+    font-family: 'LatoLight';
+    src: url('Lato-Light.ttf');
+    font-weight: 400;
+}
+@font-face {
+    font-family: 'LatoThin';
+    src: url('Lato-Thin.ttf');
+    font-weight: 400;
 }
