@@ -1,0 +1,13 @@
+$color:#ffffff;
+
+.hello{
+    & .there{
+        color:$color;
+    }
+    & .here{
+        background-color: red;
+    }
+    & .somewhere{
+        backdrop-filter: filter(40px);
+    }
+}
