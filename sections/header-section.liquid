@@ -1,25 +1,6 @@
-{% render 'header-component' %}
-{% schema %}
-  {
-    "name": "t:sections.header.name",
-    "class": "section-header",
-    "max_blocks": 3,
-    "settings": [
-      {
-        "type": "link_list",
-        "id": "menu",
-        "default": "main-mega-menu",
-        "label": "Mega Menu"
-      },
-      {
-        "type": "collection",
-        "id": "mega_menu_collection"
-      }
-    ],
-    "blocks": [
-      {
-        "type": "@app"
-      }
-    ]
-  }
-{% endschema %}
+{{ 'header-component.css' | asset_url | stylesheet_tag }}
+<section class="header_component_container">
+  <div class="logo_container"><img src="{{'theme-logo.png' |  asset_url}}" alt=""></div>
+  {% render 'mega-menu-item-component' %}
+  <div class="cart_icon_container"><img src="{{'cart-logo.png' |  asset_url}}" alt=""></div>
+</section>

@@ -1,0 +1,39 @@
+<div class="mega_menu_container">
+  <div class="inner_mega_menu_container">
+    <div class="card_collection_menu">
+      <div class="collection_image_container">
+        <img src="{{'menu-collection-image.webp' |  asset_url}}" alt="">
+      </div>
+      <div class="title_collection">
+        <span>Member Exclusive</span>
+      </div>
+      <div class="cta_link_collection">
+        <span>Join UA Rewards</span>
+      </div>
+    </div>
+    {% for submenu in link.links %}
+      <div class="link_column_container">
+        <a class="submenu_title" href="{{ submenu.url }}">
+          <span>{{ submenu.title }}</span>
+        </a>
+        {% for submenu_item in submenu.links %}
+          <a class="submenu_link" href="{{ submenu_item.url }}">
+            <span>{{ submenu_item.title }}</span>
+          </a>
+        {% endfor %}
+      </div>
+    {% endfor %}
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Mega Menu",
+    "settings": [
+      {
+        "type": "collection",
+        "id": "mega-menu-collection",
+        "label": "Mega Menu Collection"
+      }
+    ]
+  }
+{% endschema %}
