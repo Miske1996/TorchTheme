@@ -1,5 +1,6 @@
 <nav class="navigation_container">
-  {% for link in linklists['main-mega-menu'].links %}
+  {% assign matchingCollection = null %}
+    {% for link in linklists['main-mega-menu'].links %}
     <!-- menu content -->
     <div class="link_navigation_top_container">
       <a href="{{ link.url }}">
@@ -8,8 +9,6 @@
       {% if link.levels > 0 %}
         <div class="mega_menu_container">
           <div class="inner_mega_menu_container">
-            {% assign matchingCollection = null %}
-
             {% for collection in collections %}
               {% if collection.title == link.title %}
                 {% assign matchingCollection = collection %}
@@ -18,7 +17,7 @@
             {% endfor %}
             <div class="card_collection_menu">
               <div class="collection_image_container">
-                <img src="{{ matchingCollection.featured_image |  asset_url}}" alt="">
+                <img src="{{ matchingCollection.featured_image |  image_url }}" alt="">
               </div>
               <div class="title_collection">
                 <span>{{ matchingCollection.title }}</span>

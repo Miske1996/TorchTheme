@@ -6,10 +6,40 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="theme-color" content="">
     <link rel="canonical" href="{{ canonical_url }}">
-
+    <link
+      rel="preload"
+      as="font"
+      href="{{ 'Lato-Thin.woff2' |  asset_url }}"
+      type="font/woff2"
+      crossorigin>
+    <link
+      rel="preload"
+      as="font"
+      href="{{ 'Lato-Light.woff2' | asset_url }}"
+      type="font/woff2"
+      crossorigin>
+    <link
+      rel="preload"
+      as="font"
+      href="{{ 'Lato-Regular.woff2' | asset_url }}"
+      type="font/woff2"
+      crossorigin>
+    <link
+      rel="preload"
+      as="font"
+      href="{{ 'Lato-Black.woff2' | asset_url }}"
+      type="font/woff2"
+      crossorigin>
+    <link
+      rel="preload"
+      as="font"
+      href="{{ 'Lato-Bold.woff2' | asset_url }}"
+      type="font/woff2"
+      crossorigin>
     <title></title>
     {{ content_for_header }}
     {{ 'global.css' | asset_url | stylesheet_tag }}
+
   </head>
 
   <body>

@@ -1,1 +1,33 @@
-{% render 'hero-component' %}
+{{ 'hero-component.css' | asset_url | stylesheet_tag }}
+<div class="hero_component_container" style="color: white;">
+  <div class="main_cotent">
+    <div class="text_content_hero_container">
+      <div class="top_title">
+        <span>Curry 11</span>
+      </div>
+      <div class="hook_title">
+        <span>Believe you can do Anything</span>
+      </div>
+      <div class="price_text">
+        <span>$129.99</span>
+      </div>
+      <div class="buy_button">
+        <span>Get it</span>
+      </div>
+    </div>
+  </div>
+  <div class="image_container_hero"><img src="{{ section.settings.bg_img |  image_url }}" alt=""></div>
+
+</div>
+{% schema %}
+  {
+    "name": "Hero Section",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "bg_img",
+        "label": "Backgroud Hero Image"
+      }
+    ]
+  }
+{% endschema %}

@@ -4,5 +4,5 @@
   margin-top: 0vw;
   margin-left: 0vw;
   border-radius: 0vw;
-  background: rgb(193, 221, 233);
+  display: flex;
 }

@@ -1,41 +1,203 @@
 @import "responsiveDim.scss";
+
 .featured_products_cards_section_container {
-    width: 100%;
-    height: respDim(634);
-    margin-top: respDim(240);
-    margin-left: respDim(0);
-    border-radius: respDim(0);
-    background: rgba(
-      221.00000202655792,
-      216.85623317956924,
-      179.56249594688416,
-      1
-    );
+  width: 100%;
+  height: respDim(634);
+  display: flex;
+  .left_card_featured {
+    width: 50%;
+    height: 100%;
     display: flex;
-    .left_card_featured {
-      width: respDim(720);
-      height: respDim(634);
-      margin-top: respDim(0);
-      margin-left: respDim(0);
-      border-radius: respDim(0);
-      background: rgba(
-        210.37499696016312,
-        192.84375607967377,
-        201.258784532547,
-        1
-      );
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    background-color: #EDFF00;
+    gap: respDim(16);
+    position: relative;
+    justify-content: center;
+    .top_title,
+    .hook_title {
+      animation: TextHeroAnimation 1.25s;
     }
-    .right_card_featured {
-      width: respDim(720);
-      height: respDim(634);
-      margin-top: respDim(0);
-      margin-left: respDim(0);
-      border-radius: respDim(0);
-      background: rgba(
-        237.16278433799744,
-        242.24999696016312,
-        205.91250121593475,
-        1
-      );
+
+    .top_title {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+
+      span {
+        display: block;
+        font-size: respDim(14);
+        color: black;
+        font-family: 'LatoLight';
+      }
+    }
+
+    .hook_title {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      color: black;
+
+      span {
+        text-align: center;
+        font-size: respDim(72);
+        font-family: 'LatoBlack';
+      }
+    }
+
+    .price_text {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+
+      span {
+        display: block;
+        font-size: respDim(14);
+        color: black;
+        font-family: 'LatoLight';
+      }
+    }
+
+    .buy_button {
+      width: respDim(93);
+      height: respDim(36);
+      border-radius: 5px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: black;
+      cursor: pointer;
+      z-index: 2;
+
+      span {
+        display: block;
+        font-size: respDim(14);
+        color: white;
+        font-family: 'LatoLight';
+      }
+    }
+
+    @keyframes TextHeroAnimation {
+      0% {
+        transform: translate3d(0, 100%, 0);
+        opacity: 0;
+      }
+
+      100% {
+        transform: translate(0);
+        opacity: 1;
+      }
+    }
+
+  }
+
+  .right_card_featured {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    background-color: #DFDFDF;
+    gap: respDim(16);
+    position: relative;
+    justify-content: center;
+    .top_title,
+    .hook_title {
+      animation: TextHeroAnimation 1.25s;
+    }
+
+    .top_title {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+
+      span {
+        display: block;
+        font-size: respDim(14);
+        color: black;
+        font-family: 'LatoLight';
+      }
+    }
+
+    .hook_title {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      color: black;
+
+      span {
+        text-align: center;
+        font-size: respDim(72);
+        font-family: 'LatoBlack';
+      }
+    }
+
+    .price_text {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+
+      span {
+        display: block;
+        font-size: respDim(14);
+        color: black;
+        font-family: 'LatoLight';
+      }
+    }
+
+    .buy_button {
+      width: respDim(93);
+      height: respDim(36);
+      border-radius: 5px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #EDFF00;
+      cursor: pointer;
+      z-index: 2;
+      span {
+        display: block;
+        font-size: respDim(14);
+        color: black;
+        font-family: 'LatoLight';
+      }
+    }
+
+    @keyframes TextHeroAnimation {
+      0% {
+        transform: translate3d(0, 100%, 0);
+        opacity: 0;
+      }
+
+      100% {
+        transform: translate(0);
+        opacity: 1;
+      }
     }
   }
+  .image_container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    top: 30%;
+    z-index: 1;
+    img{
+      width: 100%;
+      height: 120%;
+      object-fit: contain;
+      animation: ImageAnimationCard 3s;
+      transform: translateY(0%) ;
+
+    }
+    @keyframes ImageAnimationCard {
+      0%{
+        transform: translate3d(0,30%,0) rotate(10deg);
+      }
+    }
+  }
+}

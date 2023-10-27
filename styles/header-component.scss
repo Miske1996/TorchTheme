@@ -8,6 +8,7 @@
     padding-left: respDim(122);
     padding-right: respDim(122);
     position: relative;
+    justify-content: space-between;
     & .logo_container{
         width: respDim(28);
         height: respDim(28);
@@ -24,7 +25,6 @@
         align-self: center;
         width: 50%;
         height: respDim(30);
-        margin-left: respDim(350);
         display: flex;
       
         .link_navigation_top_container{
@@ -64,6 +64,7 @@
                 height: 70vh;
                 display: none;
                 cursor: initial;
+                z-index: 5;
                 &:hover{
                     display: flex;
                 }
@@ -151,7 +152,6 @@
         width: respDim(20);
         height: respDim(20);
         display: flex;
-        margin-left: auto;
         align-self: center;
         cursor: pointer;
         & img{

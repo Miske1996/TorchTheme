@@ -1,5 +1,109 @@
 .hero_component_container {
   width: 100%;
-  height: 47.71vw;
+  height: 48.26vw;
   background: black;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+}
+.hero_component_container .main_cotent {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+}
+.hero_component_container .main_cotent .text_content_hero_container {
+  margin-top: 10.42vw;
+  width: 55.56vw;
+  height: 20.83vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.11vw;
+}
+.hero_component_container .main_cotent .text_content_hero_container .top_title, .hero_component_container .main_cotent .text_content_hero_container .hook_title {
+  animation: TextHeroAnimation 1.25s;
+}
+.hero_component_container .main_cotent .text_content_hero_container .top_title {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.hero_component_container .main_cotent .text_content_hero_container .top_title span {
+  display: block;
+  font-size: 0.97vw;
+  color: white;
+  font-family: "LatoLight";
+}
+.hero_component_container .main_cotent .text_content_hero_container .hook_title {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  color: white;
+}
+.hero_component_container .main_cotent .text_content_hero_container .hook_title span {
+  text-align: center;
+  font-size: 5vw;
+  font-family: "LatoBlack";
+}
+.hero_component_container .main_cotent .text_content_hero_container .price_text {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.hero_component_container .main_cotent .text_content_hero_container .price_text span {
+  display: block;
+  font-size: 0.97vw;
+  color: white;
+  font-family: "LatoLight";
+}
+.hero_component_container .main_cotent .text_content_hero_container .buy_button {
+  width: 6.46vw;
+  height: 2.5vw;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #EDFF00;
+  cursor: pointer;
+}
+.hero_component_container .main_cotent .text_content_hero_container .buy_button span {
+  display: block;
+  font-size: 0.97vw;
+  color: black;
+  font-family: "LatoLight";
+}
+@keyframes TextHeroAnimation {
+  0% {
+    transform: translate3d(0, 100%, 0);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(0);
+    opacity: 1;
+  }
+}
+.hero_component_container .image_container_hero {
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  position: absolute;
+}
+.hero_component_container .image_container_hero img {
+  width: 130%;
+  height: 130%;
+  object-fit: contain;
+  animation: ImageAnimation 1.25s;
+  transform: translateY(15%) rotate(15deg);
+}
+@keyframes ImageAnimation {
+  0% {
+    transform: translate3d(0, 30%, 0) rotate(0);
+  }
+  100% {
+    transform: translateY(15%) rotate(15deg);
+  }
 }

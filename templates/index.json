@@ -1,7 +1,7 @@
 {
   "sections": {
     "hero":{
-      "type": "hero"
+      "type": "hero-section"
     },
     "feat-products-cards":{
       "type": "featured-products-section"
