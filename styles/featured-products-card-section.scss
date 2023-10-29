@@ -190,9 +190,16 @@
       width: 100%;
       height: 120%;
       object-fit: contain;
-      animation: ImageAnimationCard 3s;
       transform: translateY(0%) ;
+      
+    }
+    .backwardAnimation{
+      animation-direction: reverse;
+      animation: ImageAnimationCard 3s;
 
+    }
+    .forwardAnimation{
+      animation: ImageAnimationCard 3s;
     }
     @keyframes ImageAnimationCard {
       0%{

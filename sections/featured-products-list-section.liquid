@@ -1,2 +1,80 @@
 {{ 'featured-products-list-section.css' | asset_url | stylesheet_tag }}
-<div class="new_products_section_container">List Products</div>
+<div class="new_products_section_container">
+  <h1 class="title_section">New 🔥</h1>
+  <div class="products_container">
+    {% assign listOfProducts = collections[settings.new_products_list].products %}
+    {% for p in listOfProducts %}
+      <div class="card_container">
+        <div class="img_container">
+          <img src="{{ p.featured_image  |  image_url  }}" alt="">
+          <div class="options_container">
+            <div class="option">
+              <div class="color1"></div>
+              <div class="color2"></div>
+            </div>
+            <div class="option">
+              <div class="color1"></div>
+              <div class="color2"></div>
+            </div>
+            <div class="option">
+              <div class="color1"></div>
+              <div class="color2"></div>
+            </div>
+            <div class="option">
+              <div class="color1"></div>
+              <div class="color2"></div>
+            </div>
+            <div class="option">
+              <div class="color1"></div>
+              <div class="color2"></div>
+            </div>
+          </div>
+        </div>
+        <div class="main_info_product_card">
+          <h1>{{ p.description }}</h1>
+          <span>{{ p.price | money }}</span>
+        </div>
+        <div class="buy_button">
+          <span>Shop now</span>
+        </div>
+      </div>
+
+    {% endfor %}
+    {% for p in listOfProducts %}
+      <div class="card_container">
+        <div class="img_container">
+          <img src="{{ p.featured_image  |  image_url  }}" alt="">
+          <div class="options_container">
+            <div class="option">
+              <div class="color1"></div>
+              <div class="color2"></div>
+            </div>
+            <div class="option">
+              <div class="color1"></div>
+              <div class="color2"></div>
+            </div>
+            <div class="option">
+              <div class="color1"></div>
+              <div class="color2"></div>
+            </div>
+            <div class="option">
+              <div class="color1"></div>
+              <div class="color2"></div>
+            </div>
+            <div class="option">
+              <div class="color1"></div>
+              <div class="color2"></div>
+            </div>
+          </div>
+        </div>
+        <div class="main_info_product_card">
+          <h1>{{ p.description }}</h1>
+          <span>{{ p.price | money }}</span>
+        </div>
+        <div class="buy_button">
+          <span>Shop now</span>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>

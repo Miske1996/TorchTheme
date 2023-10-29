@@ -169,8 +169,14 @@
   width: 100%;
   height: 120%;
   object-fit: contain;
-  animation: ImageAnimationCard 3s;
   transform: translateY(0%);
+}
+.featured_products_cards_section_container .image_container .backwardAnimation {
+  animation-direction: reverse;
+  animation: ImageAnimationCard 3s;
+}
+.featured_products_cards_section_container .image_container .forwardAnimation {
+  animation: ImageAnimationCard 3s;
 }
 @keyframes ImageAnimationCard {
   0% {

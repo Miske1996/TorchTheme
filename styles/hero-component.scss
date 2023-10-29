@@ -1,7 +1,7 @@
 @import "responsiveDim.scss";
 .hero_component_container {
     width: 100%;
-    height: respDim(695);
+    height: respDim(1000);
     background: black;
     display: flex;
     position: relative;
@@ -95,11 +95,11 @@
       position: absolute;
 
       img{
-        width: 130%;
-        height: 130%;
+        width: 110%;
+        height: 110%;
         object-fit: contain;
-        animation: ImageAnimation 1.25s;
-        transform: translateY(15%) rotate(15deg);
+        animation: ImageAnimation 1.35s;
+        transform: translateY(3%) rotate(20deg);
 
       }
       @keyframes ImageAnimation {
@@ -107,7 +107,7 @@
           transform: translate3d(0,30%,0) rotate(0);
         }
         100%{
-          transform: translateY(15%) rotate(15deg);
+          transform: translateY(3%) rotate(20deg);
         }
       }
     }

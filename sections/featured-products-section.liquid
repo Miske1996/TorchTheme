@@ -1,4 +1,5 @@
 {{ 'featured-products-section.css' | asset_url | stylesheet_tag }}
+
 <div class="featured_products_cards_section_container scroll-trigger--offscreen">
   <div class="left_card_featured">
     <div class="top_title">
@@ -13,7 +14,11 @@
     <div class="buy_button">
       <span>Get it</span>
     </div>
-    <div class="image_container"><img src="{{ section.settings.product_1_image |  image_url  }}" alt=""></div>
+    <div class="image_container"><img
+        class="card_img backwardAnimation"
+        loading="lazy"
+        src="{{ section.settings.product_1_image |  image_url  }}"
+        alt=""></div>
   </div>
   <div class="right_card_featured">
     <div class="top_title">
@@ -28,9 +33,16 @@
     <div class="buy_button">
       <span>Get it</span>
     </div>
-    <div class="image_container"><img src="{{ section.settings.product_2_image |  image_url  }}" alt=""></div>
+    <div class="image_container"><img
+        class="card_img backwardAnimation"
+        loading="lazy"
+        src="{{ section.settings.product_2_image |  image_url   }}"
+        alt="">
+    </div>
   </div>
 </div>
+{{ 'animation.js' | asset_url | script_tag }}
+
 {% schema %}
   {
     "name": "Dual Prouducts Settings",
