@@ -1,7 +1,8 @@
 {{ 'featured-products-section.css' | asset_url | stylesheet_tag }}
+<div class="featured_products_cards_section_container" id="{{ section.id }}">
 
-<div class="featured_products_cards_section_container scroll-trigger--offscreen">
   <div class="left_card_featured">
+
     <div class="top_title">
       <span>{{ section.settings.product_1_text_1 }}</span>
     </div>
@@ -14,13 +15,19 @@
     <div class="buy_button">
       <span>Get it</span>
     </div>
-    <div class="image_container"><img
-        class="card_img backwardAnimation"
-        loading="lazy"
-        src="{{ section.settings.product_1_image |  image_url  }}"
-        alt=""></div>
+    <animated-card class="animated-card">
+      <div class="image_container"><img
+          class="card_img backwardAnimation"
+          loading="lazy"
+          src="{{ section.settings.product_1_image |  image_url  }}"
+          alt="">
+      </div>
+    </animated-card>
+
   </div>
+
   <div class="right_card_featured">
+
     <div class="top_title">
       <span>{{ section.settings.product_1_text_1 }}</span>
     </div>
@@ -33,15 +40,17 @@
     <div class="buy_button">
       <span>Get it</span>
     </div>
-    <div class="image_container"><img
-        class="card_img backwardAnimation"
-        loading="lazy"
-        src="{{ section.settings.product_2_image |  image_url   }}"
-        alt="">
-    </div>
+    <animated-card class="animated-card">
+      <div class="image_container"><img
+          class="card_img backwardAnimation"
+          loading="lazy"
+          src="{{ section.settings.product_2_image |  image_url   }}"
+          alt="">
+      </div>
+    </animated-card>
   </div>
 </div>
-{{ 'animation.js' | asset_url | script_tag }}
+
 
 {% schema %}
   {

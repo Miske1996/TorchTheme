@@ -6,6 +6,123 @@
     margin-left: respDim(0);
     border-radius: respDim(0);
     display: flex;
-
+    .animated-card {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      position: absolute;
+    }
+    .card_featured {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow: hidden;
+      gap: respDim(16);
+      position: relative;
+      justify-content: center;
+      .top_title,
+      .hook_title {
+        animation: TextHeroAnimation 1.25s;
+      }
+  
+      .top_title {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+  
+        span {
+          display: block;
+          font-size: respDim(14);
+          font-family: 'LatoLight';
+        }
+      }
+  
+      .hook_title {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+  
+        span {
+          text-align: center;
+          font-size: respDim(72);
+          font-family: 'LatoBlack';
+        }
+      }
+  
+      .price_text {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+  
+        span {
+          display: block;
+          font-size: respDim(14);
+          font-family: 'LatoLight';
+        }
+      }
+  
+      .buy_button {
+        width: respDim(93);
+        height: respDim(36);
+        border-radius: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        z-index: 2;
+  
+        span {
+          display: block;
+          font-size: respDim(14);
+          font-family: 'LatoLight';
+        }
+      }
+  
+      @keyframes TextHeroAnimation {
+        0% {
+          transform: translate3d(0, 100%, 0);
+          opacity: 0;
+        }
+  
+        100% {
+          transform: translate(0);
+          opacity: 1;
+        }
+      }
+  
+    }
+    .image_container{
+      width: 100%;
+      height: 100%;
+      display: flex;
+      position: absolute;
+      justify-content: center;
+      align-items: center;
+      top: 30%;
+      z-index: 1;
+      img{
+        width: 100%;
+        height: 120%;
+        object-fit: contain;
+        transform: translateY(0%) ;
+        
+      }
+      .backwardAnimation{
+        animation-direction: reverse;
+        animation: ImageAnimationCard 3s;
+  
+      }
+      .forwardAnimation{
+        animation: ImageAnimationCard 3s;
+      }
+      @keyframes ImageAnimationCard {
+        0%{
+          transform: translate3d(0,30%,0) rotate(10deg);
+        }
+      }
+    }
     
   }

@@ -1,80 +1,118 @@
 {{ 'featured-products-list-section.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'product.js' | asset_url }}" defer="defer"></script>
 <div class="new_products_section_container">
   <h1 class="title_section">New 🔥</h1>
   <div class="products_container">
-    {% assign listOfProducts = collections[settings.new_products_list].products %}
+    {% assign listOfProducts = section.settings.products_collection.products %}
     {% for p in listOfProducts %}
-      <div class="card_container">
-        <div class="img_container">
-          <img src="{{ p.featured_image  |  image_url  }}" alt="">
-          <div class="options_container">
-            <div class="option">
-              <div class="color1"></div>
-              <div class="color2"></div>
-            </div>
-            <div class="option">
-              <div class="color1"></div>
-              <div class="color2"></div>
-            </div>
-            <div class="option">
-              <div class="color1"></div>
-              <div class="color2"></div>
-            </div>
-            <div class="option">
-              <div class="color1"></div>
-              <div class="color2"></div>
-            </div>
-            <div class="option">
-              <div class="color1"></div>
-              <div class="color2"></div>
-            </div>
-          </div>
-        </div>
-        <div class="main_info_product_card">
-          <h1>{{ p.description }}</h1>
-          <span>{{ p.price | money }}</span>
-        </div>
-        <div class="buy_button">
-          <span>Shop now</span>
-        </div>
-      </div>
+      <product-variants>
+        <div class="card_container">
+          <div class="img_container">
+            {% if p.options.size > 0 -%}
+              {% for option in p.options_with_values -%}
+                {% if option.name == 'Color' %}
+                  {% for value in option.values %}
+                    {% assign details = value | split: '|' %}
+                    {% assign title = details[0] %}
+                    {% for img in p.images %}
+                      {% if img.alt == title %}
+                        <script>
+                            console.log(`{{ img.alt }} : {{ title }}`)
+                        </script>
+                        <img
+                          src="{{ img.src |  image_url  }}"
+                          alt="{{ img.alt }}"
+                          class="{% if option.selected_value == value %}show {% endif %}">
+                        {% break %}
 
-    {% endfor %}
-    {% for p in listOfProducts %}
-      <div class="card_container">
-        <div class="img_container">
-          <img src="{{ p.featured_image  |  image_url  }}" alt="">
-          <div class="options_container">
-            <div class="option">
-              <div class="color1"></div>
-              <div class="color2"></div>
-            </div>
-            <div class="option">
-              <div class="color1"></div>
-              <div class="color2"></div>
-            </div>
-            <div class="option">
-              <div class="color1"></div>
-              <div class="color2"></div>
-            </div>
-            <div class="option">
-              <div class="color1"></div>
-              <div class="color2"></div>
-            </div>
-            <div class="option">
-              <div class="color1"></div>
-              <div class="color2"></div>
-            </div>
+                      {% else %}
+                        <script>
+                            console.log(`Not found {{ img.alt }} : {{ title }}`)
+                        </script>
+                      {% endif %}
+                    {% endfor %}
+                  {% endfor %}
+                {% endif %}
+              {% endfor %}
+            {% endif %}
+            {% if p.options.size > 0 -%}
+              {% for option in p.options_with_values -%}
+                {% if option.name == 'Color' %}
+
+                  <div class="options_container">
+                    {% for value in option.values %}
+                      {% assign details = value | split: '|' %}
+                      {% assign title = details[0] %}
+                      {% assign colors = details | slice: 1, details.size %}
+                      {% comment %} <div class="color-title">{{ title }}</div> {% endcomment %}
+                      <div class="option">
+                        <input
+                          {% if option.selected_value == value %}
+                          checked
+                          {% endif %}
+                          type="radio"
+                          name="option-{{ p.id }}"
+                          id="option-{{ title }}"
+                          data-url="{{p.url}}"
+                          data-section="{{ section.id}}"
+                          value="{{ title }}">
+                        {% for color in colors %}
+                          <div class="color" style="background-color: #{{ color }};width:calc(100%/{{ colors.size }})"></div>
+                        {% endfor %}
+                      </div>
+                    {% endfor %}
+                  </div>
+                {% endif %}
+              {%- endfor %}
+            {% endif %}
+          </div>
+          <div class="main_info_product_card">
+            <h1>{{ p.title | slice: 0, 8 }}</h1>
+            <span>{{ p.price | money }}</span>
+          </div>
+          <div class="buy_button">
+            <span>Shop now</span>
           </div>
         </div>
-        <div class="main_info_product_card">
-          <h1>{{ p.description }}</h1>
-          <span>{{ p.price | money }}</span>
-        </div>
-        <div class="buy_button">
-          <span>Shop now</span>
-        </div>
-      </div>
+      </product-variants>
+    {% comment %} <script type="application/json" id="ProductsJSON-Home">
+                                                                                                                                                                                                                                                                                                                                                  {{ listOfProducts | json }}
+                                                                                                                                                                                                                                                    </script> {% endcomment %}
+      {% comment %} <script>
+                                                                                                                                                                                                                                                                                                                                                                                                                                            //HERE IS THE LOGIC TO WHEN WE WANT TO GO TO A SPECIFIC PRODUCT VARIANT TO PRODCUT PAGE
+                                                                                                                                                                                                                                                                                                                                                                                                                                            // var matched_variant = product.variants.find(variant => {
+                                                                                                                                                                                                                                                                                                                                                                                                                                            //   var pass = false;
+                                                                                                                                                                                                                                                                                                                                                                                                                                            //   for (let index = 0; index < variant.options.length; index++) {
+                                                                                                                                                                                                                                                                                                                                                                                                                                            //     if(variant.options[index] === selectedOption){
+                                                                                                                                                                                                                                                                                                                                                                                                                                            //       return true
+                                                                                                                                                                                                                                                                                                                                                                                                                                            //     }
+                                                                                                                                                                                                                                                                                                                                                                                                                                            //   }
+                                                                                                                                                                                                                                                                                                                                                                                                                                            //   return false  
+                                                                                                                                                                                                                                                                                                                                                                                                                                            // })
+                                                                                                                                                                                                                                                                                                                                                                                                                                                  //     fetch(
+                                                                                                                                                                                                                                                                                                                                                                                                                                                  //       `${radio.dataset.url}?variant=${matched_variant.id}&section_id=${radio.dataset.section}`
+                                                                                                                                                                                                                                                                                                                                                                                                                                                  //     )
+                                                                                                                                                                                                                                                                                                                                                                                                                                                  //       .then((response) => response.text())
+                                                                                                                                                                                                                                                                                                                                                                                                                                                  //       .then((responseText) => {
+                                                                                                            
+                                                                                                                                                                                                                                                                                                                                                                                                                                                  // const html = new DOMParser().parseFromString(responseText, 'text/html');
+                                                                                                                                                                                                                                                                                                                                                                                                                                                  // console.log(html)
+                                                                                                                                                                                                                                                                                                                                                                                                                                                  //       });
+                                                                                                                                                                                                                                                                                                                                              </script> {% endcomment %}
     {% endfor %}
   </div>
 </div>
+
+
+{% schema %}
+  {
+    "name": "Product List Settings",
+    "settings": [
+      {
+        "type": "collection",
+        "id": "products_collection",
+        "label": "Products Collection"
+      }
+    ]
+  }
+{% endschema %}

@@ -4,6 +4,15 @@
   width: 100%;
   height: respDim(634);
   display: flex;
+
+  .animated-card {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+  }
+
   .left_card_featured {
     width: 50%;
     height: 100%;
@@ -15,6 +24,7 @@
     gap: respDim(16);
     position: relative;
     justify-content: center;
+
     .top_title,
     .hook_title {
       animation: TextHeroAnimation 1.25s;
@@ -103,6 +113,7 @@
     gap: respDim(16);
     position: relative;
     justify-content: center;
+
     .top_title,
     .hook_title {
       animation: TextHeroAnimation 1.25s;
@@ -157,6 +168,7 @@
       background-color: #EDFF00;
       cursor: pointer;
       z-index: 2;
+
       span {
         display: block;
         font-size: respDim(14);
@@ -177,7 +189,8 @@
       }
     }
   }
-  .image_container{
+
+  .image_container {
     width: 100%;
     height: 100%;
     display: flex;
@@ -186,24 +199,28 @@
     align-items: center;
     top: 30%;
     z-index: 1;
-    img{
+
+    img {
       width: 100%;
       height: 120%;
       object-fit: contain;
-      transform: translateY(0%) ;
-      
+      transform: translateY(0%);
+
     }
-    .backwardAnimation{
+
+    .backwardAnimation {
       animation-direction: reverse;
       animation: ImageAnimationCard 3s;
 
     }
-    .forwardAnimation{
+
+    .forwardAnimation {
       animation: ImageAnimationCard 3s;
     }
+
     @keyframes ImageAnimationCard {
-      0%{
-        transform: translate3d(0,30%,0) rotate(10deg);
+      0% {
+        transform: translate3d(0, 30%, 0) rotate(10deg);
       }
     }
   }
