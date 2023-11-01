@@ -2,52 +2,111 @@
 <div class="featured_products_cards_section_container" id="{{ section.id }}">
 
   <div class="left_card_featured">
-
-    <div class="top_title">
-      <span>{{ section.settings.product_1_text_1 }}</span>
-    </div>
-    <div class="hook_title">
-      <span>{{ section.settings.product_1_text_2 }}</span>
-    </div>
-    <div class="price_text">
-      <span>{{ section.settings.product_1_price | money }}</span>
-    </div>
-    <div class="buy_button">
-      <span>Get it</span>
-    </div>
-    <animated-card class="animated-card">
-      <div class="image_container"><img
-          class="card_img backwardAnimation"
-          loading="lazy"
-          src="{{ section.settings.product_1_image |  image_url  }}"
-          alt="">
+    {% if section.settings.product_1 != blank %}
+      <div class="top_title">
+        <span>Torch</span>
       </div>
-    </animated-card>
+      <div class="hook_title">
+        <span>{{ section.settings.product_1.title }}</span>
+      </div>
+      {% comment %} <div class="price_text">
+                                        <span>{{ section.settings.product_1.price | money }}</span>
+                              </div> {% endcomment %}
+      <div class="buy_button">
+        <span>Get it</span>
+      </div>
+      <animated-card class="animated-card">
+        <div class="image_container">
+          {% for img in section.settings.product_1.images %}
+            {% if img.alt == "featured" %}
+              <img
+                class="card_img backwardAnimation"
+                loading="lazy"
+                src="{{ img |  image_url  }}"
+                alt="">
+            {% endif %}
+          {% endfor %}
+        </div>
+      </animated-card>
+    {% else %}
+      <div class="top_title">
+        <span>Cary 11</span>
+      </div>
+      <div class="hook_title">
+        <span>You can do Anything</span>
+      </div>
+      {% comment %} <div class="price_text">
+                        <span>$129.99</span>
+                  </div> {% endcomment %}
+      <div class="buy_button">
+        <span>Get it</span>
+      </div>
+      <animated-card class="animated-card">
+        <div class="image_container">
+          <img
+            class="card_img backwardAnimation"
+            loading="lazy"
+            src="{{ "default_image_card_3.png" |  file_url  }}"
+            alt="">
+        </div>
+      </animated-card>
+    {% endif %}
+
 
   </div>
 
   <div class="right_card_featured">
 
-    <div class="top_title">
-      <span>{{ section.settings.product_1_text_1 }}</span>
-    </div>
-    <div class="hook_title">
-      <span>{{ section.settings.product_1_text_2 }}</span>
-    </div>
-    <div class="price_text">
-      <span>{{ section.settings.product_1_price | money }}</span>
-    </div>
-    <div class="buy_button">
-      <span>Get it</span>
-    </div>
-    <animated-card class="animated-card">
-      <div class="image_container"><img
-          class="card_img backwardAnimation"
-          loading="lazy"
-          src="{{ section.settings.product_2_image |  image_url   }}"
-          alt="">
+    {% if section.settings.product_2 != blank %}
+      <div class="top_title">
+        <span>Torch</span>
       </div>
-    </animated-card>
+      <div class="hook_title">
+        <span>{{ section.settings.product_2.title }}</span>
+      </div>
+      {% comment %} <div class="price_text">
+                                <span>{{ section.settings.product_2.price | money }}</span>
+                        </div> {% endcomment %}
+      <div class="buy_button">
+        <span>Get it</span>
+      </div>
+      <animated-card class="animated-card">
+        <div class="image_container">
+          {% for img in section.settings.product_2.images %}
+            {% if img.alt == "featured" %}
+              <img
+                class="card_img backwardAnimation"
+                loading="lazy"
+                src="{{ img |  image_url  }}"
+                alt="">
+            {% endif %}
+          {% endfor %}
+        </div>
+      </animated-card>
+    {% else %}
+      <div class="top_title">
+        <span>Cary 11</span>
+      </div>
+      <div class="hook_title">
+        <span>You can do Anything</span>
+      </div>
+      {% comment %} <div class="price_text">
+                        <span>$129.99</span>
+                  </div> {% endcomment %}
+      <div class="buy_button">
+        <span>Get it</span>
+      </div>
+      <animated-card class="animated-card">
+        <div class="image_container">
+          <img
+            class="card_img backwardAnimation"
+            loading="lazy"
+            src="{{ "default_image_card_1.png" |  file_url  }}"
+            alt="">
+        </div>
+      </animated-card>
+    {% endif %}
+
   </div>
 </div>
 
@@ -57,50 +116,14 @@
     "name": "Dual Prouducts Settings",
     "settings": [
       {
-        "type": "text",
-        "id": "product_1_text_1",
-        "label": "First Product Header",
-        "default": "Cary 11"
+        "type": "product",
+        "id": "product_1",
+        "label": "Product Card 1"
       },
       {
-        "type": "text",
-        "id": "product_1_text_2",
-        "label": "First Product Hook",
-        "default": "Believe you can do Anything"
-      },
-      {
-        "type": "number",
-        "id": "product_1_price",
-        "label": "Price product 1",
-        "default": 100
-      },
-      {
-        "type": "image_picker",
-        "id": "product_1_image",
-        "label": "Image Product 1"
-      },
-      {
-        "type": "text",
-        "id": "product_2_text_1",
-        "label": "Second Product Header",
-        "default": "Cary 11"
-      },
-      {
-        "type": "text",
-        "id": "product_2_text_2",
-        "label": "Second Product Hook",
-        "default": "Believe you can do Anything"
-      },
-      {
-        "type": "number",
-        "id": "product_2_price",
-        "label": "Price product 2",
-        "default": 100
-      },
-      {
-        "type": "image_picker",
-        "id": "product_2_image",
-        "label": "Image Product 2"
+        "type": "product",
+        "id": "product_2",
+        "label": "Product Card 2"
       }
     ]
   }

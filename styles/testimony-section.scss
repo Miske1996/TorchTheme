@@ -1,14 +1,46 @@
 @import "responsiveDim.scss";
 .testimony_section_container {
     width: 100%;
-    height: respDim(883);
     margin-top: respDim(0);
     margin-left: respDim(0);
     border-radius: respDim(0);
-    background: rgba(
-      203.41687113046646,
-      209.31249797344208,
-      186.6369867324829,
-      1
-    );
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .testimony_person_name{
+      width: 100%;
+      height: respDim(20);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: respDim(200);
+      span{
+        display: block;
+        font-size: respDim(13.5);
+        font-family: 'LatoLight';
+        color: white;
+        margin-right: respDim(10);
+      }
+      img{
+        width: respDim(12);
+        height: respDim(12);
+        object-fit: contain;
+        margin-left: respDim(1.5);
+      }
+    }
+    .testimony_text{
+      padding-left: respDim(122);
+      padding-right: respDim(122);
+      margin-top: respDim(40);
+      width: 100%;
+      color:#6C6C6C;
+      font-size: respDim(48);
+      font-family: 'LatoBlack';
+      line-height: 1.4;
+      margin-bottom: respDim(200);
+      span{
+        color: white;
+      }
+    }
   }

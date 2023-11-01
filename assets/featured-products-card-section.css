@@ -52,6 +52,7 @@
   width: 100%;
   display: flex;
   justify-content: center;
+  z-index: 2;
 }
 .featured_products_cards_section_container .left_card_featured .price_text span {
   display: block;
@@ -128,6 +129,7 @@
   width: 100%;
   display: flex;
   justify-content: center;
+  z-index: 2;
 }
 .featured_products_cards_section_container .right_card_featured .price_text span {
   display: block;
@@ -169,12 +171,12 @@
   position: absolute;
   justify-content: center;
   align-items: center;
-  top: 30%;
+  top: 35%;
   z-index: 1;
 }
 .featured_products_cards_section_container .image_container img {
   width: 100%;
-  height: 120%;
+  height: 90%;
   object-fit: contain;
   transform: translateY(0%);
 }
@@ -187,6 +189,6 @@
 }
 @keyframes ImageAnimationCard {
   0% {
-    transform: translate3d(0, 30%, 0) rotate(10deg);
+    transform: translate3d(0, 35%, 0) rotate(10deg);
   }
 }

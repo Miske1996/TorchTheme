@@ -2,25 +2,52 @@
 
 <div class="featured_product_section_container" id="{{ section.id }}">
   <div class="card_featured" style="background-color:{{ section.settings.bg_color }};color:{{ section.settings.text_color }}">
-    <div class="top_title">
-      <span>{{ section.settings.product_text_1 }}</span>
-    </div>
-    <div class="hook_title">
-      <span>{{ section.settings.product_text_2 }}</span>
-    </div>
-    <div class="price_text">
-      <span>{{ section.settings.product_price | money }}</span>
-    </div>
-    <div class="buy_button" style="background-color:{{ section.settings.button_bg }};color:{{ section.settings.button_text }}">
-      <span>Get it</span>
-    </div>
-    <animated-card class="animated-card">
-      <div class="image_container"><img
-          class="card_img backwardAnimation"
-          loading="lazy"
-          src="{{ section.settings.product_image |  image_url  }}"
-          alt=""></div>
-    </animated-card>
+    {% if section.settings.product_1 != blank %}
+      <div class="top_title">
+        <span>Torch</span>
+      </div>
+      <div class="hook_title">
+        <span>{{ section.settings.product_1.title }}</span>
+      </div>
+      <div class="buy_button" style="background-color:{{ section.settings.button_bg }};color:{{ section.settings.button_text }}">
+        <span>Get it</span>
+      </div>
+      <animated-card class="animated-card">
+        <div class="image_container">
+          {% for img in section.settings.product_1.images %}
+            {% if img.alt == "featured" %}
+              <img
+                class="card_img backwardAnimation"
+                loading="lazy"
+                src="{{ img |  image_url  }}"
+                alt="">
+            {% endif %}
+          {% endfor %}
+        </div>
+      </animated-card>
+    {% else %}
+      <div class="top_title">
+        <span>Cary 11</span>
+      </div>
+      <div class="hook_title">
+        <span>You can do Anything</span>
+      </div>
+      {% comment %} <div class="price_text">
+                                                                <span>$129.99</span>
+                                                </div> {% endcomment %}
+      <div class="buy_button" style="background-color:{{ section.settings.button_bg }};color:{{ section.settings.button_text }}">
+        <span>Get it</span>
+      </div>
+      <animated-card class="animated-card">
+        <div class="image_container">
+          <img
+            class="card_img backwardAnimation"
+            loading="lazy"
+            src="{{ "default_image_card_1.png" |  file_url  }}"
+            alt="">
+        </div>
+      </animated-card>
+    {% endif %}
   </div>
 </div>
 
@@ -30,27 +57,9 @@
     "name": "Featured Product Settings",
     "settings": [
       {
-        "type": "text",
-        "id": "product_text_1",
-        "label": "First Product Header",
-        "default": "Cary 11"
-      },
-      {
-        "type": "text",
-        "id": "product_text_2",
-        "label": "First Product Hook",
-        "default": "Believe you can do Anything"
-      },
-      {
-        "type": "number",
-        "id": "product_price",
-        "label": "Price product",
-        "default": 100
-      },
-      {
-        "type": "image_picker",
-        "id": "product_image",
-        "label": "Image Product"
+        "type": "product",
+        "id": "product_1",
+        "label": "Product Card"
       },
       {
         "type": "color",

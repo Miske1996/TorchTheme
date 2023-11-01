@@ -1,8 +1,45 @@
 .testimony_section_container {
   width: 100%;
-  height: 61.32vw;
   margin-top: 0vw;
   margin-left: 0vw;
   border-radius: 0vw;
-  background: rgb(203, 209, 187);
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.testimony_section_container .testimony_person_name {
+  width: 100%;
+  height: 1.39vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 13.89vw;
+}
+.testimony_section_container .testimony_person_name span {
+  display: block;
+  font-size: 0.94vw;
+  font-family: "LatoLight";
+  color: white;
+  margin-right: 0.69vw;
+}
+.testimony_section_container .testimony_person_name img {
+  width: 0.83vw;
+  height: 0.83vw;
+  object-fit: contain;
+  margin-left: 0.1vw;
+}
+.testimony_section_container .testimony_text {
+  padding-left: 8.47vw;
+  padding-right: 8.47vw;
+  margin-top: 2.78vw;
+  width: 100%;
+  color: #6C6C6C;
+  font-size: 3.33vw;
+  font-family: "LatoBlack";
+  line-height: 1.4;
+  margin-bottom: 13.89vw;
+}
+.testimony_section_container .testimony_text span {
+  color: white;
 }

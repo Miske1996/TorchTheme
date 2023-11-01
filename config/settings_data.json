@@ -2,7 +2,8 @@
   "current": "Default",
   "presets": {
     "Default": {
-      "new_products_list":"shoes"
+      "new_products_list":"shoes",
+      "hero_image_default": "hero_image_default"
     }
   }
 }

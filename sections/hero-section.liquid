@@ -1,7 +1,31 @@
 {{ 'hero-component.css' | asset_url | stylesheet_tag }}
 <div class="hero_component_container" style="color: white;">
   <div class="main_cotent">
+  {% if section.settings.hero_product != blank %}
     <div class="text_content_hero_container">
+      <div class="top_title">
+        <span>Torch</span>
+      </div>
+      <div class="hook_title">
+        <span>{{ section.settings.hero_product.title }}</span>
+      </div>
+      <div class="price_text">
+        <span>{{ section.settings.hero_product.price |  money}}</span>
+      </div>
+      <div class="buy_button">
+        <span>Get it</span>
+      </div>
+    </div>
+  </div>
+  <div class="image_container_hero">
+    {% for img in section.settings.hero_product.images %}
+      {% if img.alt == "featured" %}
+        <img src="{{ img |  image_url  }}" alt="">
+      {% endif %}
+    {% endfor %}
+  </div>
+  {% else %}
+  <div class="text_content_hero_container">
       <div class="top_title">
         <span>Curry 11</span>
       </div>
@@ -16,13 +40,24 @@
       </div>
     </div>
   </div>
-  <div class="image_container_hero"><img src="{{ section.settings.bg_img |  image_url }}" alt=""></div>
-
+  <div class="image_container_hero"><img src="{% if section.settings.bg_img != blank %}
+      {{ section.settings.bg_img | image_url }}
+      {% else %}
+      {{ "hero_image_default.png" |  file_url  }}
+      {% endif %}" alt=""></div>
+  {% endif %}
+    
 </div>
+
 {% schema %}
   {
     "name": "Hero Section",
     "settings": [
+      {
+        "type": "product",
+        "id": "hero_product",
+        "label": "Hero Product"
+      },
       {
         "type": "image_picker",
         "id": "bg_img",
