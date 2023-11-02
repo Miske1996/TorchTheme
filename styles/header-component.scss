@@ -4,6 +4,7 @@
     width: 100vw;
     height: respDim(97);
     display: flex;
+
     .header-component {
         width: 100%;
         height: 100%;
@@ -38,9 +39,11 @@
         width: 50%;
         height: respDim(30);
         display: flex;
-        .close_container{
+
+        .close_container {
             display: none;
         }
+
         .link_navigation_top_container {
             width: fit-content;
             height: 100%;
@@ -201,8 +204,8 @@
         z-index: 10;
 
         & .dropdown_menu_logo_container {
-            width: respDimM(24);
-            height: respDimM(24);
+            width: respDimM(30);
+            height: respDimM(30);
             display: flex;
             align-self: center;
 
@@ -214,8 +217,8 @@
         }
 
         & .logo_container {
-            width: respDimM(28);
-            height: respDimM(28);
+            width: respDimM(32);
+            height: respDimM(32);
             display: flex;
             align-self: center;
 
@@ -234,27 +237,54 @@
             background-color: #FEFFFE;
             top: respDimM(90);
             left: 0;
-            span{
-                color: black;
-            }
-            .close_container{
+            flex-direction: column;
+            .close_container {
                 width: respDimM(16);
                 height: respDimM(16);
                 display: flex;
                 position: absolute;
                 right: respDimM(32);
                 top: respDimM(32);
-                img{
+
+                img {
                     width: 100%;
                     height: 100%;
                 }
             }
-        }
-
+            & .link_navigation_top_container {
+                width: 100%;
+                height: fit-content;
+                display: flex;
+                & > a{
+                    text-align: center;
+                    width: 100%;
+                    font-size: respDimM(22);
+                    color: black;
+                    justify-content: start;
+                    margin-left: respDimM(32);
+                    padding: respDimM(30);
+                    padding-left: 0;
+                }
+                
+                &>a span {
+                    width: fit-content;
+                    display: block;
+                    cursor: pointer;
+                    font-family: 'LatoBold';
+                }
+    
+                &:hover {
+                    border-bottom: none;
+                }
+            }
+            & > div:nth-child(2) {
+                margin-top: respDimM(75);
+                border-top: 1px solid black;
+            }
+        }                
         .cart_icon_container {
-            width: respDimM(18);
-            height: respDimM(18);
+            width: respDimM(24);
+            height: respDimM(24);
         }
-    }
-
+    }      
 }
