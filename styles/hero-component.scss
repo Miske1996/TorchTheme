@@ -113,3 +113,8 @@
     }
 
   }
+@media screen and (max-width: 450px) {
+  .hero_component_container{
+    margin-top: respDimM(90);
+  }
+}

@@ -1,13 +1,21 @@
 .header_component_container {
   width: 100vw;
   height: 6.74vw;
+  display: flex;
+}
+.header_component_container .header-component {
+  width: 100%;
+  height: 100%;
   background: black;
   color: white;
   display: flex;
-  padding-left: 8.47vw;
-  padding-right: 8.47vw;
   position: relative;
   justify-content: space-between;
+  padding-left: 8.47vw;
+  padding-right: 8.47vw;
+}
+.header_component_container .dropdown_menu_logo_container {
+  display: none;
 }
 .header_component_container .logo_container {
   width: 1.94vw;
@@ -25,6 +33,9 @@
   width: 50%;
   height: 2.08vw;
   display: flex;
+}
+.header_component_container .navigation_container .close_container {
+  display: none;
 }
 .header_component_container .navigation_container .link_navigation_top_container {
   width: fit-content;
@@ -148,4 +159,64 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+@media screen and (max-width: 450px) {
+  .header_component_container {
+    width: 100vw;
+    height: 20vw;
+    position: fixed;
+    top: 0;
+    z-index: 10;
+  }
+  .header_component_container .dropdown_menu_logo_container {
+    width: 5.33vw;
+    height: 5.33vw;
+    display: flex;
+    align-self: center;
+  }
+  .header_component_container .dropdown_menu_logo_container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .header_component_container .logo_container {
+    width: 6.22vw;
+    height: 6.22vw;
+    display: flex;
+    align-self: center;
+  }
+  .header_component_container .logo_container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .header_component_container .navigation_container {
+    display: none;
+    width: 100vw;
+    height: calc(100vh - 20vw);
+    position: absolute;
+    background-color: #FEFFFE;
+    top: 20vw;
+    left: 0;
+  }
+  .header_component_container .navigation_container span {
+    color: black;
+  }
+  .header_component_container .navigation_container .close_container {
+    width: 3.56vw;
+    height: 3.56vw;
+    display: flex;
+    position: absolute;
+    right: 7.11vw;
+    top: 7.11vw;
+  }
+  .header_component_container .navigation_container .close_container img {
+    width: 100%;
+    height: 100%;
+  }
+  .header_component_container .cart_icon_container {
+    width: 4vw;
+    height: 4vw;
+  }
 }

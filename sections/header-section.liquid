@@ -1,6 +1,10 @@
 {{ 'header-component.css' | asset_url | stylesheet_tag }}
 <section class="header_component_container">
-  <div class="logo_container"><img src="{{'theme-logo.png' |  asset_url}}" alt=""></div>
-  {% render 'mega-menu-item-component' %}
-  <div class="cart_icon_container"><img src="{{'cart-logo.png' |  asset_url}}" alt=""></div>
+  <header-component class="header-component">
+    <div class="dropdown_menu_logo_container"><img src="{{'burger.png' |  asset_url}}" alt=""></div>
+    <div class="logo_container"><img src="{{'theme-logo.png' |  asset_url}}" alt=""></div>
+    {% render 'mega-menu-item-component' %}
+    <div class="cart_icon_container"><img src="{{'cart-logo.png' |  asset_url}}" alt=""></div>
+  </header-component>
 </section>
+{{ 'header-component.js' | asset_url | script_tag }}

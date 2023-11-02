@@ -107,3 +107,9 @@
     transform: translateY(3%) rotate(20deg);
   }
 }
+
+@media screen and (max-width: 450px) {
+  .hero_component_container {
+    margin-top: 20vw;
+  }
+}
