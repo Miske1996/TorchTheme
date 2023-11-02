@@ -111,3 +111,33 @@
     transform: translate3d(0, 30%, 0) rotate(10deg);
   }
 }
+
+@media screen and (max-width: 450px) {
+  .featured_product_section_container {
+    width: 100%;
+    height: 133.33vw;
+    flex-direction: column;
+  }
+  .featured_product_section_container .card_featured {
+    gap: 4.44vw;
+  }
+  .featured_product_section_container .card_featured .top_title span {
+    font-size: 3.11vw;
+  }
+  .featured_product_section_container .card_featured .hook_title {
+    width: 75.56vw;
+  }
+  .featured_product_section_container .card_featured .hook_title span {
+    font-size: 8.44vw;
+  }
+  .featured_product_section_container .card_featured .price_text span {
+    font-size: 3.11vw;
+  }
+  .featured_product_section_container .card_featured .buy_button {
+    width: 20.67vw;
+    height: 8vw;
+  }
+  .featured_product_section_container .card_featured .buy_button span {
+    font-size: 3.33vw;
+  }
+}

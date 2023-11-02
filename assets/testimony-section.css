@@ -43,3 +43,22 @@
 .testimony_section_container .testimony_text span {
   color: white;
 }
+
+@media screen and (max-width: 450px) {
+  .testimony_section_container {
+    height: fit-content;
+    width: 100%;
+  }
+  .testimony_section_container .testimony_person_name span {
+    font-size: 2.22vw;
+  }
+  .testimony_section_container .testimony_person_name img {
+    width: 2.22vw;
+    height: 2.22vw;
+  }
+  .testimony_section_container .testimony_text {
+    font-size: 6.44vw;
+    margin-left: 7.11vw;
+    margin-right: 7.11vw;
+  }
+}

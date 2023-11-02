@@ -113,8 +113,42 @@
     }
 
   }
+
 @media screen and (max-width: 450px) {
   .hero_component_container{
     margin-top: respDimM(90);
+    width: 100%;
+    height: respDimM(780);
+
+    .main_cotent{
+
+      .text_content_hero_container{
+        gap:respDimM(25);
+        margin-top: respDimM(170);
+        .top_title{
+          span{
+            font-size: respDimM(14);
+          }
+        }
+        .hook_title{
+          width: respDimM(340);
+          span{
+            font-size: respDimM(38);  
+          }
+        }
+        .price_text{
+          span{
+            font-size: respDimM(14);
+          }
+        }
+        .buy_button{
+          width: respDimM(93);
+          height: respDimM(36);
+          span{
+            font-size: respDimM(15);
+          }
+        }
+      }
+    }    
   }
 }

@@ -126,3 +126,38 @@
     }
     
   }
+  @media screen and (max-width: 450px) {
+    .featured_product_section_container {
+      width: 100%;
+      height: respDimM(600);
+      flex-direction: column;
+    
+      .card_featured{
+        gap:respDimM(20);
+        .top_title{
+          span{
+            font-size: respDimM(14);
+          }
+        }
+        .hook_title{
+          width: respDimM(340);
+          span{
+            font-size: respDimM(38);  
+          }
+        }
+        .price_text{
+          span{
+            font-size: respDimM(14);
+          }
+        }
+        .buy_button{
+          width: respDimM(93);
+          height: respDimM(36);
+          span{
+            font-size: respDimM(15);
+          }
+        }
+      }
+    
+    }
+  }
