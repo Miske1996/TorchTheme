@@ -165,16 +165,16 @@
   }
   .new_products_section_container .products_container .product-variants .card_container .options_container {
     width: 80%;
-    height: 10.67vw;
+    height: 12.89vw;
     border-radius: 1.78vw;
   }
   .new_products_section_container .products_container .product-variants .card_container .options_container .option {
-    width: 7.11vw;
-    height: 7.11vw;
+    width: 9.33vw;
+    height: 9.33vw;
     border: 2px solid #DCDCD6;
   }
   .new_products_section_container .products_container .product-variants .card_container .options_container .option .color {
-    height: 7.11vw;
+    height: 9.33vw;
   }
   .new_products_section_container .products_container .product-variants .main_info_product_card {
     margin-top: 3.33vw;
