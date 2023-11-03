@@ -31,7 +31,7 @@
   display: flex;
   justify-content: center;
 }
-.hero_component_container .main_cotent .text_content_hero_container .top_title span {
+.hero_component_container .main_cotent .text_content_hero_container .top_title h2 {
   display: block;
   font-size: 0.97vw;
   color: white;
@@ -43,7 +43,7 @@
   justify-content: center;
   color: white;
 }
-.hero_component_container .main_cotent .text_content_hero_container .hook_title span {
+.hero_component_container .main_cotent .text_content_hero_container .hook_title h1 {
   text-align: center;
   font-size: 5vw;
   font-family: "LatoBlack";
@@ -117,13 +117,13 @@
     gap: 5.56vw;
     margin-top: 37.78vw;
   }
-  .hero_component_container .main_cotent .text_content_hero_container .top_title span {
+  .hero_component_container .main_cotent .text_content_hero_container .top_title h2 {
     font-size: 3.11vw;
   }
   .hero_component_container .main_cotent .text_content_hero_container .hook_title {
     width: 75.56vw;
   }
-  .hero_component_container .main_cotent .text_content_hero_container .hook_title span {
+  .hero_component_container .main_cotent .text_content_hero_container .hook_title h1 {
     font-size: 8.44vw;
   }
   .hero_component_container .main_cotent .text_content_hero_container .price_text span {

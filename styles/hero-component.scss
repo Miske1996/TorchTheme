@@ -30,7 +30,7 @@
           width: 100%;
           display: flex;
           justify-content: center;
-          span{
+          h2{
             display: block;
             font-size: respDim(14);
             color: white;
@@ -42,7 +42,7 @@
           display: flex;
           justify-content: center;
           color: white;
-          span{
+          h1{
             text-align: center;
             font-size: respDim(72);
             font-family: 'LatoBlack';
@@ -126,16 +126,16 @@
         gap:respDimM(25);
         margin-top: respDimM(170);
         .top_title{
-          span{
+          h2{
             font-size: respDimM(14);
           }
         }
         .hook_title{
           width: respDimM(340);
-          span{
+          h1{
             font-size: respDimM(38);  
           }
-        }
+        } 
         .price_text{
           span{
             font-size: respDimM(14);
