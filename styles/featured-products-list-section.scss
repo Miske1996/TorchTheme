@@ -21,6 +21,7 @@
       display: flex;
       gap: respDim(15);
       flex-wrap: wrap;
+      margin-bottom: respDim(180); 
       .card_container{
         width: respDim(285);
         height: respDim(523);

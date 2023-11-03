@@ -20,6 +20,7 @@
   display: flex;
   gap: 1.04vw;
   flex-wrap: wrap;
+  margin-bottom: 12.5vw;
 }
 .new_products_section_container .products_container .card_container {
   width: 19.79vw;
