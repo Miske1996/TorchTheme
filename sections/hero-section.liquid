@@ -20,7 +20,21 @@
   <div class="image_container_hero">
     {% for img in section.settings.hero_product.images %}
       {% if img.alt == "featured" %}
-        <img src="{{ img |  image_url  }}" alt="">
+        <picture>
+          <source
+            media="(max-width: 800px)"
+            srcset="
+              {{ img | image_url: width: 200 }} 1x,
+              {{ img | image_url: width: 400 }} 2x,
+              ">
+          {{ img |
+            image_url: width: 2000 |
+            image_tag:
+              widths: '800, 400',
+              sizes: '(min-width: 1000px) 760px, (min-width: 800px) calc(100vw - 380px), (min-width: 400px) 298px, 40vw',
+              class: 'mobile-size-fix' }}
+        </picture>
+       
       {% endif %}
     {% endfor %}
   </div>

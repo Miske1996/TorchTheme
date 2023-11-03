@@ -93,7 +93,6 @@
   position: absolute;
 }
 .hero_component_container .image_container_hero img {
-  width: 110%;
   height: 110%;
   object-fit: contain;
   animation: ImageAnimation 1.35s;
