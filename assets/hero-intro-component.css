@@ -1,0 +1,106 @@
+.hero_intro_container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+.hero_intro_container .text_content_container {
+  width: 100%;
+  height: fit-content;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 27vh;
+  gap: 1.5vw;
+}
+.hero_intro_container .text_content_container .title_product {
+  font-size: 43px;
+  background: linear-gradient(90deg, #E2D5C5 0%, #D1B89C 99.99%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  font-weight: 700;
+}
+.hero_intro_container .text_content_container .sub_title {
+  font-size: 22px;
+  color: white;
+  font-weight: bold;
+}
+.hero_intro_container .text_content_container .play_video_hero_btn {
+  background: none;
+  border: none;
+  width: 157px;
+  height: 31px;
+  background-color: black;
+  font-size: 1.25vw;
+  letter-spacing: 0.011em;
+  font-weight: 400;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+.hero_intro_container .text_content_container .play_video_hero_btn span {
+  display: block;
+}
+.hero_intro_container .text_content_container .play_video_hero_btn svg {
+  width: 17px;
+  height: 17px;
+}
+.hero_intro_container .text_content_container .video_container {
+  width: 90vw;
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+.hero_intro_container .text_content_container .video_container iframe {
+  width: 100%;
+  aspect-ratio: 16/9;
+  border: none;
+}
+.hero_intro_container .text_content_container .video_container .remove_button_video_btn {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  z-index: 3;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: -20px;
+  right: -20px;
+  cursor: pointer;
+}
+.hero_intro_container .background_img_hero {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+}
+
+@media (max-width: 550px) {
+  .hero_intro_container {
+    height: 90vh;
+  }
+  .hero_intro_container .text_content_container .title_product {
+    font-size: 18px;
+  }
+  .hero_intro_container .text_content_container .sub_title {
+    line-height: 1.2;
+    font-size: 18px;
+    max-width: 300px;
+  }
+  .hero_intro_container .text_content_container .play_video_hero_btn {
+    font-size: 12px;
+    letter-spacing: 0.011em;
+  }
+}

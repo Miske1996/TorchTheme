@@ -37,7 +37,7 @@
       href="{{ 'Lato-Bold.woff2' | asset_url }}"
       type="font/woff2"
       crossorigin>
-    <title></title>
+    <title>Torch Theme</title>
     {{ content_for_header }}
     {{ 'global.css' | asset_url | stylesheet_tag }}
   </head>
@@ -47,7 +47,6 @@
     <main class="main_content_layout">{{ content_for_layout }}</main>
     {% render 'footer-component' %}
     <script src="{{'animation.js' | asset_url}}"></script>
-
   </body>
 
 </html>

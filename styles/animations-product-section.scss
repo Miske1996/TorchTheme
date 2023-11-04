@@ -1,0 +1,12 @@
+.animated-sections-product{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    overflow-y: scroll;
+    .animated-sections-product-container{
+        width: 100vw;
+        height: 1000vh;
+        display: flex;
+        flex-direction: column;   
+    }
+}

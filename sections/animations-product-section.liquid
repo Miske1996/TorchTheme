@@ -1,0 +1,7 @@
+{{ 'animations-product-section.css' | asset_url | stylesheet_tag }}
+<sections-animation-scroll class="animated-sections-product">
+  <div class="animated-sections-product-container">
+    {% render 'hero-intro-component' %}
+  </div>
+</sections-animation-scroll>
+{{ 'sections-animation-scroll.js' | asset_url | script_tag }}
