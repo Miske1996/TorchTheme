@@ -23,11 +23,13 @@
   background-clip: text;
   text-fill-color: transparent;
   font-weight: 700;
+  text-align: center;
 }
 .hero_intro_container .text_content_container .sub_title {
   font-size: 22px;
   color: white;
   font-weight: bold;
+  text-align: center;
 }
 .hero_intro_container .text_content_container .play_video_hero_btn {
   background: none;
