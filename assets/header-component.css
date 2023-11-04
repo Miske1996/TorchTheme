@@ -165,7 +165,6 @@
   .header_component_container {
     width: 100vw;
     height: 20vw;
-    position: fixed;
     top: 0;
     z-index: 10;
   }

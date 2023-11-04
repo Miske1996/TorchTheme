@@ -1,0 +1,40 @@
+.first_description_container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+}
+.first_description_container .background_video {
+  width: 120%;
+  height: 120%;
+  display: flex;
+  position: absolute;
+}
+.first_description_container .background_video iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+.first_description_container .text_description_animation_container {
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  opacity: 1;
+  position: relative;
+  background-color: #fff;
+  mix-blend-mode: hard-light;
+  transition: 0.5s;
+}
+.first_description_container .text_description_animation_container .inner_text_title {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 70%;
+  text-align: center;
+  transform: translate(-50%, -50%);
+  transition: 0.5s;
+  color: gray;
+  font-size: 4vw;
+  font-family: "LatoBlack";
+}
