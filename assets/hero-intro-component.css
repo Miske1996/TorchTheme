@@ -53,7 +53,7 @@
   height: 17px;
 }
 .hero_intro_container .text_content_container .video_container {
-  width: 90vw;
+  width: 85vw;
   display: none;
   position: absolute;
   top: 50%;
@@ -102,5 +102,9 @@
   .hero_intro_container .text_content_container .play_video_hero_btn {
     font-size: 12px;
     letter-spacing: 0.011em;
+  }
+  .hero_intro_container .text_content_container .video_container iframe {
+    height: 35vh;
+    transform: scale(1.1);
   }
 }
