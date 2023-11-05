@@ -24,12 +24,12 @@ class SectionsAnimationScroll extends HTMLElement {
             }
 
             // 1 - FIRST SECTION DESCRIPTION SCROLL ANIMATION LOGIC
-            if(document.documentElement.scrollTop > (window.innerHeight * 1) && document.documentElement.scrollTop <= (window.innerHeight * 6)){
-                this.initSectionFirstDescription(document.documentElement.scrollTop,window.innerHeight,this.isScrollingDown,window.innerHeight * 6)
+            if(document.documentElement.scrollTop > (window.innerHeight * 1) && document.documentElement.scrollTop <= (window.innerHeight * 5)){
+                this.initSectionFirstDescription(document.documentElement.scrollTop,window.innerHeight,this.isScrollingDown,window.innerHeight * 5)
             }else if (document.documentElement.scrollTop <= (window.innerHeight * 1)){
-                this.initSectionFirstDescription(document.documentElement.scrollTop,window.innerHeight,this.isScrollingDown,window.innerHeight * 6)
-            } else if( document.documentElement.scrollTop >= (window.innerHeight * 6)){
-                this.initSectionFirstDescription(document.documentElement.scrollTop,window.innerHeight,this.isScrollingDown,window.innerHeight * 6)
+                this.initSectionFirstDescription(document.documentElement.scrollTop,window.innerHeight,this.isScrollingDown,window.innerHeight * 5)
+            } else if( document.documentElement.scrollTop >= (window.innerHeight * 5)){
+                this.initSectionFirstDescription(document.documentElement.scrollTop,window.innerHeight,this.isScrollingDown,window.innerHeight * 5)
             }
         });
     }
@@ -62,7 +62,7 @@ class SectionsAnimationScroll extends HTMLElement {
         let headers_scroll_succession = scroll_succession_text_animation.querySelectorAll("h1");
 
         //Animations Y breaks
-        let inner_break_1 = breakPoint / 3.2;
+        let inner_break_1 = breakPoint / 2.8;
         let inner_break_2 = breakPoint - inner_break_1;
 
         //here we move and fix the section white scrolling
