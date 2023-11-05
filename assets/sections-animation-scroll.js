@@ -53,7 +53,7 @@ class SectionsAnimationScroll extends HTMLElement {
     // FIRST DESCRIPTION SECTION LOGIC
     initSectionFirstDescription(scrollTopY,windowHeight,scrollDown,breakPoint){
 
-        let first_section_container = this.querySelector(".first_description_container")
+        let first_section_container = this.querySelector(".first_description_container");
 
         let white_overlay_video = first_section_container.querySelector(".text_description_animation_container");
         

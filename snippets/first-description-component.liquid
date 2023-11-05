@@ -10,16 +10,11 @@
     <h1 class="scene4">Stop cleaning your home and start enjoying it.</h1>
   </div>
   <div class="background_video">
-    {% comment %} <iframe
-                                                      src="https://player.vimeo.com/video/855315676?loop=true&amp;autoplay=true&amp;muted=false&amp;gesture=media&amp;playsinline=true&amp;byline=false&amp;portrait=false&amp;title=false&amp;speed=true&amp;transparent=false&amp;customControls=true"
-                                                      allowfullscreen=""
-                                                      allow="autoplay; fullscreen; picture-in-picture; encrypted-media; accelerometer; gyroscope"
-                                                      title="Player for "
-                                      data-ready="true"></iframe> {% endcomment %}
     <video
-      src="https://cdn.shopify.com/videos/c/o/v/a670f8cc6c7f4eb2b0728f47fb814940.mp4"
-      controls
       autoplay
-      loop></video>
+      loop
+      muted>
+      <source src="{{ 'presentation_section_video.mp4' | file_url }}" type="video/mp4" />
+    </video>
   </div>
 </div>
