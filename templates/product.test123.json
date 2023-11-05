@@ -1,0 +1,11 @@
+{
+    "sections": {
+      "main":{
+        "type": "animations-product-section"
+      }
+    },
+    "order": [
+     "main"
+    ]
+  }
+  
