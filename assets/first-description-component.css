@@ -4,6 +4,8 @@
   display: flex;
   position: relative;
   overflow: hidden;
+  top: 0;
+  z-index: 2;
 }
 .first_description_container .background_video {
   width: 120%;

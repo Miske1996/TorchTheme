@@ -13,23 +13,32 @@ class SectionsAnimationScroll extends HTMLElement {
        
 
         window.addEventListener('scroll', () => {
-
+            
+            let window_height = window.innerHeight
+            let scrollTopY = document.documentElement.scrollTop
             // 0 - Finding the scroll direction
-            if(document.documentElement.scrollTop > this.prevY){
-                this.prevY = document.documentElement.scrollTop;
+            if(scrollTopY > this.prevY){
+                this.prevY = scrollTopY;
                 this.isScrollingDown = true;
-            }else if( this.prevY > document.documentElement.scrollTop){
-                this.prevY = document.documentElement.scrollTop;
+            }else if( this.prevY > scrollTopY){
+                this.prevY = scrollTopY;
                 this.isScrollingDown = false;
             }
 
             // 1 - FIRST SECTION DESCRIPTION SCROLL ANIMATION LOGIC
-            if(document.documentElement.scrollTop > (window.innerHeight * 1) && document.documentElement.scrollTop <= (window.innerHeight * 5)){
-                this.initSectionFirstDescription(document.documentElement.scrollTop,window.innerHeight,this.isScrollingDown,window.innerHeight * 5)
-            }else if (document.documentElement.scrollTop <= (window.innerHeight * 1)){
-                this.initSectionFirstDescription(document.documentElement.scrollTop,window.innerHeight,this.isScrollingDown,window.innerHeight * 5)
-            } else if( document.documentElement.scrollTop >= (window.innerHeight * 5)){
-                this.initSectionFirstDescription(document.documentElement.scrollTop,window.innerHeight,this.isScrollingDown,window.innerHeight * 5)
+            if(scrollTopY > (window_height * 1) && scrollTopY <= (window_height * 5)){
+                this.initSectionAvailableProducts(scrollTopY,window_height*5,this.isScrollingDown,window_height * 8)
+                this.initSectionFirstDescription(scrollTopY,window_height*1,this.isScrollingDown,window_height * 5)
+            }else if (scrollTopY <= (window_height * 1)){
+                this.initSectionFirstDescription(scrollTopY,window_height*1,this.isScrollingDown,window_height * 5)
+            } 
+
+            // 2 - SECTION 2: AVAILABLE PRODUCTS SCROLL ANIMATION LOGIC
+            if(scrollTopY > (window.innerHeight * 5) && scrollTopY <= (window.innerHeight * 8)){
+                this.initSectionFirstDescription(scrollTopY,window.innerHeight,this.isScrollingDown,window.innerHeight * 5)
+                this.initSectionAvailableProducts(scrollTopY,window.innerHeight*6,this.isScrollingDown,window.innerHeight * 8)
+            } else if( scrollTopY >= (window.innerHeight * 8)){
+                this.initSectionAvailableProducts(scrollTopY,window.innerHeight*6,this.isScrollingDown,window.innerHeight * 8,window_height*6)
             }
         });
     }
@@ -50,8 +59,8 @@ class SectionsAnimationScroll extends HTMLElement {
         })
     } 
 
-    // FIRST DESCRIPTION SECTION LOGIC
-    initSectionFirstDescription(scrollTopY,windowHeight,scrollDown,breakPoint){
+    // 1 - FIRST DESCRIPTION SECTION LOGIC
+    initSectionFirstDescription(scrollTopY,startPoint,scrollDown,breakPoint){
 
         let first_section_container = this.querySelector(".first_description_container");
 
@@ -66,7 +75,7 @@ class SectionsAnimationScroll extends HTMLElement {
         let inner_break_2 = breakPoint - inner_break_1;
 
         //here we move and fix the section white scrolling
-        if(scrollTopY <= windowHeight){
+        if(scrollTopY <= startPoint){
 
             //When we go to the previous section
             white_overlay_video.style.removeProperty("transform");
@@ -89,9 +98,9 @@ class SectionsAnimationScroll extends HTMLElement {
 
                 //Start first animation
                 white_overlay_video.style.display = "flex";
-                const scaleValue = 1 + ((scrollTopY - windowHeight) / (inner_break_1 / 10));
+                const scaleValue = 1 + ((scrollTopY - startPoint) / (inner_break_1 / 10));
                 first_section_container.style.background = "black"; 
-                white_overlay_video.style.opacity = (1 - (( scrollTopY - windowHeight) / (inner_break_1) ));
+                white_overlay_video.style.opacity = (1 - (( scrollTopY - startPoint) / (inner_break_1) ));
                 white_overlay_video.style.transform = `scale(${Math.min(scaleValue, 11)})`;
 
                 //remove 2nd animation
@@ -145,6 +154,55 @@ class SectionsAnimationScroll extends HTMLElement {
         }
        
        
+    }
+
+    // 2 - AVAILABLE PRODUCTS SECTION LOGIC
+    initSectionAvailableProducts(scrollTopY,startPoint,scrollDown,breakPoint,previousBreakPoint){
+        let available_products_section = this.querySelector(".available_products_component_container");
+        
+        let header_title = available_products_section.querySelector("h1");
+        let images_to_animate = available_products_section.querySelectorAll("img");
+        let inner_break_1 = startPoint;
+        let inner_break_2 = inner_break_1 +  available_products_section.offsetHeight / 3;
+        let inner_break_3 = inner_break_2 +  available_products_section.offsetHeight / 3;
+        if(scrollTopY <= startPoint){
+            //When we go to the previous section
+            available_products_section.style.removeProperty("position");
+            header_title.style.transform = "translateY(30%)";
+            header_title.style.opacity = "0";
+
+        }else if(scrollTopY >= breakPoint){ 
+            //When we go to the next section
+            //The margin is used to appear that we scrolled when the position fixed is over to relative
+            available_products_section.style.marginTop = (breakPoint - previousBreakPoint) + "px";
+            available_products_section.style.position = "relative";
+            header_title.style.transform = "translateY(30%)";
+            header_title.style.opacity = "0";
+
+
+        }else{
+            available_products_section.style.position = "fixed"
+            available_products_section.style.removeProperty("margin");
+            header_title.style.opacity = "1";
+            header_title.style.transform = "translateY(-30%)";
+          
+            if(scrollTopY>=inner_break_1 && scrollTopY < inner_break_2){
+                images_to_animate[0].style.opacity = "1"
+                images_to_animate[1].style.opacity = "0"
+
+            }else if(scrollTopY>=inner_break_2 && scrollTopY < inner_break_3){
+                images_to_animate[0].style.opacity = "0"
+                images_to_animate[1].style.opacity = "1"
+                images_to_animate[2].style.opacity = "0"
+
+
+            }else if(scrollTopY>=inner_break_3){
+                images_to_animate[2].style.opacity = "1"
+                images_to_animate[1].style.opacity = "0"
+
+            }
+
+        }
     }
 }
 customElements.define('sections-animation-scroll', SectionsAnimationScroll);
