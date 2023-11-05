@@ -1,11 +1,11 @@
 .animated-sections-product {
   width: 100vw;
-  height: 1000vh;
+  height: fit-content;
   display: flex;
 }
 .animated-sections-product .animated-sections-product-container {
   width: 100vw;
-  height: 1000vh;
+  height: 2000vh;
   display: flex;
   flex-direction: column;
 }
