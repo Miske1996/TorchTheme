@@ -10,9 +10,11 @@
   height: 120%;
   display: flex;
   position: absolute;
+  overflow: hidden;
 }
-.first_description_container .background_video iframe {
-  width: 100%;
+.first_description_container .background_video video {
+  aspect-ratio: 96/49;
+  width: 200vw;
   height: 100%;
   border: none;
 }
@@ -59,7 +61,7 @@
 }
 
 @media (max-width: 550px) {
-  .first_description_container .background_video iframe {
+  .first_description_container .background_video video {
     aspect-ratio: 75/124;
     width: calc(370vw + 280px);
     position: absolute;
