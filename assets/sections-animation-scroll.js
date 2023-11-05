@@ -24,12 +24,12 @@ class SectionsAnimationScroll extends HTMLElement {
             }
 
             // 1 - FIRST SECTION DESCRIPTION SCROLL ANIMATION LOGIC
-            if(document.documentElement.scrollTop > (window.innerHeight * 1) && document.documentElement.scrollTop <= (window.innerHeight * 8)){
-                this.initSectionFirstDescription(document.documentElement.scrollTop,window.innerHeight,this.isScrollingDown,window.innerHeight * 8)
+            if(document.documentElement.scrollTop > (window.innerHeight * 1) && document.documentElement.scrollTop <= (window.innerHeight * 6)){
+                this.initSectionFirstDescription(document.documentElement.scrollTop,window.innerHeight,this.isScrollingDown,window.innerHeight * 6)
             }else if (document.documentElement.scrollTop <= (window.innerHeight * 1)){
-                this.initSectionFirstDescription(document.documentElement.scrollTop,window.innerHeight,this.isScrollingDown,window.innerHeight * 8)
-            } else if( document.documentElement.scrollTop >= (window.innerHeight * 8)){
-                this.initSectionFirstDescription(document.documentElement.scrollTop,window.innerHeight,this.isScrollingDown,window.innerHeight * 8)
+                this.initSectionFirstDescription(document.documentElement.scrollTop,window.innerHeight,this.isScrollingDown,window.innerHeight * 6)
+            } else if( document.documentElement.scrollTop >= (window.innerHeight * 6)){
+                this.initSectionFirstDescription(document.documentElement.scrollTop,window.innerHeight,this.isScrollingDown,window.innerHeight * 6)
             }
         });
     }

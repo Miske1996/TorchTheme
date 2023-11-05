@@ -59,22 +59,14 @@
 }
 
 @media (max-width: 550px) {
-  .first_description_container {
-    aspect-ratio: 75/124;
-  }
-  .first_description_container .background_video {
-    height: 100%;
-    width: 100%;
-    padding-bottom: 200%;
-  }
   .first_description_container .background_video iframe {
     aspect-ratio: 75/124;
-    width: 315vw;
+    width: 350vw;
     position: absolute;
     top: 50%;
     left: 50%;
     border: none;
-    transform: translate(-50%, -60%);
+    transform: translate(-50%, -58%);
   }
   .first_description_container .text_description_animation_container .inner_text_title {
     font-size: 6.3vw;
