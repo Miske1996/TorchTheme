@@ -63,7 +63,7 @@
         .background_video{
             iframe {
                 aspect-ratio: 75 / 124;
-                width: 370vw;
+                width: calc(370vw + 280px);
                 position: absolute;
                 top: 50%;
                 left: 50%;
