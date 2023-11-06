@@ -27,18 +27,36 @@ class SectionsAnimationScroll extends HTMLElement {
 
             // 1 - FIRST SECTION DESCRIPTION SCROLL ANIMATION LOGIC
             if(scrollTopY > (window_height * 1) && scrollTopY <= (window_height * 5)){
-                this.initSectionAvailableProducts(scrollTopY,window_height*5,this.isScrollingDown,window_height * 8)
+
+                //START SECTION 1 ANIMATION
                 this.initSectionFirstDescription(scrollTopY,window_height*1,this.isScrollingDown,window_height * 5)
+                //RESET SECTION 2 ANIMATION
+                this.initSectionAvailableProducts(scrollTopY,window_height*5,this.isScrollingDown,window_height * 8)
+
             }else if (scrollTopY <= (window_height * 1)){
+                //RESET SECTION 1 ANIMATION
                 this.initSectionFirstDescription(scrollTopY,window_height*1,this.isScrollingDown,window_height * 5)
             } 
 
             // 2 - SECTION 2: AVAILABLE PRODUCTS SCROLL ANIMATION LOGIC
             if(scrollTopY > (window.innerHeight * 5) && scrollTopY <= (window.innerHeight * 8)){
+                //RESET SECTION 1 ANIMATION
                 this.initSectionFirstDescription(scrollTopY,window.innerHeight,this.isScrollingDown,window.innerHeight * 5)
+                //START SECTION 2 ANIMATION
                 this.initSectionAvailableProducts(scrollTopY,window.innerHeight*6,this.isScrollingDown,window.innerHeight * 8)
-            } else if( scrollTopY >= (window.innerHeight * 8)){
+                //RESET SECTION 3 ANIMATION
+                this.initSectionFeautresCardsProduct(scrollTopY,window.innerHeight*9,this.isScrollingDown,window.innerHeight * 14)
+            } 
+
+            // 3 - SECTION 3: PRODUCT FEATURES CARDS ANIMATION LOGIC
+            if(scrollTopY > (window.innerHeight * 8) && scrollTopY <= (window.innerHeight * 16)){
+                //RESET SECTION 2 ANIMATION
                 this.initSectionAvailableProducts(scrollTopY,window.innerHeight*6,this.isScrollingDown,window.innerHeight * 8,window_height*6)
+                //START SECTION 3 ANIMATION
+                this.initSectionFeautresCardsProduct(scrollTopY,window.innerHeight*9,this.isScrollingDown,window.innerHeight * 16)
+            } else if( scrollTopY >= (window.innerHeight * 12)){
+                //RESET SECTION 3 ANIMATION
+                this.initSectionFeautresCardsProduct(scrollTopY,window.innerHeight*9,this.isScrollingDown,window.innerHeight * 16,window_height*9)
             }
         });
     }
@@ -200,6 +218,100 @@ class SectionsAnimationScroll extends HTMLElement {
                 images_to_animate[2].style.opacity = "1"
                 images_to_animate[1].style.opacity = "0"
 
+            }
+
+        }
+    }
+
+    // 3 - PRODUCT FEATURES CARDS ANIMATION LOGIC
+    initSectionFeautresCardsProduct(scrollTopY,startPoint,scrollDown,breakPoint,previousBreakPoint){
+        let feautres_cards_product_container = this.querySelector(".product_features_cards_component_container");
+
+        let overlay_animation_container = this.querySelector(".overlay_feature_animation_container");
+
+        let overlay_animation_container_image_container = overlay_animation_container.querySelector(".image_container_feature");
+
+        let text_description_overlay_feature_container = overlay_animation_container.querySelector(".text_description_overlay_feature_container");
+
+        let inner_break_1 = startPoint;
+        let inner_break_2 = inner_break_1 + ((breakPoint - startPoint)/ 4);
+        let inner_break_3 = inner_break_2  + ((breakPoint - startPoint)*3/8);
+        let inner_break_4 = inner_break_3  + ((breakPoint - startPoint)*3/8);
+
+        if(scrollTopY <= startPoint){
+            //When we go to the previous section
+            feautres_cards_product_container.style.removeProperty("position");
+            feautres_cards_product_container.style.opacity = "0";
+            overlay_animation_container.style.display = "none";
+        }else if(scrollTopY >= breakPoint){ 
+            //When we go to the next section
+            //The margin is used to appear that we scrolled when the position fixed is over to relative
+            feautres_cards_product_container.style.marginTop = (breakPoint - previousBreakPoint) + "px";
+            feautres_cards_product_container.style.position = "relative";
+
+            
+
+        }else{
+            feautres_cards_product_container.style.position = "fixed";
+            feautres_cards_product_container.style.opacity = "1";
+            feautres_cards_product_container.style.removeProperty("margin");
+            if(scrollTopY>=inner_break_1 && scrollTopY < inner_break_2){
+            }else if(scrollTopY>=inner_break_2 && scrollTopY < inner_break_3){
+                
+                overlay_animation_container.style.display = "flex";
+                const progress = (scrollTopY - inner_break_2) / (inner_break_3 - inner_break_2);
+  
+                // Calculate new values based on the progress
+                let newSize = 24 + (24 * progress); // Adjust as needed
+                let newLeft = 9 + (39 * progress); // Adjust as needed
+                let newTop = 52 - (42 * progress); // Adjust as needed
+                let newTopTextContainer = 100 - (60 * progress)
+                
+                let mediaQuery = window.matchMedia("(max-width: 550px)");
+
+                // Check if the media query matches
+                if (mediaQuery.matches) {
+                    const startSize = 64.4256;
+                    const endSize = 100;
+                    const startLeft = -6.30838;
+                    const endLeft = 0.69162;
+                    const startTop = 35.2552;
+                    const endTop = 30.2552;
+
+                    newSize = startSize + (endSize - startSize) * progress;
+                    newLeft = startLeft + (endLeft - startLeft) * progress;
+                    newTop = startTop + (endTop - startTop) * progress;
+                }
+
+                overlay_animation_container_image_container.style.width = newSize + "vw";
+                overlay_animation_container_image_container.style.height = newSize + "vw";
+                overlay_animation_container_image_container.style.left = newLeft + "%";
+                overlay_animation_container_image_container.style.top = newTop + "%";
+                
+                if (!mediaQuery.matches) {
+                    text_description_overlay_feature_container.style.top = newTopTextContainer + "%"
+                }
+                text_description_overlay_feature_container.style.opacity = progress;
+                const opacity = 0.9 + 0.1 * progress;
+                overlay_animation_container.style.backgroundColor = `rgba(0, 0, 0, ${opacity})`;
+                
+            }else if(scrollTopY>=inner_break_3 && scrollTopY < inner_break_4){
+                const progress = (scrollTopY - inner_break_3) / (inner_break_4 - inner_break_3);
+  
+                // Calculate new values based on the progress
+                let newTop = 0 - (52 * progress); // Adjust as needed
+
+                let mediaQuery = window.matchMedia("(max-width: 550px)");
+
+                // Check if the media query matches
+                if (mediaQuery.matches) {
+                    const startTop = 30.2552;
+                    const endTop = 0;
+                    newTop = startTop + (endTop - startTop) * progress;
+                }
+                overlay_animation_container_image_container.style.opacity = (1 - progress);
+                overlay_animation_container_image_container.style.top = newTop + "%";
+                text_description_overlay_feature_container.style.opacity = (1 - progress);
             }
 
         }
