@@ -5,7 +5,8 @@
 }
 .animated-sections-product .animated-sections-product-container {
   width: 100vw;
-  height: 2000vh;
+  height: 3000vh;
   display: flex;
   flex-direction: column;
+  background-color: black;
 }

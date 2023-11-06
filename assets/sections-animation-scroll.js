@@ -14,8 +14,11 @@ class SectionsAnimationScroll extends HTMLElement {
 
         window.addEventListener('scroll', () => {
             
-            let window_height = window.innerHeight
+            let window_height = window.innerHeight;
+            
+
             let scrollTopY = document.documentElement.scrollTop
+          
             // 0 - Finding the scroll direction
             if(scrollTopY > this.prevY){
                 this.prevY = scrollTopY;
@@ -39,25 +42,44 @@ class SectionsAnimationScroll extends HTMLElement {
             } 
 
             // 2 - SECTION 2: AVAILABLE PRODUCTS SCROLL ANIMATION LOGIC
-            if(scrollTopY > (window.innerHeight * 5) && scrollTopY <= (window.innerHeight * 8)){
+            else if(scrollTopY > (window.innerHeight * 5) && scrollTopY <= (window.innerHeight * 8)){
                 //RESET SECTION 1 ANIMATION
                 this.initSectionFirstDescription(scrollTopY,window.innerHeight,this.isScrollingDown,window.innerHeight * 5)
                 //START SECTION 2 ANIMATION
                 this.initSectionAvailableProducts(scrollTopY,window.innerHeight*6,this.isScrollingDown,window.innerHeight * 8)
                 //RESET SECTION 3 ANIMATION
-                this.initSectionFeautresCardsProduct(scrollTopY,window.innerHeight*9,this.isScrollingDown,window.innerHeight * 14)
+                this.initSectionFeautresCardsProduct(scrollTopY,window.innerHeight*9,this.isScrollingDown,window.innerHeight * 16)
             } 
 
             // 3 - SECTION 3: PRODUCT FEATURES CARDS ANIMATION LOGIC
-            if(scrollTopY > (window.innerHeight * 8) && scrollTopY <= (window.innerHeight * 16)){
-                //RESET SECTION 2 ANIMATION
-                this.initSectionAvailableProducts(scrollTopY,window.innerHeight*6,this.isScrollingDown,window.innerHeight * 8,window_height*6)
-                //START SECTION 3 ANIMATION
-                this.initSectionFeautresCardsProduct(scrollTopY,window.innerHeight*9,this.isScrollingDown,window.innerHeight * 16)
-            } else if( scrollTopY >= (window.innerHeight * 12)){
+            else if(scrollTopY > (window.innerHeight * 8) && scrollTopY <= (window.innerHeight * 16)){
+              
+            //RESET SECTION 2 ANIMATION
+            this.initSectionAvailableProducts(scrollTopY,window.innerHeight*6,this.isScrollingDown,window.innerHeight * 8,window_height*6)
+            //START SECTION 3 ANIMATION
+            console.log("ENTERED THROUGH HERE")
+
+            this.initSectionFeautresCardsProduct(scrollTopY,window.innerHeight*9,this.isScrollingDown,window.innerHeight * 16,window_height*9)
+
+            //RESET SECTION 4 ANIMATION
+            this.initSectionSpecialFeatureCircleOpenning(scrollTopY,window.innerHeight*17,this.isScrollingDown,window.innerHeight * 22)
+            }  
+ 
+            // 4 - SECTION 4: PRODUCT SPECIAL FEATURE OPENNING CIRCLE ANIMATION LOGIC
+            else if(scrollTopY > (window.innerHeight * 16) && scrollTopY <= (window.innerHeight * 22)){
+                //START SECTION 4 ANIMATION
+                this.initSectionSpecialFeatureCircleOpenning(scrollTopY,window.innerHeight*17,this.isScrollingDown,window.innerHeight * 22)
                 //RESET SECTION 3 ANIMATION
+
                 this.initSectionFeautresCardsProduct(scrollTopY,window.innerHeight*9,this.isScrollingDown,window.innerHeight * 16,window_height*9)
+
+            } else if( scrollTopY >= (window.innerHeight * 22)){
+                // console.log("It sould be hererererer")
+                //RESET SECTION 4 ANIMATION
+                this.initSectionSpecialFeatureCircleOpenning(scrollTopY,window.innerHeight*17,this.isScrollingDown,window.innerHeight * 22,window_height*17);
             }
+
+              
         });
     }
 
@@ -225,6 +247,7 @@ class SectionsAnimationScroll extends HTMLElement {
 
     // 3 - PRODUCT FEATURES CARDS ANIMATION LOGIC
     initSectionFeautresCardsProduct(scrollTopY,startPoint,scrollDown,breakPoint,previousBreakPoint){
+        console.log("SECTION 3 : BREAKPOINT : " + breakPoint)
         let feautres_cards_product_container = this.querySelector(".product_features_cards_component_container");
 
         let overlay_animation_container = this.querySelector(".overlay_feature_animation_container");
@@ -252,12 +275,18 @@ class SectionsAnimationScroll extends HTMLElement {
             
 
         }else{
+            console.log("ENTERED THE PROBLAMATIC SECTION")
+            console.log( "scrolltopY + "+ scrollTopY + " | breakpoint :" +  breakPoint)
+            console.log("ENTERED THE PROBLAMATIC SECTION")
+
             feautres_cards_product_container.style.position = "fixed";
             feautres_cards_product_container.style.opacity = "1";
             feautres_cards_product_container.style.removeProperty("margin");
+
             if(scrollTopY>=inner_break_1 && scrollTopY < inner_break_2){
             }else if(scrollTopY>=inner_break_2 && scrollTopY < inner_break_3){
                 
+
                 overlay_animation_container.style.display = "flex";
                 const progress = (scrollTopY - inner_break_2) / (inner_break_3 - inner_break_2);
   
@@ -312,6 +341,77 @@ class SectionsAnimationScroll extends HTMLElement {
                 overlay_animation_container_image_container.style.opacity = (1 - progress);
                 overlay_animation_container_image_container.style.top = newTop + "%";
                 text_description_overlay_feature_container.style.opacity = (1 - progress);
+            }
+
+        }
+    }
+
+    // 4 - SPECIAL FEATURE CIRCLE OPENNING LOGIC
+    initSectionSpecialFeatureCircleOpenning(scrollTopY,startPoint,scrollDown,breakPoint,previousBreakPoint){
+        let special_feature_openning_circle_component = this.querySelector(".special_feature_openning_circle_component");
+
+        let openning_circle = special_feature_openning_circle_component.querySelector(".openning_circle");
+        
+        let text_feature_description = special_feature_openning_circle_component.querySelector(".text_feature_description")
+        let inner_break_1 = startPoint;
+        let inner_break_2 = inner_break_1 +  ((breakPoint - startPoint)/2);
+        let inner_break_3 = inner_break_2  + ((breakPoint - startPoint)/2);
+
+        if(scrollTopY <= startPoint){
+            //When we go to the previous section
+            special_feature_openning_circle_component.style.removeProperty("position");
+            special_feature_openning_circle_component.style.opacity = "0";
+
+        }else if(scrollTopY > breakPoint){ 
+            //When we go to the next section
+            //The margin is used to appear that we scrolled when the position fixed is over to relative
+            special_feature_openning_circle_component.style.marginTop = (breakPoint - previousBreakPoint) + "px";
+            special_feature_openning_circle_component.style.position = "relative";
+            console.log("special_feature_openning_circle_component.style.marginTop : " +  (breakPoint - previousBreakPoint) + "px" )
+
+            
+
+        }else{
+            special_feature_openning_circle_component.style.position = "fixed";
+            special_feature_openning_circle_component.style.removeProperty("margin");
+            special_feature_openning_circle_component.style.opacity = "1";
+
+            if(scrollTopY>=inner_break_1 && scrollTopY < inner_break_2){
+
+                const progress = (scrollTopY - inner_break_1) / (inner_break_2 - inner_break_1);
+
+                // Calculate new values based on the progress
+                let startSize = 24; // Initial size
+                let endSize = 150; // Target size
+                let newSize = startSize + (endSize - startSize) * progress;
+
+                let mediaQuery = window.matchMedia("(max-width: 550px)");
+
+                // Check if the media query matches
+                if (mediaQuery.matches) {
+                    endSize = 330; // Target size
+                    newSize = startSize + (endSize - startSize) * progress;
+                }
+                openning_circle.style.width = newSize + "vw";
+                openning_circle.style.height = newSize + "vw";
+
+                text_feature_description.style.opacity = "0"
+
+            }else if(scrollTopY>=inner_break_2 && scrollTopY < inner_break_3){
+
+                text_feature_description.style.opacity = "1"
+
+                text_feature_description.querySelector(".paragraph2").style.opacity = "0";
+                text_feature_description.querySelector(".paragraph2").style.top = "100%";
+                text_feature_description.querySelector(".paragraph1").style.top = "80%";
+                text_feature_description.querySelector(".paragraph1").style.opacity = "1";
+
+              
+            }else if(scrollTopY>=inner_break_3){
+                text_feature_description.querySelector(".paragraph1").style.opacity = "0";
+                text_feature_description.querySelector(".paragraph1").style.top = "0";
+                text_feature_description.querySelector(".paragraph2").style.opacity = "1";
+                text_feature_description.querySelector(".paragraph2").style.top = "80%";
             }
 
         }
