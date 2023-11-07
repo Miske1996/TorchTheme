@@ -14,6 +14,7 @@
   width: 76%;
   height: 70%;
   display: flex;
+  transition: all 0.5s;
 }
 .vertical_tabs_features_component .vertical_tabs_container .scroller {
   width: 6px;

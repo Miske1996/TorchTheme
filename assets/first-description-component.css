@@ -5,6 +5,7 @@
   position: relative;
   overflow: hidden;
   top: 0;
+  transition: all 0.5s;
 }
 .first_description_container .background_video {
   width: 120%;

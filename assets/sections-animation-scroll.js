@@ -1,3 +1,4 @@
+
 //HERE IS THE LOGIC OF A SCROLLING SECTIONS
 class SectionsAnimationScroll extends HTMLElement {
     constructor() {
@@ -6,8 +7,9 @@ class SectionsAnimationScroll extends HTMLElement {
         this.initScroll();
         this.prevY = 0;
         this.isScrollingDown = true;
+        this.topTop = this.getBoundingClientRect().top
     }
-
+    
     initScroll(){
         
        
@@ -27,69 +29,69 @@ class SectionsAnimationScroll extends HTMLElement {
                 this.prevY = scrollTopY;
                 this.isScrollingDown = false;
             }
-
+           
             // 1 - FIRST SECTION DESCRIPTION SCROLL ANIMATION LOGIC
-            if(scrollTopY > (window_height * 1) && scrollTopY <= (window_height * 5)){
-
+            if(scrollTopY > (this.topTop + window_height * 2.2) && scrollTopY <= (window_height * 6)){
+                
                 //START SECTION 1 ANIMATION
-                this.initSectionFirstDescription(scrollTopY,window_height*1,this.isScrollingDown,window_height * 5)
+                this.initSectionFirstDescription(scrollTopY,window_height*2.2,this.isScrollingDown,window_height * 6)
                 //RESET SECTION 2 ANIMATION
-                this.initSectionAvailableProducts(scrollTopY,window_height*5,this.isScrollingDown,window_height * 8)
+                this.initSectionAvailableProducts(scrollTopY,window_height*7,this.isScrollingDown,window_height * 10)
 
-            }else if (scrollTopY <= (window_height * 1)){
+            }else if (scrollTopY <= (this.topTop + window_height * 2.2)){
                 //RESET SECTION 1 ANIMATION
-                this.initSectionFirstDescription(scrollTopY,window_height*1,this.isScrollingDown,window_height * 5)
+                this.initSectionFirstDescription(scrollTopY,window_height*2.2,this.isScrollingDown,window_height * 6)
             } 
 
             // 2 - SECTION 2: AVAILABLE PRODUCTS SCROLL ANIMATION LOGIC
-            else if(scrollTopY > (window.innerHeight * 5) && scrollTopY <= (window.innerHeight * 8)){
+            else if(scrollTopY > (window.innerHeight * 6) && scrollTopY <= (window.innerHeight * 10)){
                 //RESET SECTION 1 ANIMATION
-                this.initSectionFirstDescription(scrollTopY,window.innerHeight,this.isScrollingDown,window.innerHeight * 5)
+                this.initSectionFirstDescription(scrollTopY,window.innerHeight*2.2,this.isScrollingDown,window.innerHeight * 6,window_height*6)
                 //START SECTION 2 ANIMATION
-                this.initSectionAvailableProducts(scrollTopY,window.innerHeight*6,this.isScrollingDown,window.innerHeight * 8)
+                this.initSectionAvailableProducts(scrollTopY,window.innerHeight*7,this.isScrollingDown,window.innerHeight * 10)
                 //RESET SECTION 3 ANIMATION
-                this.initSectionFeautresCardsProduct(scrollTopY,window.innerHeight*9,this.isScrollingDown,window.innerHeight * 16)
+                this.initSectionFeautresCardsProduct(scrollTopY,window.innerHeight*11,this.isScrollingDown,window.innerHeight * 14)
             } 
 
             // 3 - SECTION 3: PRODUCT FEATURES CARDS ANIMATION LOGIC
-            else if(scrollTopY > (window.innerHeight * 8) && scrollTopY <= (window.innerHeight * 16)){    
+            else if(scrollTopY > (window.innerHeight * 8) && scrollTopY <= (window.innerHeight * 14)){    
             //RESET SECTION 2 ANIMATION
-            this.initSectionAvailableProducts(scrollTopY,window.innerHeight*6,this.isScrollingDown,window.innerHeight * 8,window_height*6)
+            this.initSectionAvailableProducts(scrollTopY,window.innerHeight*6,this.isScrollingDown,window.innerHeight * 10)
             //START SECTION 3 ANIMATION
-            this.initSectionFeautresCardsProduct(scrollTopY,window.innerHeight*9,this.isScrollingDown,window.innerHeight * 16,window_height*9)
+            this.initSectionFeautresCardsProduct(scrollTopY,window.innerHeight*11,this.isScrollingDown,window.innerHeight * 14,window_height*11)
             //RESET SECTION 4 ANIMATION
-            this.initSectionSpecialFeatureCircleOpenning(scrollTopY,window.innerHeight*17,this.isScrollingDown,window.innerHeight * 22)
+            this.initSectionSpecialFeatureCircleOpenning(scrollTopY,window.innerHeight*15,this.isScrollingDown,window.innerHeight * 18)
             }  
  
             // 4 - SECTION 4: PRODUCT SPECIAL FEATURE OPENNING CIRCLE ANIMATION LOGIC
-            else if(scrollTopY > (window.innerHeight * 16) && scrollTopY <= (window.innerHeight * 22)){
+            else if(scrollTopY > (window.innerHeight * 14) && scrollTopY <= (window.innerHeight * 18)){
                 //RESET SECTION 3 ANIMATION
-                this.initSectionFeautresCardsProduct(scrollTopY,window.innerHeight*9,this.isScrollingDown,window.innerHeight * 16,window_height*9)
+                this.initSectionFeautresCardsProduct(scrollTopY,window.innerHeight*11,this.isScrollingDown,window.innerHeight * 14)
                 //START SECTION 4 ANIMATION
-                this.initSectionSpecialFeatureCircleOpenning(scrollTopY,window.innerHeight*17,this.isScrollingDown,window.innerHeight * 22)
+                this.initSectionSpecialFeatureCircleOpenning(scrollTopY,window.innerHeight*15,this.isScrollingDown,window.innerHeight * 18)
                 //RESET SECTION 5 ANIMATION
-                this.initAnimationCanvasFeatureProduct(scrollTopY,window.innerHeight*23,this.isScrollingDown,window.innerHeight * 28)       
+                this.initAnimationCanvasFeatureProduct(scrollTopY,window.innerHeight*19,this.isScrollingDown,window.innerHeight * 22)       
             }
 
             // 5 - SECTION 5 : CHANGING IMAGES FEATURE PRODUCT ANIMATION LOGIC
-            else if(scrollTopY > (window.innerHeight * 22) && scrollTopY <= (window.innerHeight * 28)){
+            else if(scrollTopY > (window.innerHeight * 18) && scrollTopY <= (window.innerHeight * 22)){
                 //RESET SECTION 4 ANIMATION
-                this.initSectionSpecialFeatureCircleOpenning(scrollTopY,window.innerHeight*17,this.isScrollingDown,window.innerHeight * 22,window_height*17);
+                this.initSectionSpecialFeatureCircleOpenning(scrollTopY,window.innerHeight*15,this.isScrollingDown,window.innerHeight * 18);
                 //START SECTION 5 ANIMATION
-                this.initAnimationCanvasFeatureProduct(scrollTopY,window.innerHeight*23,this.isScrollingDown,window.innerHeight * 28)
+                this.initAnimationCanvasFeatureProduct(scrollTopY,window.innerHeight*19,this.isScrollingDown,window.innerHeight * 22)
                  //RESET SECTION 6 ANIMATION
-                 this.initVerticalTabsFeatures(scrollTopY,window.innerHeight*29,this.isScrollingDown,window.innerHeight * 34,window_height*29)
+                 this.initVerticalTabsFeatures(scrollTopY,window.innerHeight*23,this.isScrollingDown,window.innerHeight * 26,window_height*23)
             } 
 
             // 6 - SECTION 6: VERTICAL TABS FEATURES ANIMATION LOGIC
-            else if( scrollTopY >= (window.innerHeight * 28) && scrollTopY <= (window.innerHeight * 34)){
+            else if( scrollTopY >= (window.innerHeight * 22) && scrollTopY <= (window.innerHeight * 26)){
                 //RESET SECTION 5 ANIMATION
-                this.initAnimationCanvasFeatureProduct(scrollTopY,window.innerHeight*23,this.isScrollingDown,window.innerHeight * 28)
+                this.initAnimationCanvasFeatureProduct(scrollTopY,window.innerHeight*19,this.isScrollingDown,window.innerHeight * 22)
                 //START SECTION 6 ANIMATION
-                this.initVerticalTabsFeatures(scrollTopY,window.innerHeight*29,this.isScrollingDown,window.innerHeight * 34,window_height*29)
-           }else if( scrollTopY > (window.innerHeight * 34)){
+                this.initVerticalTabsFeatures(scrollTopY,window.innerHeight*23,this.isScrollingDown,window.innerHeight * 26,window_height*23)
+           }else if( scrollTopY > (window.innerHeight * 26)){
                 //RESET SECTION 6 ANIMATION
-                this.initVerticalTabsFeatures(scrollTopY,window.innerHeight*29,this.isScrollingDown,window.innerHeight * 34,window_height*29)
+                this.initVerticalTabsFeatures(scrollTopY,window.innerHeight*23,this.isScrollingDown,window.innerHeight * 26,window_height*23)
            }
               
         });
@@ -123,25 +125,32 @@ class SectionsAnimationScroll extends HTMLElement {
         let headers_scroll_succession = scroll_succession_text_animation.querySelectorAll("h1");
 
         //Animations Y breaks
-        let inner_break_1 = breakPoint / 2.8;
-        let inner_break_2 = breakPoint - inner_break_1;
+        
 
+        let inner_break_1 = startPoint;
+        let inner_break_2 = inner_break_1 +  (breakPoint - startPoint) / 5;
+        let inner_break_3 = inner_break_2 +  (breakPoint - startPoint) / 5;
+        let inner_break_4 = inner_break_3 +  (breakPoint - startPoint) / 5;
+        let inner_break_5 = inner_break_4 +  (breakPoint - startPoint) / 5;
         //here we move and fix the section white scrolling
-        if(scrollTopY <= startPoint){
+        if(scrollTopY <= startPoint + this.topTop ){
 
             //When we go to the previous section
             white_overlay_video.style.removeProperty("transform");
             first_section_container.style.position = "relative";
+            // first_section_container.style.opacity = "0";
             first_section_container.style.removeProperty("z-index");
-
+            white_overlay_video.style.opacity = "1";
 
         }else if(scrollTopY >= breakPoint){ 
 
             //When we go to the next section
             //The margin is used to appear that we scrolled when the position fixed is over to relative
-            first_section_container.style.marginTop = (breakPoint - first_section_container.offsetHeight) + "px";
+            // first_section_container.style.marginTop = (breakPoint - first_section_container.offsetHeight) + "px";
             first_section_container.style.position = "relative";
             first_section_container.style.removeProperty("z-index");
+            first_section_container.style.opacity = "0";
+
 
 
         }else{
@@ -150,10 +159,17 @@ class SectionsAnimationScroll extends HTMLElement {
             first_section_container.style.position = "fixed";
             first_section_container.style.removeProperty("margin");
             first_section_container.style.zIndex = "1000";
+            first_section_container.style.opacity = "1";
 
 
-            if(scrollTopY < inner_break_1){
 
+            //End of the first animation over
+            white_overlay_video.style.opacity = "0";
+
+            
+
+            //Start Second Animation
+            if(scrollTopY >=  (inner_break_1 ) && scrollTopY < (inner_break_2)){
                 //Start first animation
                 white_overlay_video.style.display = "flex";
                 const scaleValue = 1 + ((scrollTopY - startPoint) / (inner_break_1 / 10));
@@ -164,51 +180,48 @@ class SectionsAnimationScroll extends HTMLElement {
                 //remove 2nd animation
                 headers_scroll_succession[0].style.opacity = "0";
                 headers_scroll_succession[0].style.top = "90%"; 
+            }else if(scrollTopY >=  (inner_break_2) && scrollTopY < (inner_break_3)) { 
+                
+                
+                headers_scroll_succession[0].style.top = "50%"; 
+                headers_scroll_succession[0].style.opacity = "1"; 
 
+                headers_scroll_succession[1].style.opacity = "0";
+                headers_scroll_succession[1].style.top = "90%";  
+              
             }
-            else if (scrollTopY >= inner_break_1 && scrollTopY <= inner_break_2 ){
-                //End of the first animation over
-                white_overlay_video.style.opacity = "0";
+            else if(scrollTopY >=  (inner_break_3) && scrollTopY < (inner_break_4)) {
+                
+                headers_scroll_succession[0].style.opacity = "0";
+                headers_scroll_succession[0].style.top = "0%"; 
 
-                const lengthOfBreaks = (inner_break_2 - inner_break_1) / headers_scroll_succession.length;
+                headers_scroll_succession[1].style.top = "50%"; 
+                headers_scroll_succession[1].style.opacity = "1"; 
 
-                //Start Second Animation
-                if(scrollTopY >=  (inner_break_1 ) && scrollTopY < (inner_break_1 + lengthOfBreaks * 1)){
-                    headers_scroll_succession[0].style.top = "50%"; 
-                    headers_scroll_succession[0].style.opacity = "1"; 
-
-                    headers_scroll_succession[1].style.opacity = "0";
-                    headers_scroll_succession[1].style.top = "90%";  
-                }else if(scrollTopY >=  (inner_break_1 + lengthOfBreaks * 1) && scrollTopY < (inner_break_1 + lengthOfBreaks * 2)) { 
-                    
-                    headers_scroll_succession[0].style.opacity = "0";
-                    headers_scroll_succession[0].style.top = "0%"; 
-
-                    headers_scroll_succession[1].style.top = "50%"; 
-                    headers_scroll_succession[1].style.opacity = "1"; 
-
-                    headers_scroll_succession[2].style.opacity = "0";
-                    headers_scroll_succession[2].style.top = "90%"; 
-                }
-                else if(scrollTopY >=  (inner_break_1 + lengthOfBreaks * 2) && scrollTopY < (inner_break_1 + lengthOfBreaks * 3)) {
-                    headers_scroll_succession[1].style.opacity = "0";
-                    headers_scroll_succession[1].style.top = "0%"; 
-
-                    headers_scroll_succession[2].style.top = "50%"; 
-                    headers_scroll_succession[2].style.opacity = "1"; 
-
-                    headers_scroll_succession[3].style.opacity = "0";
-                    headers_scroll_succession[3].style.top = "90%"; ;  
-                }
-                else if(scrollTopY >=  (inner_break_1 + lengthOfBreaks * 3) && scrollTopY < (inner_break_1 + lengthOfBreaks * 4)) {
-                    headers_scroll_succession[2].style.opacity = "0";
-                    headers_scroll_succession[2].style.top = "0%"; 
-
-                    headers_scroll_succession[3].style.top = "50%"; 
-                    headers_scroll_succession[3].style.opacity = "1";  
-                }
-
+                headers_scroll_succession[2].style.opacity = "0";
+                headers_scroll_succession[2].style.top = "90%"; 
+                
             }
+            else if(scrollTopY >=  (inner_break_4) && scrollTopY < (inner_break_5)) {
+                headers_scroll_succession[1].style.opacity = "0";
+                headers_scroll_succession[1].style.top = "0%"; 
+
+                headers_scroll_succession[2].style.top = "50%"; 
+                headers_scroll_succession[2].style.opacity = "1"; 
+
+                headers_scroll_succession[3].style.opacity = "0";
+                headers_scroll_succession[3].style.top = "90%"; ;  
+              
+
+            }else if(scrollTopY >= inner_break_5){
+                headers_scroll_succession[2].style.opacity = "0";
+                headers_scroll_succession[2].style.top = "0%"; 
+
+                headers_scroll_succession[3].style.top = "50%"; 
+                headers_scroll_succession[3].style.opacity = "1";  
+              
+            }
+
         }
        
        
@@ -230,22 +243,25 @@ class SectionsAnimationScroll extends HTMLElement {
             header_title.style.opacity = "0";
             images_to_animate[0].style.opacity = "0"
             available_products_section.style.removeProperty("z-index");
-
+            available_products_section.style.opacity = "0"
 
         }else if(scrollTopY >= breakPoint){ 
             //When we go to the next section
             //The margin is used to appear that we scrolled when the position fixed is over to relative
-            available_products_section.style.marginTop = (breakPoint - previousBreakPoint) + "px";
+            // available_products_section.style.marginTop = (breakPoint - previousBreakPoint) + "px";
             available_products_section.style.position = "relative";
             header_title.style.transform = "translateY(30%)";
             header_title.style.opacity = "0";
             available_products_section.style.removeProperty("z-index");
+            available_products_section.style.opacity = "0"
+
 
 
         }else{
             available_products_section.style.position = "fixed"
             available_products_section.style.removeProperty("margin");
             available_products_section.style.zIndex = "1000";
+            available_products_section.style.opacity = "1"
 
             header_title.style.opacity = "1";
             header_title.style.transform = "translateY(-30%)";
@@ -444,7 +460,7 @@ class SectionsAnimationScroll extends HTMLElement {
     }
 
     // 5 - 1ST CANVAS ANIMATION SPECIAL FEATURE LOGIC
-    initAnimationCanvasFeatureProduct(scrollTopY,startPoint,scrollDown,breakPoint,previousBreakPoint){
+     initAnimationCanvasFeatureProduct(scrollTopY,startPoint,scrollDown,breakPoint,previousBreakPoint){
         let animation_canvas_feature_product_component = this.querySelector(".animation_canvas_feature_product_component");
 
         let text_description_container = animation_canvas_feature_product_component.querySelector(".text_feature_description");
@@ -455,9 +471,9 @@ class SectionsAnimationScroll extends HTMLElement {
 
 
         let inner_break_1 = startPoint;
-        let inner_break_2 = inner_break_1 +  ((breakPoint - startPoint)* 3/4);
-        let inner_break_3 = inner_break_2  + ((breakPoint - startPoint) / 8);
-        let inner_break_4 = inner_break_3  + ((breakPoint - startPoint) / 8);
+        let inner_break_2 = inner_break_1 +  ((breakPoint - startPoint) / 4);
+        let inner_break_3 = inner_break_2  + ((breakPoint - startPoint) * 3/8);
+        let inner_break_4 = inner_break_3  + ((breakPoint - startPoint) * 3/8);
 
         if(scrollTopY <= startPoint){
             //When we go to the previous section
@@ -487,6 +503,12 @@ class SectionsAnimationScroll extends HTMLElement {
                 
                 const progress = (scrollTopY - inner_break_1) / (inner_break_2 - inner_break_1);
 
+                if(!this.AlreadyPlayChangingImage){
+                    for (let index = 1; index < 102; index++) {
+                        
+                        
+                    }
+                }
                 // Frame number based on the progress
                 let startFrame = 1; // Initial size
                 let endFrame = 101; // Target size
@@ -532,23 +554,23 @@ class SectionsAnimationScroll extends HTMLElement {
             vertical_tabs_features_component.style.removeProperty("position");
             vertical_tabs_features_component.style.removeProperty("z-index");
 
-            // vertical_tabs_features_component.style.opacity = "0"
+            vertical_tabs_features_component.style.opacity = "0"
 
 
         }else if(scrollTopY > breakPoint){ 
             //When we go to the next section
             //The margin is used to appear that we scrolled when the position fixed is over to relative
-            vertical_tabs_features_component.style.marginTop = (breakPoint - previousBreakPoint) + "px";
+            // vertical_tabs_features_component.style.marginTop = (breakPoint - previousBreakPoint) + "px";
             vertical_tabs_features_component.style.position = "relative";  
             vertical_tabs_features_component.style.removeProperty("z-index");
 
-
+            vertical_tabs_features_component.style.opacity = "0"
         }else{
             vertical_tabs_features_component.style.position = "fixed";
             vertical_tabs_features_component.style.removeProperty("margin");
             vertical_tabs_features_component.style.zIndex = "1000";
 
-            // animation_canvas_feature_product_component.style.opacity = "1";
+            vertical_tabs_features_component.style.opacity = "1";
 
             if(scrollTopY>=inner_break_1 && scrollTopY < inner_break_2){
                 progress_bar.style.top = "0%";
