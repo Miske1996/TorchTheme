@@ -477,8 +477,8 @@ class SectionsAnimationScroll extends HTMLElement {
                 animation_canvas_feature_product_component_images_container.style.opacity = "0"
 
                 text_description_container.style.opacity = "0"
-              last_description_container.style.opacity = "1"
-              last_description_container.style.transform = "scale(1)"
+                last_description_container.style.opacity = "1"
+                last_description_container.style.transform = "scale(1)"
             }
         }
     }

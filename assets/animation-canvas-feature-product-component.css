@@ -130,6 +130,7 @@
     line-height: 1.2;
     margin-bottom: 6vw;
     letter-spacing: 0.02em;
+    text-align: center;
   }
   .animation_canvas_feature_product_component .text_feature_description .paragraph1 {
     font-size: 3.7vw;
