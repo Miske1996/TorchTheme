@@ -1,0 +1,163 @@
+.animation_canvas_feature_product_component{
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    overflow: hidden;
+    top: 0; 
+
+    .images_animations{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        opacity: 0;
+        transition: all .5s;
+        img{
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+    }
+    .text_feature_description{
+        position: absolute;
+        top: 42%;
+        left: 53%;
+        width: 38%;
+        display: flex;
+        flex-direction: column;
+        opacity: 0;
+        transition: all .5s ;
+        .title_with_background{
+            background: linear-gradient(90deg,#C2AC90 0%,#A5886B 100%);
+            padding: .4vw 2vw;
+            border-radius: .3vw;
+            font-size: 1.25vw;
+            margin-bottom: 1.3vw;
+            color: #ffffff;
+            width: fit-content;
+        }
+        .title_feature{
+            font-size: 3.2vw;
+            font-weight: 700;
+            margin-bottom: 3vw;
+            line-height: 1.2;
+            letter-spacing: .1vw;
+            color: white;
+        }
+        .paragraph1{            
+            font-size: .95vw;
+            color: white;
+            transition: .6s;
+            top: 80%;
+            left: 0%;
+            position: absolute;
+        }
+        .paragraph2{            
+            font-size: .95vw;
+            color: white;
+            transition: .6s;
+            top: 100%;
+            left: 0%;
+            position: absolute;
+            // opacity: 0;
+        }
+        // opacity: 0;
+    }
+    .last_text_features_container{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        position: absolute;
+        // background-color: black;
+        opacity: 0;
+        transform: scale(0);
+        transition: all .5s;
+
+        h1{
+            font-size: 3.4vw;
+            font-weight: 700;
+            margin-bottom: 2.1vw;
+            line-height: 1.1;
+            letter-spacing: .08vw;
+            transition: .5s;    
+            color: rgb(216, 203, 188);
+            text-align: center;
+            width: 66%;
+        }
+        p{
+            font-size: .88vw;
+            color: #969696;
+            letter-spacing: .03em;
+            text-align: center;
+            width: 66%;
+        }
+    }
+}
+@media (max-width: 550px){ 
+    .animation_canvas_feature_product_component{
+        .images_animations{
+
+            width: 100%;
+            overflow: hidden;
+            
+            img{
+                position: absolute;
+                aspect-ratio: 96/49;
+                width: 200%;
+                height: auto;
+                left: -20%;
+                top: 40%;
+            }
+        }
+        .text_feature_description{
+            width: 80%;
+            align-items: center;
+            left:50%;
+            transform: translateX(-53%);
+            top: 20%;
+            .title_with_background{
+                font-size: 4vw;
+                letter-spacing: 0;
+                margin-bottom: 5vw;
+                padding: 0;
+                border-radius: 0;
+                background: linear-gradient(90deg,#C2AC90 0%,#A5886B 100%),linear-gradient(0deg,#FFFFFF,#FFFFFF);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+                text-fill-color: transparent;
+                font-weight: 700;
+            }
+            .title_feature{
+                font-size: 6vw;
+                font-weight: 700;
+                line-height: 1.2;
+                margin-bottom: 6vw;
+                letter-spacing: .02em;
+            }
+            .paragraph1{
+                font-size: 3.7vw;
+                text-align: center;
+            }
+            .paragraph2{
+                font-size: 3.7vw;
+                text-align: center;
+            }
+        }
+        .last_text_features_container{
+    
+            h1{
+                font-size: 6.5vw;
+                line-height: 1.1;
+                margin-bottom: 4vw;
+                width: 90%;
+            }
+            p{
+                font-size: 3.3vw;
+                width: 90%;
+            }
+        }
+    }
+}

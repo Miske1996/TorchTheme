@@ -58,7 +58,6 @@
   flex-wrap: wrap;
   justify-content: space-between;
   display: flex;
-  padding-bottom: 5vw;
 }
 .product_features_cards_component_container .features_cards_container .wide_card_top_feature_container {
   flex: 0 1 100%;
@@ -166,6 +165,7 @@
   }
   .product_features_cards_component_container .features_cards_container {
     width: 95vw;
+    margin-top: 5vh;
   }
   .product_features_cards_component_container .features_cards_container .wide_card_top_feature_container {
     max-height: 48vw;

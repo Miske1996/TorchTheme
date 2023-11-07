@@ -24,7 +24,6 @@
 .available_products_component_container h1 {
   font-size: 1.7vw;
   color: gray;
-  z-index: 3;
   opacity: 0;
   transform: translateY(30%);
   transition: all 2s ease;

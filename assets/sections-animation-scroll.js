@@ -57,26 +57,30 @@ class SectionsAnimationScroll extends HTMLElement {
             //RESET SECTION 2 ANIMATION
             this.initSectionAvailableProducts(scrollTopY,window.innerHeight*6,this.isScrollingDown,window.innerHeight * 8,window_height*6)
             //START SECTION 3 ANIMATION
-            console.log("ENTERED THROUGH HERE")
-
             this.initSectionFeautresCardsProduct(scrollTopY,window.innerHeight*9,this.isScrollingDown,window.innerHeight * 16,window_height*9)
-
             //RESET SECTION 4 ANIMATION
             this.initSectionSpecialFeatureCircleOpenning(scrollTopY,window.innerHeight*17,this.isScrollingDown,window.innerHeight * 22)
             }  
  
             // 4 - SECTION 4: PRODUCT SPECIAL FEATURE OPENNING CIRCLE ANIMATION LOGIC
             else if(scrollTopY > (window.innerHeight * 16) && scrollTopY <= (window.innerHeight * 22)){
+                //RESET SECTION 5 ANIMATION
+                this.initAnimationCanvasFeatureProduct(scrollTopY,window.innerHeight*23,this.isScrollingDown,window.innerHeight * 28)
                 //START SECTION 4 ANIMATION
                 this.initSectionSpecialFeatureCircleOpenning(scrollTopY,window.innerHeight*17,this.isScrollingDown,window.innerHeight * 22)
                 //RESET SECTION 3 ANIMATION
-
                 this.initSectionFeautresCardsProduct(scrollTopY,window.innerHeight*9,this.isScrollingDown,window.innerHeight * 16,window_height*9)
+            }
 
-            } else if( scrollTopY >= (window.innerHeight * 22)){
-                // console.log("It sould be hererererer")
+            // 4 - SECTION 4: PRODUCT SPECIAL FEATURE OPENNING CIRCLE ANIMATION LOGIC
+            else if(scrollTopY > (window.innerHeight * 22) && scrollTopY <= (window.innerHeight * 28)){
                 //RESET SECTION 4 ANIMATION
                 this.initSectionSpecialFeatureCircleOpenning(scrollTopY,window.innerHeight*17,this.isScrollingDown,window.innerHeight * 22,window_height*17);
+                //START SECTION 5 ANIMATION
+                this.initAnimationCanvasFeatureProduct(scrollTopY,window.innerHeight*23,this.isScrollingDown,window.innerHeight * 28)
+            } else if( scrollTopY >= (window.innerHeight * 28)){
+                 //RESET SECTION 5 ANIMATION
+                this.initAnimationCanvasFeatureProduct(scrollTopY,window.innerHeight*23,this.isScrollingDown,window.innerHeight * 28,window_height*23)
             }
 
               
@@ -210,6 +214,8 @@ class SectionsAnimationScroll extends HTMLElement {
             available_products_section.style.removeProperty("position");
             header_title.style.transform = "translateY(30%)";
             header_title.style.opacity = "0";
+            images_to_animate[0].style.opacity = "0"
+
 
         }else if(scrollTopY >= breakPoint){ 
             //When we go to the next section
@@ -247,7 +253,7 @@ class SectionsAnimationScroll extends HTMLElement {
 
     // 3 - PRODUCT FEATURES CARDS ANIMATION LOGIC
     initSectionFeautresCardsProduct(scrollTopY,startPoint,scrollDown,breakPoint,previousBreakPoint){
-        console.log("SECTION 3 : BREAKPOINT : " + breakPoint)
+    
         let feautres_cards_product_container = this.querySelector(".product_features_cards_component_container");
 
         let overlay_animation_container = this.querySelector(".overlay_feature_animation_container");
@@ -264,6 +270,7 @@ class SectionsAnimationScroll extends HTMLElement {
         if(scrollTopY <= startPoint){
             //When we go to the previous section
             feautres_cards_product_container.style.removeProperty("position");
+            feautres_cards_product_container.style.removeProperty("zIndex");
             feautres_cards_product_container.style.opacity = "0";
             overlay_animation_container.style.display = "none";
         }else if(scrollTopY >= breakPoint){ 
@@ -272,14 +279,13 @@ class SectionsAnimationScroll extends HTMLElement {
             feautres_cards_product_container.style.marginTop = (breakPoint - previousBreakPoint) + "px";
             feautres_cards_product_container.style.position = "relative";
 
+            feautres_cards_product_container.style.removeProperty("z-index");
             
 
         }else{
-            console.log("ENTERED THE PROBLAMATIC SECTION")
-            console.log( "scrolltopY + "+ scrollTopY + " | breakpoint :" +  breakPoint)
-            console.log("ENTERED THE PROBLAMATIC SECTION")
-
+          
             feautres_cards_product_container.style.position = "fixed";
+            feautres_cards_product_container.style.zIndex = "1000";
             feautres_cards_product_container.style.opacity = "1";
             feautres_cards_product_container.style.removeProperty("margin");
 
@@ -366,10 +372,7 @@ class SectionsAnimationScroll extends HTMLElement {
             //When we go to the next section
             //The margin is used to appear that we scrolled when the position fixed is over to relative
             special_feature_openning_circle_component.style.marginTop = (breakPoint - previousBreakPoint) + "px";
-            special_feature_openning_circle_component.style.position = "relative";
-            console.log("special_feature_openning_circle_component.style.marginTop : " +  (breakPoint - previousBreakPoint) + "px" )
-
-            
+            special_feature_openning_circle_component.style.position = "relative";            
 
         }else{
             special_feature_openning_circle_component.style.position = "fixed";
@@ -414,6 +417,69 @@ class SectionsAnimationScroll extends HTMLElement {
                 text_feature_description.querySelector(".paragraph2").style.top = "80%";
             }
 
+        }
+    }
+
+    // 5 - 1ST CANVAS ANIMATION SPECIAL FEATURE LOGIC
+    initAnimationCanvasFeatureProduct(scrollTopY,startPoint,scrollDown,breakPoint,previousBreakPoint){
+        let animation_canvas_feature_product_component = this.querySelector(".animation_canvas_feature_product_component");
+
+        let text_description_container = animation_canvas_feature_product_component.querySelector(".text_feature_description");
+        let animation_canvas_feature_product_component_images_container = animation_canvas_feature_product_component.querySelector(".images_animations");
+        let last_description_container = animation_canvas_feature_product_component.querySelector(".last_text_features_container");
+
+        let img_to_animate = animation_canvas_feature_product_component_images_container.querySelector("img");
+
+
+        let inner_break_1 = startPoint;
+        let inner_break_2 = inner_break_1 +  ((breakPoint - startPoint)* 3/4);
+        let inner_break_3 = inner_break_2  + ((breakPoint - startPoint) / 8);
+        let inner_break_4 = inner_break_3  + ((breakPoint - startPoint) / 8);
+
+        if(scrollTopY <= startPoint){
+            //When we go to the previous section
+            animation_canvas_feature_product_component.style.removeProperty("position");
+            // animation_canvas_feature_product_component.style.opacity = "0";
+            animation_canvas_feature_product_component_images_container.style.opacity = "0"
+
+
+        }else if(scrollTopY > breakPoint){ 
+            //When we go to the next section
+            //The margin is used to appear that we scrolled when the position fixed is over to relative
+            animation_canvas_feature_product_component.style.marginTop = (breakPoint - previousBreakPoint) + "px";
+            animation_canvas_feature_product_component.style.position = "relative";            
+
+        }else{
+            animation_canvas_feature_product_component.style.position = "fixed";
+            animation_canvas_feature_product_component.style.removeProperty("margin");
+            // animation_canvas_feature_product_component.style.opacity = "1";
+
+            if(scrollTopY>=inner_break_1 && scrollTopY < inner_break_2){
+
+                const progress = (scrollTopY - inner_break_1) / (inner_break_2 - inner_break_1);
+
+                // Frame number based on the progress
+                let startFrame = 1; // Initial size
+                let endFrame = 101; // Target size
+                let frameNumber = Math.ceil(startFrame + (endFrame - startFrame) * progress);
+                console.log(frameNumber)
+                img_to_animate.src = "https://cdn.shopify.com/s/files/1/0077/3953/9515/files/Installmops_"+frameNumber+".webp?v=1691028939";
+                animation_canvas_feature_product_component_images_container.style.opacity = "1"
+                text_description_container.style.opacity = "0"
+
+            }else if(scrollTopY>=inner_break_2 && scrollTopY < inner_break_3){
+                animation_canvas_feature_product_component_images_container.style.opacity = "1"
+                text_description_container.style.opacity = "1"
+                last_description_container.style.opacity = "0"
+                last_description_container.style.transform = "scale(0)"
+
+            }else if(scrollTopY>=inner_break_3 && scrollTopY < inner_break_4){
+                animation_canvas_feature_product_component_images_container.style.opacity = "0"
+
+                text_description_container.style.opacity = "0"
+              last_description_container.style.opacity = "1"
+              last_description_container.style.transform = "scale(1)"
+            }
         }
     }
 }

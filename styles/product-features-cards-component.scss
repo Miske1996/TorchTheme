@@ -9,6 +9,8 @@
     transition: opacity .2s ease;
     display: flex;
     position: relative;
+ 
+
     .overlay_feature_animation_container{
         width: 100%;
         height: 100%;
@@ -57,7 +59,7 @@
         flex-wrap: wrap;
         justify-content: space-between;
         display: flex;
-        padding-bottom: 5vw;
+
         .wide_card_top_feature_container{
             flex: 0 1 100%;
             overflow: hidden;
@@ -171,6 +173,7 @@
         }
         .features_cards_container{
             width: 95vw;
+            margin-top: 5vh;
             .wide_card_top_feature_container{
                 max-height: 48vw;
                 border-radius: 3vw;
