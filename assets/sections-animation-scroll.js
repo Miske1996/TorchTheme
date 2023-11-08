@@ -4,97 +4,127 @@ class SectionsAnimationScroll extends HTMLElement {
     constructor() {
         super();
         this.initSectionHero()
-        this.initScroll();
+        // this.initScroll();
         this.prevY = 0;
         this.isScrollingDown = true;
         this.topTop = this.getBoundingClientRect().top
+
+
+        // Initialize requestAnimationFrame loop
+        this.rafId = null;
+        this.animateScroll = this.animateScroll.bind(this);
+        this.animateScroll();
     }
     
-    initScroll(){
-        
-       
+    animateOnScroll(window_height){
+        let scrollTopY = document.documentElement.scrollTop
 
-        window.addEventListener('scroll', () => {
-            
-            let window_height = window.innerHeight;
-            
-
-            let scrollTopY = document.documentElement.scrollTop
-          
-            // 0 - Finding the scroll direction
-            if(scrollTopY > this.prevY){
-                this.prevY = scrollTopY;
-                this.isScrollingDown = true;
-            }else if( this.prevY > scrollTopY){
-                this.prevY = scrollTopY;
-                this.isScrollingDown = false;
-            }
-           
-            // 1 - FIRST SECTION DESCRIPTION SCROLL ANIMATION LOGIC
-            if(scrollTopY > (this.topTop + window_height * 2.2) && scrollTopY <= (window_height * 6)){
-                
-                //START SECTION 1 ANIMATION
-                this.initSectionFirstDescription(scrollTopY,window_height*2.2,this.isScrollingDown,window_height * 6)
-                //RESET SECTION 2 ANIMATION
-                this.initSectionAvailableProducts(scrollTopY,window_height*7,this.isScrollingDown,window_height * 10)
-
-            }else if (scrollTopY <= (this.topTop + window_height * 2.2)){
-                //RESET SECTION 1 ANIMATION
-                this.initSectionFirstDescription(scrollTopY,window_height*2.2,this.isScrollingDown,window_height * 6)
-            } 
-
-            // 2 - SECTION 2: AVAILABLE PRODUCTS SCROLL ANIMATION LOGIC
-            else if(scrollTopY > (window.innerHeight * 6) && scrollTopY <= (window.innerHeight * 10)){
-                //RESET SECTION 1 ANIMATION
-                this.initSectionFirstDescription(scrollTopY,window.innerHeight*2.2,this.isScrollingDown,window.innerHeight * 6,window_height*6)
-                //START SECTION 2 ANIMATION
-                this.initSectionAvailableProducts(scrollTopY,window.innerHeight*7,this.isScrollingDown,window.innerHeight * 10)
-                //RESET SECTION 3 ANIMATION
-                this.initSectionFeautresCardsProduct(scrollTopY,window.innerHeight*11,this.isScrollingDown,window.innerHeight * 14)
-            } 
-
-            // 3 - SECTION 3: PRODUCT FEATURES CARDS ANIMATION LOGIC
-            else if(scrollTopY > (window.innerHeight * 8) && scrollTopY <= (window.innerHeight * 14)){    
+        // 1 - FIRST SECTION DESCRIPTION SCROLL ANIMATION LOGIC
+        if(scrollTopY > (this.topTop + window_height * 1.5) && scrollTopY <= (window_height * 6)){
+                                
+            //START SECTION 1 ANIMATION
+            this.initSectionFirstDescription(scrollTopY,window_height*1.5,this.isScrollingDown,window_height * 6)
             //RESET SECTION 2 ANIMATION
-            this.initSectionAvailableProducts(scrollTopY,window.innerHeight*6,this.isScrollingDown,window.innerHeight * 10)
-            //START SECTION 3 ANIMATION
-            this.initSectionFeautresCardsProduct(scrollTopY,window.innerHeight*11,this.isScrollingDown,window.innerHeight * 14,window_height*11)
+            this.initSectionAvailableProducts(scrollTopY,window_height*6,this.isScrollingDown,window_height * 10)
+
+        }else if (scrollTopY <= (this.topTop + window_height * 1.5)){
+            //RESET SECTION 1 ANIMATION
+            this.initSectionFirstDescription(scrollTopY,window_height*1.5,this.isScrollingDown,window_height * 6)
+        } 
+
+        // 2 - SECTION 2: AVAILABLE PRODUCTS SCROLL ANIMATION LOGIC
+        else if(scrollTopY > (window_height * 6) && scrollTopY <= (window_height * 8)){
+            //RESET SECTION 1 ANIMATION
+            this.initSectionFirstDescription(scrollTopY,window_height*1.5,this.isScrollingDown,window_height * 6,window_height*6)
+            //START SECTION 2 ANIMATION
+            this.initSectionAvailableProducts(scrollTopY,window_height*6,this.isScrollingDown,window_height * 8)
+            //RESET SECTION 3 ANIMATION
+            this.initSectionFeautresCardsProduct(scrollTopY,window_height*8,this.isScrollingDown,window_height * 12)
+        } 
+
+        // 3 - SECTION 3: PRODUCT FEATURES CARDS ANIMATION LOGIC
+        else if(scrollTopY > (window_height * 8) && scrollTopY <= (window_height * 12)){    
+        //RESET SECTION 2 ANIMATION
+        this.initSectionAvailableProducts(scrollTopY,window_height*6,this.isScrollingDown,window_height * 8)
+        //START SECTION 3 ANIMATION
+        this.initSectionFeautresCardsProduct(scrollTopY,window_height*8,this.isScrollingDown,window_height * 12,window_height*8)
+        //RESET SECTION 4 ANIMATION
+        this.initSectionSpecialFeatureCircleOpenning(scrollTopY,window_height*12,this.isScrollingDown,window_height * 16)
+        }  
+
+        // 4 - SECTION 4: PRODUCT SPECIAL FEATURE OPENNING CIRCLE ANIMATION LOGIC
+        else if(scrollTopY > (window_height * 12) && scrollTopY <= (window_height * 16)){
+            //RESET SECTION 3 ANIMATION
+            this.initSectionFeautresCardsProduct(scrollTopY,window_height*8,this.isScrollingDown,window_height * 12)
+            //START SECTION 4 ANIMATION
+            this.initSectionSpecialFeatureCircleOpenning(scrollTopY,window_height*12,this.isScrollingDown,window_height * 16)
+            //RESET SECTION 5 ANIMATION
+            this.initAnimationCanvasFeatureProduct(scrollTopY,window_height*16,this.isScrollingDown,window_height * 20)       
+        }
+
+        // 5 - SECTION 5 : CHANGING IMAGES FEATURE PRODUCT ANIMATION LOGIC
+        else if(scrollTopY > (window_height * 16) && scrollTopY <= (window_height * 20)){
             //RESET SECTION 4 ANIMATION
-            this.initSectionSpecialFeatureCircleOpenning(scrollTopY,window.innerHeight*15,this.isScrollingDown,window.innerHeight * 18)
-            }  
- 
-            // 4 - SECTION 4: PRODUCT SPECIAL FEATURE OPENNING CIRCLE ANIMATION LOGIC
-            else if(scrollTopY > (window.innerHeight * 14) && scrollTopY <= (window.innerHeight * 18)){
-                //RESET SECTION 3 ANIMATION
-                this.initSectionFeautresCardsProduct(scrollTopY,window.innerHeight*11,this.isScrollingDown,window.innerHeight * 14)
-                //START SECTION 4 ANIMATION
-                this.initSectionSpecialFeatureCircleOpenning(scrollTopY,window.innerHeight*15,this.isScrollingDown,window.innerHeight * 18)
-                //RESET SECTION 5 ANIMATION
-                this.initAnimationCanvasFeatureProduct(scrollTopY,window.innerHeight*19,this.isScrollingDown,window.innerHeight * 22)       
-            }
+            this.initSectionSpecialFeatureCircleOpenning(scrollTopY,window_height*14,this.isScrollingDown,window_height * 16);
+            //START SECTION 5 ANIMATION
+            this.initAnimationCanvasFeatureProduct(scrollTopY,window_height*16,this.isScrollingDown,window_height * 20)
+            //RESET SECTION 6 ANIMATION
+            this.initVerticalTabsFeatures(scrollTopY,window_height*20,this.isScrollingDown,window_height * 24,window_height*20)
+        } 
 
-            // 5 - SECTION 5 : CHANGING IMAGES FEATURE PRODUCT ANIMATION LOGIC
-            else if(scrollTopY > (window.innerHeight * 18) && scrollTopY <= (window.innerHeight * 22)){
-                //RESET SECTION 4 ANIMATION
-                this.initSectionSpecialFeatureCircleOpenning(scrollTopY,window.innerHeight*15,this.isScrollingDown,window.innerHeight * 18);
-                //START SECTION 5 ANIMATION
-                this.initAnimationCanvasFeatureProduct(scrollTopY,window.innerHeight*19,this.isScrollingDown,window.innerHeight * 22)
-                 //RESET SECTION 6 ANIMATION
-                 this.initVerticalTabsFeatures(scrollTopY,window.innerHeight*23,this.isScrollingDown,window.innerHeight * 26,window_height*23)
-            } 
+        // 6 - SECTION 6: VERTICAL TABS FEATURES ANIMATION LOGIC
+        else if( scrollTopY >= (window_height * 20) && scrollTopY <= (window_height * 24)){
+            //RESET SECTION 5 ANIMATION
+            this.initAnimationCanvasFeatureProduct(scrollTopY,window_height*16,this.isScrollingDown,window_height * 20)
+            //START SECTION 6 ANIMATION
+            this.initVerticalTabsFeatures(scrollTopY,window_height*20,this.isScrollingDown,window_height * 24,window_height*20)
+            //START SECTION 7 ANIMATION
+            this.initTitleFeautreAnimation(scrollTopY,window_height*24,this.isScrollingDown,window_height * 26)
+        }
 
-            // 6 - SECTION 6: VERTICAL TABS FEATURES ANIMATION LOGIC
-            else if( scrollTopY >= (window.innerHeight * 22) && scrollTopY <= (window.innerHeight * 26)){
-                //RESET SECTION 5 ANIMATION
-                this.initAnimationCanvasFeatureProduct(scrollTopY,window.innerHeight*19,this.isScrollingDown,window.innerHeight * 22)
-                //START SECTION 6 ANIMATION
-                this.initVerticalTabsFeatures(scrollTopY,window.innerHeight*23,this.isScrollingDown,window.innerHeight * 26,window_height*23)
-           }else if( scrollTopY > (window.innerHeight * 26)){
-                //RESET SECTION 6 ANIMATION
-                this.initVerticalTabsFeatures(scrollTopY,window.innerHeight*23,this.isScrollingDown,window.innerHeight * 26,window_height*23)
-           }
-              
-        });
+        // 7 - SECTION 7: TITLE FEATURE SECTION
+        else if( scrollTopY >= (window_height * 24) && scrollTopY <= (window_height * 26)){
+
+            //RESET SECTION 6 ANIMATION
+            this.initVerticalTabsFeatures(scrollTopY,window_height*20,this.isScrollingDown,window_height * 24,window_height*20)
+            //START SECTION 7 ANIMATION
+            this.initTitleFeautreAnimation(scrollTopY,window_height*24,this.isScrollingDown,window_height * 26)
+
+        }else if( scrollTopY > (window_height * 26)){
+            //RESET SECTION 7 ANIMATION
+            this.initTitleFeautreAnimation(scrollTopY,window_height*24,this.isScrollingDown,window_height * 26)
+        }
+        
+      
+
+    }
+
+   
+    animateScroll() {
+        let window_height = window.innerHeight;
+
+        let scrollTopY = document.documentElement.scrollTop;
+
+        // Finding the scroll direction
+        if (scrollTopY > this.prevY) {
+            this.prevY = scrollTopY;
+            this.isScrollingDown = true;
+        } else if (this.prevY > scrollTopY) {
+            this.prevY = scrollTopY;
+            this.isScrollingDown = false;
+        }
+
+        this.animateOnScroll(window_height);
+
+        // Request the next frame
+        this.rafId = requestAnimationFrame(this.animateScroll);
+    }
+
+    disconnectedCallback() {
+        // Clean up: cancel the animation frame request
+        if (this.rafId) {
+            cancelAnimationFrame(this.rafId);
+        }
     }
 
     // HERO SECTION LOGIC
@@ -234,8 +264,9 @@ class SectionsAnimationScroll extends HTMLElement {
         let header_title = available_products_section.querySelector("h1");
         let images_to_animate = available_products_section.querySelectorAll("img");
         let inner_break_1 = startPoint;
-        let inner_break_2 = inner_break_1 +  available_products_section.offsetHeight / 3;
-        let inner_break_3 = inner_break_2 +  available_products_section.offsetHeight / 3;
+        let inner_break_2 = inner_break_1 +  available_products_section.offsetHeight / 4;
+        let inner_break_3 = inner_break_2 +  available_products_section.offsetHeight / 4;
+        let inner_break_4 = inner_break_3 +  available_products_section.offsetHeight / 4;
         if(scrollTopY <= startPoint){
             //When we go to the previous section
             available_products_section.style.removeProperty("position");
@@ -276,10 +307,9 @@ class SectionsAnimationScroll extends HTMLElement {
                 images_to_animate[2].style.opacity = "0"
 
 
-            }else if(scrollTopY>=inner_break_3){
+            }else if(scrollTopY>=inner_break_3 && scrollTopY < inner_break_4){
                 images_to_animate[2].style.opacity = "1"
                 images_to_animate[1].style.opacity = "0"
-
             }
 
         }
@@ -483,6 +513,7 @@ class SectionsAnimationScroll extends HTMLElement {
             animation_canvas_feature_product_component_images_container.style.removeProperty("z-index");
 
 
+
         }else if(scrollTopY > breakPoint){ 
             //When we go to the next section
             //The margin is used to appear that we scrolled when the position fixed is over to relative
@@ -503,28 +534,38 @@ class SectionsAnimationScroll extends HTMLElement {
                 
                 const progress = (scrollTopY - inner_break_1) / (inner_break_2 - inner_break_1);
 
-                if(!this.AlreadyPlayChangingImage){
-                    for (let index = 1; index < 102; index++) {
-                        
-                        
-                    }
-                }
+               
                 // Frame number based on the progress
                 let startFrame = 1; // Initial size
-                let endFrame = 101; // Target size
+                let endFrame = 40; // Target size
                 let frameNumber = Math.ceil(startFrame + (endFrame - startFrame) * progress);
-                console.log(frameNumber)
+             
                 img_to_animate.src = "https://cdn.shopify.com/s/files/1/0077/3953/9515/files/Installmops_"+frameNumber+".webp?v=1691028939";
                 animation_canvas_feature_product_component_images_container.style.opacity = "1"
                 text_description_container.style.opacity = "0"
 
             }else if(scrollTopY>=inner_break_2 && scrollTopY < inner_break_3){
+                const progress = (scrollTopY - inner_break_2) / (inner_break_3 - inner_break_2);
+               
+                let startFrame = 40; // Initial size
+                let endFrame = 80; // Target size
+                let frameNumber = Math.ceil(startFrame + (endFrame - startFrame) * progress);
+             
+                img_to_animate.src = "https://cdn.shopify.com/s/files/1/0077/3953/9515/files/Installmops_"+frameNumber+".webp?v=1691028939";
+                
                 animation_canvas_feature_product_component_images_container.style.opacity = "1"
                 text_description_container.style.opacity = "1"
                 last_description_container.style.opacity = "0"
                 last_description_container.style.transform = "scale(0)"
 
             }else if(scrollTopY>=inner_break_3 && scrollTopY < inner_break_4){
+                const progress = (scrollTopY - inner_break_3) / (inner_break_4 - inner_break_3);
+                
+                let startFrame = 80; // Initial size
+                let endFrame = 101; // Target size
+                let frameNumber = Math.ceil(startFrame + (endFrame - startFrame) * progress);
+                
+                img_to_animate.src = "https://cdn.shopify.com/s/files/1/0077/3953/9515/files/Installmops_"+frameNumber+".webp?v=1691028939";
                 animation_canvas_feature_product_component_images_container.style.opacity = "0"
 
                 text_description_container.style.opacity = "0"
@@ -600,6 +641,42 @@ class SectionsAnimationScroll extends HTMLElement {
                 progress_bar.style.top = "80%";
                 tabs[3].style.opacity = "0";
                 tabs[4].style.opacity = "1";
+            }
+        }
+    }
+
+    // 7 - TITLE FEATURE ANIMATION LOGIC 
+    initTitleFeautreAnimation(scrollTopY,startPoint,scrollDown,breakPoint,previousBreakPoint){
+        let feature_title_component = this.querySelector(".feature_title_component");
+
+
+        let inner_break_1 = startPoint;
+        let inner_break_2 = inner_break_1 +  ((breakPoint - startPoint)/ 1);
+
+        if(scrollTopY <= startPoint){
+            //When we go to the previous section
+            feature_title_component.style.removeProperty("position");
+            feature_title_component.style.removeProperty("z-index");
+
+            feature_title_component.style.opacity = "0"
+
+
+        }else if(scrollTopY > breakPoint){ 
+            //When we go to the next section
+            //The margin is used to appear that we scrolled when the position fixed is over to relative
+            // vertical_tabs_features_component.style.marginTop = (breakPoint - previousBreakPoint) + "px";
+            feature_title_component.style.position = "relative";  
+            feature_title_component.style.removeProperty("z-index");
+            feature_title_component.style.opacity = "0"
+        }else{
+            feature_title_component.style.position = "fixed";
+            feature_title_component.style.removeProperty("margin");
+            feature_title_component.style.zIndex = "1000";
+
+            feature_title_component.style.opacity = "1";
+
+            if(scrollTopY>=inner_break_1 && scrollTopY < inner_break_2){
+              
             }
         }
     }
