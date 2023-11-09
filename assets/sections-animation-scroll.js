@@ -7,12 +7,84 @@ class SectionsAnimationScroll extends HTMLElement {
         // this.initScroll();
         this.prevY = 0;
         this.isScrollingDown = true;
+        window.scrollTo(0, 0);
         this.topTop = this.getBoundingClientRect().top
+        
+        //Animation Canvas 1 
+        this.check_animation_1 = false
+        //Animation Canvas 2
+        this.animation_frame_canvas1 = 1;
+        this.animations_sequences_canvas1 = [
+            {
+                "link_begin": "https://cdn.shopify.com/s/files/1/0077/3953/9515/files/tmwhite_",
+                "link_end": ".webp?v=1691663754",
+                "frameRate": 15,
+                "startFrame": 1,
+                "endFrame": 7,
+                "isStartedForward": false,
+                "isStartedBackward": false,
+                "scrollDown":true
+            },
+            {
+                "link_begin": "https://cdn.shopify.com/s/files/1/0077/3953/9515/files/tmwhite_",
+                "link_end": ".webp?v=1691663754",
+                "frameRate": 7,
+                "startFrame": 7,
+                "endFrame": 11,
+                "isStarted": false,
+                "scrollDown":true
+            },
+            {
+                "link_begin": "https://cdn.shopify.com/s/files/1/0077/3953/9515/files/tmwhite_",
+                "link_end": ".webp?v=1691663754",
+                "frameRate": 20,
+                "startFrame": 11,
+                "endFrame": 26,
+                "isStarted": false,
+                "scrollDown":true
 
+            },
+        ]
+        //Animation Canvas 3 roatating 
+        this.animation_frame_canvas_rotating = 1;
+        this.animations_sequences_canvas_rotating = [
+            {
+                "link_begin": "https://cdn.shopify.com/s/files/1/0077/3953/9515/files/cxtbimage_",
+                "link_end": ".webp?v=1691735083",
+                "frameRate": 35,
+                "startFrame": 1,
+                "endFrame": 13,
+                "isStartedForward": false,
+                "isStartedBackward": false,
+                "scrollDown":true
+            },
+            {
+                "link_begin": "https://cdn.shopify.com/s/files/1/0077/3953/9515/files/cxtbimage_",
+                "link_end": ".webp?v=1691735083",
+                "frameRate": 35,
+                "startFrame": 13,
+                "endFrame": 28,
+                "isStarted": false,
+                "scrollDown":true
+            },
+            {
+                "link_begin": "https://cdn.shopify.com/s/files/1/0077/3953/9515/files/cxtbimage_",
+                "link_end": ".webp?v=1691735083",
+                "frameRate": 35,
+                "startFrame": 28,
+                "endFrame": 101,
+                "isStarted": false,
+                "scrollDown":true
+
+            },
+        ]
+       
+    
 
         // Initialize requestAnimationFrame loop
         this.rafId = null;
         this.animateScroll = this.animateScroll.bind(this);
+        
         this.animateScroll();
     }
     
@@ -20,22 +92,22 @@ class SectionsAnimationScroll extends HTMLElement {
         let scrollTopY = document.documentElement.scrollTop
 
         // 1 - FIRST SECTION DESCRIPTION SCROLL ANIMATION LOGIC
-        if(scrollTopY > (this.topTop + window_height * 1.5) && scrollTopY <= (window_height * 6)){
+        if(scrollTopY > (this.topTop + window_height * 0.9) && scrollTopY <= (window_height * 6)){
                                 
             //START SECTION 1 ANIMATION
-            this.initSectionFirstDescription(scrollTopY,window_height*1.5,this.isScrollingDown,window_height * 6)
+            this.initSectionFirstDescription(scrollTopY,window_height*0.9,this.isScrollingDown,window_height * 6)
             //RESET SECTION 2 ANIMATION
             this.initSectionAvailableProducts(scrollTopY,window_height*6,this.isScrollingDown,window_height * 10)
 
-        }else if (scrollTopY <= (this.topTop + window_height * 1.5)){
+        }else if (scrollTopY <= (this.topTop + window_height * 0.9)){
             //RESET SECTION 1 ANIMATION
-            this.initSectionFirstDescription(scrollTopY,window_height*1.5,this.isScrollingDown,window_height * 6)
+            this.initSectionFirstDescription(scrollTopY,window_height*0.9,this.isScrollingDown,window_height * 6)
         } 
 
         // 2 - SECTION 2: AVAILABLE PRODUCTS SCROLL ANIMATION LOGIC
         else if(scrollTopY > (window_height * 6) && scrollTopY <= (window_height * 8)){
             //RESET SECTION 1 ANIMATION
-            this.initSectionFirstDescription(scrollTopY,window_height*1.5,this.isScrollingDown,window_height * 6,window_height*6)
+            this.initSectionFirstDescription(scrollTopY,window_height*0.9,this.isScrollingDown,window_height * 6,window_height*6)
             //START SECTION 2 ANIMATION
             this.initSectionAvailableProducts(scrollTopY,window_height*6,this.isScrollingDown,window_height * 8)
             //RESET SECTION 3 ANIMATION
@@ -44,12 +116,12 @@ class SectionsAnimationScroll extends HTMLElement {
 
         // 3 - SECTION 3: PRODUCT FEATURES CARDS ANIMATION LOGIC
         else if(scrollTopY > (window_height * 8) && scrollTopY <= (window_height * 12)){    
-        //RESET SECTION 2 ANIMATION
-        this.initSectionAvailableProducts(scrollTopY,window_height*6,this.isScrollingDown,window_height * 8)
-        //START SECTION 3 ANIMATION
-        this.initSectionFeautresCardsProduct(scrollTopY,window_height*8,this.isScrollingDown,window_height * 12,window_height*8)
-        //RESET SECTION 4 ANIMATION
-        this.initSectionSpecialFeatureCircleOpenning(scrollTopY,window_height*12,this.isScrollingDown,window_height * 16)
+            //RESET SECTION 2 ANIMATION
+            this.initSectionAvailableProducts(scrollTopY,window_height*6,this.isScrollingDown,window_height * 8)
+            //START SECTION 3 ANIMATION
+            this.initSectionFeautresCardsProduct(scrollTopY,window_height*8,this.isScrollingDown,window_height * 12,window_height*8)
+            //RESET SECTION 4 ANIMATION
+            this.initSectionSpecialFeatureCircleOpenning(scrollTopY,window_height*12,this.isScrollingDown,window_height * 16)
         }  
 
         // 4 - SECTION 4: PRODUCT SPECIAL FEATURE OPENNING CIRCLE ANIMATION LOGIC
@@ -89,11 +161,37 @@ class SectionsAnimationScroll extends HTMLElement {
             this.initVerticalTabsFeatures(scrollTopY,window_height*20,this.isScrollingDown,window_height * 24,window_height*20)
             //START SECTION 7 ANIMATION
             this.initTitleFeautreAnimation(scrollTopY,window_height*24,this.isScrollingDown,window_height * 26)
+            //RESET SECTION 8 ANIMATION
+            this.initAnimationCanvasWithTitle(scrollTopY,window_height*26,this.isScrollingDown,window_height * 29)
 
-        }else if( scrollTopY > (window_height * 26)){
+        }
+
+        // 8 - SECTION 8: ANIMATION CANVAS WITH TITLE SECTION
+        else if( scrollTopY >= (window_height * 26) && scrollTopY <= (window_height * 29)){
+
             //RESET SECTION 7 ANIMATION
             this.initTitleFeautreAnimation(scrollTopY,window_height*24,this.isScrollingDown,window_height * 26)
+            //START SECTION 8 ANIMATION
+            this.initAnimationCanvasWithTitle(scrollTopY,window_height*26,this.isScrollingDown,window_height * 29)
+            //START SECTION 9 ANIMATION
+            this.initAnimationCanvasRotating(scrollTopY,window_height*29,this.isScrollingDown,window_height * 34)
+
         }
+
+         // 9 - SECTION 9: ANIMATION CANVAS WITH ROTATION
+         else if( scrollTopY >= (window_height * 29) && scrollTopY <= (window_height * 34)){
+
+            //START SECTION 8 ANIMATION
+            this.initAnimationCanvasWithTitle(scrollTopY,window_height*26,this.isScrollingDown,window_height * 29)
+            //START SECTION 9 ANIMATION
+            this.initAnimationCanvasRotating(scrollTopY,window_height*29,this.isScrollingDown,window_height * 34)
+
+        }else if( scrollTopY > (window_height * 34)){
+           //REET SECTION 9 ANIMATION
+           this.initAnimationCanvasRotating(scrollTopY,window_height*29,this.isScrollingDown,window_height * 34)
+        }
+
+        
         
       
 
@@ -164,7 +262,7 @@ class SectionsAnimationScroll extends HTMLElement {
         let inner_break_5 = inner_break_4 +  (breakPoint - startPoint) / 5;
         //here we move and fix the section white scrolling
         if(scrollTopY <= startPoint + this.topTop ){
-
+            
             //When we go to the previous section
             white_overlay_video.style.removeProperty("transform");
             first_section_container.style.position = "relative";
@@ -184,6 +282,10 @@ class SectionsAnimationScroll extends HTMLElement {
 
 
         }else{
+            // console.log("HERERERERER")
+            // console.log("scrollTopY " + scrollTopY)
+            // console.log("startPoint + this.topTop :  " + startPoint + " + " + this.topTop + `${startPoint + this.topTop}`)
+            // console.log("BreakPoint " + breakPoint)
             //Succession of scenes logic
 
             first_section_container.style.position = "fixed";
@@ -493,6 +595,9 @@ class SectionsAnimationScroll extends HTMLElement {
      initAnimationCanvasFeatureProduct(scrollTopY,startPoint,scrollDown,breakPoint,previousBreakPoint){
         let animation_canvas_feature_product_component = this.querySelector(".animation_canvas_feature_product_component");
 
+        let canvas = animation_canvas_feature_product_component.querySelector("canvas");
+        let ctx = canvas.getContext("2d")
+
         let text_description_container = animation_canvas_feature_product_component.querySelector(".text_feature_description");
         let animation_canvas_feature_product_component_images_container = animation_canvas_feature_product_component.querySelector(".images_animations");
         let last_description_container = animation_canvas_feature_product_component.querySelector(".last_text_features_container");
@@ -512,6 +617,9 @@ class SectionsAnimationScroll extends HTMLElement {
             animation_canvas_feature_product_component_images_container.style.opacity = "0"
             animation_canvas_feature_product_component_images_container.style.removeProperty("z-index");
 
+            this.check_animation_1 = false;
+            
+            
 
 
         }else if(scrollTopY > breakPoint){ 
@@ -521,7 +629,7 @@ class SectionsAnimationScroll extends HTMLElement {
             animation_canvas_feature_product_component.style.position = "relative";    
             animation_canvas_feature_product_component_images_container.style.removeProperty("z-index");
             animation_canvas_feature_product_component.style.opacity = "0";
-
+          
 
         }else{
             animation_canvas_feature_product_component.style.position = "fixed";
@@ -530,28 +638,52 @@ class SectionsAnimationScroll extends HTMLElement {
 
             animation_canvas_feature_product_component.style.opacity = "1";
 
+            
             if(scrollTopY>=inner_break_1 && scrollTopY < inner_break_2){
-                
-                const progress = (scrollTopY - inner_break_1) / (inner_break_2 - inner_break_1);
+                  
+                if(!this.check_animation_1){
+                    console.log("enterere 1")
 
-               
-                // Frame number based on the progress
-                let startFrame = 1; // Initial size
-                let endFrame = 40; // Target size
-                let frameNumber = Math.ceil(startFrame + (endFrame - startFrame) * progress);
+                    const imageCount = 101;  // Number of images in the sequence
+                    let currentFrame = 1;
+                    
+                    const frameRate = 30; 
+                    const image = new Image();
+                    image.src = `https://cdn.shopify.com/s/files/1/0077/3953/9515/files/Installmops_${currentFrame}.webp?v=1691028939`;
+                    image.onload = () => {
+                        canvas.width = image.width;
+                        canvas.height = image.height;
+        
+                        function loadNextFrame() {
+                            image.src = `https://cdn.shopify.com/s/files/1/0077/3953/9515/files/Installmops_${currentFrame}.webp?v=1691028939`;
+                            
+                            image.onload = () => {
+                                ctx.width = image.width;
+                                ctx.height = image.height;
+                                ctx.clearRect(0, 0, ctx.width, ctx.height);
+                                ctx.drawImage(image, 0, 0, ctx.width, ctx.height);
+            
+                                currentFrame++;
+                                if (currentFrame > imageCount) {
+                                    return
+                                    // currentFrame = 1;
+                                }
+            
+                                setTimeout(loadNextFrame, 1000 / frameRate);  // Adjust the delay for the desired frame rate
+                            };
+                        }
+            
+                        loadNextFrame();
+                        this.check_animation_1 = true;
+                    };
+                    
+                }
              
-                img_to_animate.src = "https://cdn.shopify.com/s/files/1/0077/3953/9515/files/Installmops_"+frameNumber+".webp?v=1691028939";
                 animation_canvas_feature_product_component_images_container.style.opacity = "1"
                 text_description_container.style.opacity = "0"
 
             }else if(scrollTopY>=inner_break_2 && scrollTopY < inner_break_3){
-                const progress = (scrollTopY - inner_break_2) / (inner_break_3 - inner_break_2);
-               
-                let startFrame = 40; // Initial size
-                let endFrame = 80; // Target size
-                let frameNumber = Math.ceil(startFrame + (endFrame - startFrame) * progress);
-             
-                img_to_animate.src = "https://cdn.shopify.com/s/files/1/0077/3953/9515/files/Installmops_"+frameNumber+".webp?v=1691028939";
+                
                 
                 animation_canvas_feature_product_component_images_container.style.opacity = "1"
                 text_description_container.style.opacity = "1"
@@ -559,13 +691,7 @@ class SectionsAnimationScroll extends HTMLElement {
                 last_description_container.style.transform = "scale(0)"
 
             }else if(scrollTopY>=inner_break_3 && scrollTopY < inner_break_4){
-                const progress = (scrollTopY - inner_break_3) / (inner_break_4 - inner_break_3);
-                
-                let startFrame = 80; // Initial size
-                let endFrame = 101; // Target size
-                let frameNumber = Math.ceil(startFrame + (endFrame - startFrame) * progress);
-                
-                img_to_animate.src = "https://cdn.shopify.com/s/files/1/0077/3953/9515/files/Installmops_"+frameNumber+".webp?v=1691028939";
+            
                 animation_canvas_feature_product_component_images_container.style.opacity = "0"
 
                 text_description_container.style.opacity = "0"
@@ -651,7 +777,8 @@ class SectionsAnimationScroll extends HTMLElement {
 
 
         let inner_break_1 = startPoint;
-        let inner_break_2 = inner_break_1 +  ((breakPoint - startPoint)/ 1);
+        let inner_break_2 = inner_break_1 +  ((breakPoint - startPoint)/ 2);
+        let inner_break_3 = inner_break_2 +  ((breakPoint - startPoint)/ 2);
 
         if(scrollTopY <= startPoint){
             //When we go to the previous section
@@ -677,6 +804,699 @@ class SectionsAnimationScroll extends HTMLElement {
 
             if(scrollTopY>=inner_break_1 && scrollTopY < inner_break_2){
               
+            }
+        }
+    }
+
+    // 8 - ANIMATION CANVAS WITH TITLE
+    initAnimationCanvasWithTitle(scrollTopY,startPoint,scrollDown,breakPoint,previousBreakPoint){
+
+        let animation_canvas_with_title = this.querySelector(".animation_canvas_with_title");
+
+        let canvas = animation_canvas_with_title.querySelector("canvas")
+        let ctx = canvas.getContext("2d")
+
+        let inner_break_1 = startPoint;
+        let inner_break_2 = inner_break_1 +  300;
+        let inner_break_3 = inner_break_2 +  600;
+        let inner_break_4 = inner_break_3 +  600;
+        let inner_break_5 = inner_break_4 +  600;
+
+        if(scrollTopY <= startPoint){
+            //When we go to the previous section
+            animation_canvas_with_title.style.removeProperty("position");
+            animation_canvas_with_title.style.removeProperty("z-index");
+
+            animation_canvas_with_title.style.opacity = "0"
+
+           
+
+        }else if(scrollTopY > breakPoint){ 
+            //When we go to the next section
+            //The margin is used to appear that we scrolled when the position fixed is over to relative
+            // vertical_tabs_features_component.style.marginTop = (breakPoint - previousBreakPoint) + "px";
+            animation_canvas_with_title.style.position = "relative";  
+            animation_canvas_with_title.style.removeProperty("z-index");
+            animation_canvas_with_title.style.opacity = "0"
+            
+        }else{
+            animation_canvas_with_title.style.position = "fixed";
+            animation_canvas_with_title.style.removeProperty("margin");
+            animation_canvas_with_title.style.zIndex = "1000";
+
+            animation_canvas_with_title.style.opacity = "1";
+
+            
+            if(scrollTopY>=inner_break_1 && scrollTopY < inner_break_2){
+
+                const image = new Image();
+              
+                
+                let currentFrame = 1;
+                const imagePrefix = 'tmwhite_';
+                image.src = `https://cdn.shopify.com/s/files/1/0077/3953/9515/files/${imagePrefix}${currentFrame}.webp?v=1691663754`;
+                image.onload = () => {
+                    canvas.width = image.width;
+                    canvas.height = image.height;
+                    ctx.width = image.width;
+                    ctx.height = image.height;
+                    ctx.clearRect(0, 0, ctx.width, ctx.height);
+                    ctx.drawImage(image, 0, 0, ctx.width, ctx.height);
+                }
+                
+                
+            }
+            else if(scrollTopY>=inner_break_2 && scrollTopY < inner_break_3 ){
+               
+                this.animations_sequences_canvas1[0]["scrollDown"] = scrollDown;
+                // ANIMATION 1 START FORWARD
+                if(!this.animations_sequences_canvas1[0]["isStartedForward"] && this.animations_sequences_canvas1[0]["scrollDown"]){ 
+                    console.log("running ....")    
+                    this.animations_sequences_canvas1[0]["isStartedForward"] = true;
+                        
+                    const image = new Image();
+                    image.src = this.animations_sequences_canvas1[0]["link_begin"] + this.animation_frame_canvas_rotating + this.animations_sequences_canvas1[0]["link_end"]
+                    image.onload = () => {
+                        canvas.width = image.width;
+                        canvas.height = image.height;
+        
+                        const  loadNextFrame = () => {
+                            image.src = this.animations_sequences_canvas1[0]["link_begin"] + this.animation_frame_canvas_rotating + this.animations_sequences_canvas1[0]["link_end"]
+                            image.onload = () => {
+                                ctx.width = image.width;
+                                ctx.height = image.height;
+                                ctx.clearRect(0, 0, ctx.width, ctx.height);
+                                ctx.drawImage(image, 0, 0, ctx.width, ctx.height);
+                                this.animation_frame_canvas1++;
+                                console.log(this.animation_frame_canvas1)
+
+                                if(!this.animations_sequences_canvas1[0]["scrollDown"]){
+                                    
+                                    return
+                                }
+                                if (this.animation_frame_canvas1 > this.animations_sequences_canvas1[0]["endFrame"]) {
+                                    
+                                    console.log("finished")
+
+
+                                    return
+                                }
+            
+                                setTimeout(loadNextFrame, 750 / this.animations_sequences_canvas1[0]["frameRate"]);  // Adjust the delay for the desired frame rate
+                            };
+                        }
+            
+                        loadNextFrame();
+                        
+
+                    };
+                    
+                    
+                }
+                if (!this.animations_sequences_canvas1[0]["scrollDown"] &&  !this.animations_sequences_canvas1[0]["isStartedBackward"]){
+                    console.log("ENTERED THE REVERSE ")
+                    this.animations_sequences_canvas1[0]["isStartedBackward"] = true;
+                    const image = new Image();
+                    image.src = this.animations_sequences_canvas1[0]["link_begin"] + this.animation_frame_canvas1 + this.animations_sequences_canvas1[0]["link_end"]
+                    image.onload = () => {
+                        canvas.width = image.width;
+                        canvas.height = image.height;
+        
+                        const  loadNextFrame = () => {
+                            image.src = this.animations_sequences_canvas1[0]["link_begin"] + this.animation_frame_canvas1 + this.animations_sequences_canvas1[0]["link_end"]
+                            image.onload = () => {
+                                ctx.width = image.width;
+                                ctx.height = image.height;
+                                ctx.clearRect(0, 0, ctx.width, ctx.height);
+                                ctx.drawImage(image, 0, 0, ctx.width, ctx.height);
+                                
+
+                           
+                                this.animation_frame_canvas1--;
+                                console.log(this.animation_frame_canvas1)
+                                if(this.animations_sequences_canvas1[0]["scrollDown"]){
+                                    this.animation_frame_canvas1++
+                                    return
+                                }
+                                if (this.animation_frame_canvas1 < this.animations_sequences_canvas1[0]["startFrame"]) {
+                                    this.animation_frame_canvas1++
+                                    console.log("finised reverse")
+                                    return
+                                }
+
+            
+                                setTimeout(loadNextFrame, 1000 / this.animations_sequences_canvas1[0]["frameRate"]);  // Adjust the delay for the desired frame rate
+                            };
+                        }
+            
+                        loadNextFrame();
+                        
+
+                    };
+                    
+                }
+                this.animations_sequences_canvas1[1]["isStartedForward"] = false;
+                // this.animations_sequences_canvas1[1]["isStartedBackward"] = false;
+            }
+            else if ( scrollTopY >= inner_break_3 && scrollTopY < inner_break_4){
+                this.animations_sequences_canvas1[2]["isStartedBackward"] = false;
+
+                // this.animations_sequences_canvas1[0]["isStartedForward"] = false;
+                this.animations_sequences_canvas1[0]["isStartedBackward"] = false;
+
+                this.animations_sequences_canvas1[1]["scrollDown"] = scrollDown;
+                // ANIMATION 1 START FORWARD
+                if(!this.animations_sequences_canvas1[1]["isStartedForward"] && this.animations_sequences_canvas1[1]["scrollDown"]){ 
+                    console.log("running ....")    
+                    this.animations_sequences_canvas1[1]["isStartedForward"] = true;
+                        
+                    const image = new Image();
+                    image.src = this.animations_sequences_canvas1[1]["link_begin"] + this.animation_frame_canvas1 + this.animations_sequences_canvas1[1]["link_end"]
+                    image.onload = () => {
+                        canvas.width = image.width;
+                        canvas.height = image.height;
+        
+                        const  loadNextFrame = () => {
+                            image.src = this.animations_sequences_canvas1[1]["link_begin"] + this.animation_frame_canvas1 + this.animations_sequences_canvas1[1]["link_end"]
+                            image.onload = () => {
+                                ctx.width = image.width;
+                                ctx.height = image.height;
+                                ctx.clearRect(0, 0, ctx.width, ctx.height);
+                                ctx.drawImage(image, 0, 0, ctx.width, ctx.height);
+                                this.animation_frame_canvas1++;
+                                console.log(this.animation_frame_canvas1)
+
+                                if(!this.animations_sequences_canvas1[1]["scrollDown"]){
+                                    
+                                    return
+                                }
+                                if (this.animation_frame_canvas1 > this.animations_sequences_canvas1[1]["endFrame"]) {
+                                    
+                                    console.log("finished")
+
+
+                                    return
+                                }
+            
+                                setTimeout(loadNextFrame, 750 / this.animations_sequences_canvas1[1]["frameRate"]);  // Adjust the delay for the desired frame rate
+                            };
+                        }
+            
+                        loadNextFrame();
+                        
+
+                    };
+                    
+                    
+                }
+                if (!this.animations_sequences_canvas1[1]["scrollDown"] &&  !this.animations_sequences_canvas1[1]["isStartedBackward"]){
+                    console.log("ENTERED THE REVERSE ")
+                    this.animations_sequences_canvas1[1]["isStartedBackward"] = true;
+                    const image = new Image();
+                    image.src = this.animations_sequences_canvas1[1]["link_begin"] + this.animation_frame_canvas1 + this.animations_sequences_canvas1[1]["link_end"]
+                    image.onload = () => {
+                        canvas.width = image.width;
+                        canvas.height = image.height;
+        
+                        const  loadNextFrame = () => {
+                            image.src = this.animations_sequences_canvas1[1]["link_begin"] + this.animation_frame_canvas1 + this.animations_sequences_canvas1[1]["link_end"]
+                            image.onload = () => {
+                                ctx.width = image.width;
+                                ctx.height = image.height;
+                                ctx.clearRect(0, 0, ctx.width, ctx.height);
+                                ctx.drawImage(image, 0, 0, ctx.width, ctx.height);
+                                
+
+                           
+                                this.animation_frame_canvas1--;
+                                console.log(this.animation_frame_canvas1)
+                                if(this.animations_sequences_canvas1[1]["scrollDown"]){
+                                    
+                                    return
+                                }
+                                if (this.animation_frame_canvas1 < this.animations_sequences_canvas1[1]["startFrame"]) {
+                                    console.log("finised reverse")
+                                    return
+                                }
+
+            
+                                setTimeout(loadNextFrame, 1000 / this.animations_sequences_canvas1[1]["frameRate"]);  // Adjust the delay for the desired frame rate
+                            };
+                        }
+            
+                        loadNextFrame();
+                        
+
+                    };
+                    
+               
+            }
+            }
+            else if ( scrollTopY >= inner_break_4 && scrollTopY < inner_break_5){
+                // this.animations_sequences_canvas1[0]["isStartedForward"] = false;
+                this.animations_sequences_canvas1[1]["isStartedBackward"] = false;
+
+                this.animations_sequences_canvas1[2]["scrollDown"] = scrollDown;
+                // ANIMATION 1 START FORWARD
+                if(!this.animations_sequences_canvas1[2]["isStartedForward"] && this.animations_sequences_canvas1[2]["scrollDown"]){ 
+                    console.log("running ....")    
+                    this.animations_sequences_canvas1[2]["isStartedForward"] = true;
+                        
+                    const image = new Image();
+                    image.src = this.animations_sequences_canvas1[2]["link_begin"] + this.animation_frame_canvas1 + this.animations_sequences_canvas1[2]["link_end"]
+                    image.onload = () => {
+                        canvas.width = image.width;
+                        canvas.height = image.height;
+        
+                        const  loadNextFrame = () => {
+                            image.src = this.animations_sequences_canvas1[2]["link_begin"] + this.animation_frame_canvas1 + this.animations_sequences_canvas1[2]["link_end"]
+                            image.onload = () => {
+                                ctx.width = image.width;
+                                ctx.height = image.height;
+                                ctx.clearRect(0, 0, ctx.width, ctx.height);
+                                ctx.drawImage(image, 0, 0, ctx.width, ctx.height);
+                                
+                                console.log(this.animation_frame_canvas1)
+
+                                if(!this.animations_sequences_canvas1[2]["scrollDown"]){
+                                    this.animations_sequences_canvas1[2]["isStartedBackward"] = false;
+                                    
+                                    return
+                                }
+                                this.animation_frame_canvas1++;
+
+                                if (this.animation_frame_canvas1 > this.animations_sequences_canvas1[2]["endFrame"] ) {
+                                    this.animation_frame_canvas1--
+                                    console.log("finished")
+                                    this.animations_sequences_canvas1[2]["isStartedBackward"] = false;
+
+                                    return
+                                }
+
+            
+                                setTimeout(loadNextFrame, 750 / this.animations_sequences_canvas1[2]["frameRate"]);  // Adjust the delay for the desired frame rate
+                            };
+                        }
+            
+                        loadNextFrame();
+                        
+
+                    };
+                    
+                    
+                }
+                if (!this.animations_sequences_canvas1[2]["scrollDown"] &&  !this.animations_sequences_canvas1[2]["isStartedBackward"]){
+                    console.log("ENTERED THE REVERSE ")
+                    this.animations_sequences_canvas1[2]["isStartedBackward"] = true;
+                    const image = new Image();
+                    image.src = this.animations_sequences_canvas1[2]["link_begin"] + this.animation_frame_canvas1 + this.animations_sequences_canvas1[2]["link_end"]
+                    image.onload = () => {
+                        canvas.width = image.width;
+                        canvas.height = image.height;
+        
+                        const  loadNextFrame = () => {
+                            image.src = this.animations_sequences_canvas1[2]["link_begin"] + this.animation_frame_canvas1 + this.animations_sequences_canvas1[2]["link_end"]
+                            image.onload = () => {
+                                ctx.width = image.width;
+                                ctx.height = image.height;
+                                ctx.clearRect(0, 0, ctx.width, ctx.height);
+                                ctx.drawImage(image, 0, 0, ctx.width, ctx.height);
+                                
+
+                           
+                                this.animation_frame_canvas1--;
+                                console.log(this.animation_frame_canvas1)
+                                if(this.animations_sequences_canvas1[2]["scrollDown"]){
+                                    this.animations_sequences_canvas1[2]["isStartedForward"] = false;
+                                    return
+                                }
+                                if (this.animation_frame_canvas1 < this.animations_sequences_canvas1[2]["startFrame"]) {
+                                    console.log("finised reverse")
+                                    this.animations_sequences_canvas1[2]["isStartedForward"] = false;
+                                    return
+                                }
+
+            
+                                setTimeout(loadNextFrame, 1000 / this.animations_sequences_canvas1[2]["frameRate"]);  // Adjust the delay for the desired frame rate
+                            };
+                        }
+            
+                        loadNextFrame();
+                        
+
+                    };
+                    
+               
+            }
+            }
+        }
+    }
+
+    // 9 - ANIMATION CANVAS WITH ROTATION
+    initAnimationCanvasRotating(scrollTopY,startPoint,scrollDown,breakPoint,previousBreakPoint){
+
+        let animation_rotation_canvas = this.querySelector(".animation_rotation_canvas");
+
+        let canvas = animation_rotation_canvas.querySelector("canvas")
+        let ctx = canvas.getContext("2d")
+
+        let inner_break_1 = startPoint;
+        let inner_break_2 = inner_break_1 +  300;
+        let inner_break_3 = inner_break_2 +  600;
+        let inner_break_4 = inner_break_3 +  600;
+        let inner_break_5 = inner_break_4 +  600;
+        let inner_break_6 = inner_break_5 +  600;
+        let inner_break_7 = inner_break_6 +  600;
+        // let inner_break_6 = inner_break_5 +  ((breakPoint - startPoint)* ((1 - 1/8)/4));
+
+        if(scrollTopY <= startPoint){
+            //When we go to the previous section
+            animation_rotation_canvas.style.removeProperty("position");
+            animation_rotation_canvas.style.removeProperty("z-index");
+
+            animation_rotation_canvas.style.opacity = "0"
+            this.animation_frame_canvas_rotating = 1;
+            // this.animations_sequences_canvas_rotating[0]["isStartedForward"] = false;
+            this.animations_sequences_canvas_rotating[0]["isStartedForward"] = false;
+            this.animations_sequences_canvas_rotating[0]["isStartedBackward"] = false;
+            
+        }else if(scrollTopY > breakPoint){ 
+            //When we go to the next section
+            //The margin is used to appear that we scrolled when the position fixed is over to relative
+            // vertical_tabs_features_component.style.marginTop = (breakPoint - previousBreakPoint) + "px";
+            animation_rotation_canvas.style.position = "relative";  
+            animation_rotation_canvas.style.removeProperty("z-index");
+            animation_rotation_canvas.style.opacity = "0"
+            
+        }else{
+            animation_rotation_canvas.style.position = "fixed";
+            animation_rotation_canvas.style.removeProperty("margin");
+            animation_rotation_canvas.style.zIndex = "1000";
+
+            animation_rotation_canvas.style.opacity = "1";
+
+            
+            if(scrollTopY>=inner_break_1 && scrollTopY < inner_break_2){
+
+                const image = new Image();
+              
+                
+                let currentFrame = 1;
+                const imagePrefix = 'cxtbimage_';
+                image.src = `https://cdn.shopify.com/s/files/1/0077/3953/9515/files/${imagePrefix}${currentFrame}.webp?v=1691735083`;
+                image.onload = () => {
+                    canvas.width = image.width;
+                    canvas.height = image.height;
+                    ctx.width = image.width;
+                    ctx.height = image.height;
+                    ctx.clearRect(0, 0, ctx.width, ctx.height);
+                    ctx.drawImage(image, 0, 0, ctx.width, ctx.height);
+                }
+                
+                
+            }
+            else if(scrollTopY>=inner_break_2 && scrollTopY < inner_break_3 ){
+               
+                this.animations_sequences_canvas_rotating[0]["scrollDown"] = scrollDown;
+                // ANIMATION 1 START FORWARD
+                if(!this.animations_sequences_canvas_rotating[0]["isStartedForward"] && this.animations_sequences_canvas_rotating[0]["scrollDown"]){ 
+                    console.log("running ....")    
+                    this.animations_sequences_canvas_rotating[0]["isStartedForward"] = true;
+                        
+                    const image = new Image();
+                    image.src = this.animations_sequences_canvas_rotating[0]["link_begin"] + this.animation_frame_canvas_rotating + this.animations_sequences_canvas_rotating[0]["link_end"]
+                    image.onload = () => {
+                        canvas.width = image.width;
+                        canvas.height = image.height;
+        
+                        const  loadNextFrame = () => {
+                            image.src = this.animations_sequences_canvas_rotating[0]["link_begin"] + this.animation_frame_canvas_rotating + this.animations_sequences_canvas_rotating[0]["link_end"]
+                            image.onload = () => {
+                                ctx.width = image.width;
+                                ctx.height = image.height;
+                                ctx.clearRect(0, 0, ctx.width, ctx.height);
+                                ctx.drawImage(image, 0, 0, ctx.width, ctx.height);
+                                this.animation_frame_canvas_rotating++;
+                                console.log(this.animation_frame_canvas_rotating)
+
+                                if(!this.animations_sequences_canvas_rotating[0]["scrollDown"]){
+                                    
+                                    return
+                                }
+                                if (this.animation_frame_canvas_rotating > this.animations_sequences_canvas_rotating[0]["endFrame"]) {
+                                    
+                                    console.log("finished")
+
+
+                                    return
+                                }
+            
+                                setTimeout(loadNextFrame, 750 / this.animations_sequences_canvas_rotating[0]["frameRate"]);  // Adjust the delay for the desired frame rate
+                            };
+                        }
+            
+                        loadNextFrame();
+                        
+
+                    };
+                    
+                    
+                }
+                if (!this.animations_sequences_canvas_rotating[0]["scrollDown"] &&  !this.animations_sequences_canvas_rotating[0]["isStartedBackward"]){
+                    console.log("ENTERED THE REVERSE ")
+                    this.animations_sequences_canvas_rotating[0]["isStartedBackward"] = true;
+                    const image = new Image();
+                    image.src = this.animations_sequences_canvas_rotating[0]["link_begin"] + this.animation_frame_canvas_rotating + this.animations_sequences_canvas_rotating[0]["link_end"]
+                    image.onload = () => {
+                        canvas.width = image.width;
+                        canvas.height = image.height;
+        
+                        const  loadNextFrame = () => {
+                            image.src = this.animations_sequences_canvas_rotating[0]["link_begin"] + this.animation_frame_canvas_rotating + this.animations_sequences_canvas_rotating[0]["link_end"]
+                            image.onload = () => {
+                                ctx.width = image.width;
+                                ctx.height = image.height;
+                                ctx.clearRect(0, 0, ctx.width, ctx.height);
+                                ctx.drawImage(image, 0, 0, ctx.width, ctx.height);
+                                
+
+                           
+                                this.animation_frame_canvas_rotating--;
+                                console.log(this.animation_frame_canvas_rotating)
+                                if(this.animations_sequences_canvas_rotating[0]["scrollDown"]){
+                                    this.animation_frame_canvas_rotating++
+                                    return
+                                }
+                                if (this.animation_frame_canvas_rotating < this.animations_sequences_canvas_rotating[0]["startFrame"]) {
+                                    this.animation_frame_canvas_rotating++
+                                    console.log("finised reverse")
+                                    return
+                                }
+
+            
+                                setTimeout(loadNextFrame, 1000 / this.animations_sequences_canvas_rotating[0]["frameRate"]);  // Adjust the delay for the desired frame rate
+                            };
+                        }
+            
+                        loadNextFrame();
+                        
+
+                    };
+                    
+                }
+                this.animations_sequences_canvas_rotating[1]["isStartedForward"] = false;
+                // this.animations_sequences_canvas_rotating[1]["isStartedBackward"] = false;
+            }
+            else if ( scrollTopY >= inner_break_3 && scrollTopY < inner_break_4){
+                this.animations_sequences_canvas_rotating[2]["isStartedBackward"] = false;
+
+                // this.animations_sequences_canvas_rotating[0]["isStartedForward"] = false;
+                this.animations_sequences_canvas_rotating[0]["isStartedBackward"] = false;
+
+                this.animations_sequences_canvas_rotating[1]["scrollDown"] = scrollDown;
+                // ANIMATION 1 START FORWARD
+                if(!this.animations_sequences_canvas_rotating[1]["isStartedForward"] && this.animations_sequences_canvas_rotating[1]["scrollDown"]){ 
+                    console.log("running ....")    
+                    this.animations_sequences_canvas_rotating[1]["isStartedForward"] = true;
+                        
+                    const image = new Image();
+                    image.src = this.animations_sequences_canvas_rotating[1]["link_begin"] + this.animation_frame_canvas_rotating + this.animations_sequences_canvas_rotating[1]["link_end"]
+                    image.onload = () => {
+                        canvas.width = image.width;
+                        canvas.height = image.height;
+        
+                        const  loadNextFrame = () => {
+                            image.src = this.animations_sequences_canvas_rotating[1]["link_begin"] + this.animation_frame_canvas_rotating + this.animations_sequences_canvas_rotating[1]["link_end"]
+                            image.onload = () => {
+                                ctx.width = image.width;
+                                ctx.height = image.height;
+                                ctx.clearRect(0, 0, ctx.width, ctx.height);
+                                ctx.drawImage(image, 0, 0, ctx.width, ctx.height);
+                                this.animation_frame_canvas_rotating++;
+                                console.log(this.animation_frame_canvas_rotating)
+
+                                if(!this.animations_sequences_canvas_rotating[1]["scrollDown"]){
+                                    
+                                    return
+                                }
+                                if (this.animation_frame_canvas_rotating > this.animations_sequences_canvas_rotating[1]["endFrame"]) {
+                                    
+                                    console.log("finished")
+
+
+                                    return
+                                }
+            
+                                setTimeout(loadNextFrame, 750 / this.animations_sequences_canvas_rotating[1]["frameRate"]);  // Adjust the delay for the desired frame rate
+                            };
+                        }
+            
+                        loadNextFrame();
+                        
+
+                    };
+                    
+                    
+                }
+                if (!this.animations_sequences_canvas_rotating[1]["scrollDown"] &&  !this.animations_sequences_canvas_rotating[1]["isStartedBackward"]){
+                    console.log("ENTERED THE REVERSE ")
+                    this.animations_sequences_canvas_rotating[1]["isStartedBackward"] = true;
+                    const image = new Image();
+                    image.src = this.animations_sequences_canvas_rotating[1]["link_begin"] + this.animation_frame_canvas_rotating + this.animations_sequences_canvas_rotating[1]["link_end"]
+                    image.onload = () => {
+                        canvas.width = image.width;
+                        canvas.height = image.height;
+        
+                        const  loadNextFrame = () => {
+                            image.src = this.animations_sequences_canvas_rotating[1]["link_begin"] + this.animation_frame_canvas_rotating + this.animations_sequences_canvas_rotating[1]["link_end"]
+                            image.onload = () => {
+                                ctx.width = image.width;
+                                ctx.height = image.height;
+                                ctx.clearRect(0, 0, ctx.width, ctx.height);
+                                ctx.drawImage(image, 0, 0, ctx.width, ctx.height);
+                                
+
+                           
+                                this.animation_frame_canvas_rotating--;
+                                console.log(this.animation_frame_canvas_rotating)
+                                if(this.animations_sequences_canvas_rotating[1]["scrollDown"]){
+                                    
+                                    return
+                                }
+                                if (this.animation_frame_canvas_rotating < this.animations_sequences_canvas_rotating[1]["startFrame"]) {
+                                    console.log("finised reverse")
+                                    return
+                                }
+
+            
+                                setTimeout(loadNextFrame, 1000 / this.animations_sequences_canvas_rotating[1]["frameRate"]);  // Adjust the delay for the desired frame rate
+                            };
+                        }
+            
+                        loadNextFrame();
+                        
+
+                    };
+                    
+               
+            }
+            }
+            else if ( scrollTopY >= inner_break_4 && scrollTopY < inner_break_5){
+                // this.animations_sequences_canvas_rotating[0]["isStartedForward"] = false;
+                this.animations_sequences_canvas_rotating[1]["isStartedBackward"] = false;
+
+                this.animations_sequences_canvas_rotating[2]["scrollDown"] = scrollDown;
+                // ANIMATION 1 START FORWARD
+                if(!this.animations_sequences_canvas_rotating[2]["isStartedForward"] && this.animations_sequences_canvas_rotating[2]["scrollDown"]){ 
+                    console.log("running ....")    
+                    this.animations_sequences_canvas_rotating[2]["isStartedForward"] = true;
+                        
+                    const image = new Image();
+                    image.src = this.animations_sequences_canvas_rotating[2]["link_begin"] + this.animation_frame_canvas_rotating + this.animations_sequences_canvas_rotating[2]["link_end"]
+                    image.onload = () => {
+                        canvas.width = image.width;
+                        canvas.height = image.height;
+        
+                        const  loadNextFrame = () => {
+                            image.src = this.animations_sequences_canvas_rotating[2]["link_begin"] + this.animation_frame_canvas_rotating + this.animations_sequences_canvas_rotating[2]["link_end"]
+                            image.onload = () => {
+                                ctx.width = image.width;
+                                ctx.height = image.height;
+                                ctx.clearRect(0, 0, ctx.width, ctx.height);
+                                ctx.drawImage(image, 0, 0, ctx.width, ctx.height);
+                                
+                                console.log(this.animation_frame_canvas_rotating)
+
+                                if(!this.animations_sequences_canvas_rotating[2]["scrollDown"]){
+                                    this.animations_sequences_canvas_rotating[2]["isStartedBackward"] = false;
+                                    
+                                    return
+                                }
+                                this.animation_frame_canvas_rotating++;
+
+                                if (this.animation_frame_canvas_rotating > this.animations_sequences_canvas_rotating[2]["endFrame"] ) {
+                                    this.animation_frame_canvas_rotating--
+                                    console.log("finished")
+                                    this.animations_sequences_canvas_rotating[2]["isStartedBackward"] = false;
+
+                                    return
+                                }
+
+            
+                                setTimeout(loadNextFrame, 750 / this.animations_sequences_canvas_rotating[2]["frameRate"]);  // Adjust the delay for the desired frame rate
+                            };
+                        }
+            
+                        loadNextFrame();
+                        
+
+                    };
+                    
+                    
+                }
+                if (!this.animations_sequences_canvas_rotating[2]["scrollDown"] &&  !this.animations_sequences_canvas_rotating[2]["isStartedBackward"]){
+                    console.log("ENTERED THE REVERSE ")
+                    this.animations_sequences_canvas_rotating[2]["isStartedBackward"] = true;
+                    const image = new Image();
+                    image.src = this.animations_sequences_canvas_rotating[2]["link_begin"] + this.animation_frame_canvas_rotating + this.animations_sequences_canvas_rotating[2]["link_end"]
+                    image.onload = () => {
+                        canvas.width = image.width;
+                        canvas.height = image.height;
+        
+                        const  loadNextFrame = () => {
+                            image.src = this.animations_sequences_canvas_rotating[2]["link_begin"] + this.animation_frame_canvas_rotating + this.animations_sequences_canvas_rotating[2]["link_end"]
+                            image.onload = () => {
+                                ctx.width = image.width;
+                                ctx.height = image.height;
+                                ctx.clearRect(0, 0, ctx.width, ctx.height);
+                                ctx.drawImage(image, 0, 0, ctx.width, ctx.height);
+                                
+
+                           
+                                this.animation_frame_canvas_rotating--;
+                                console.log(this.animation_frame_canvas_rotating)
+                                if(this.animations_sequences_canvas_rotating[2]["scrollDown"]){
+                                    this.animations_sequences_canvas_rotating[2]["isStartedForward"] = false;
+                                    return
+                                }
+                                if (this.animation_frame_canvas_rotating < this.animations_sequences_canvas_rotating[2]["startFrame"]) {
+                                    console.log("finised reverse")
+                                    this.animations_sequences_canvas_rotating[2]["isStartedForward"] = false;
+                                    return
+                                }
+
+            
+                                setTimeout(loadNextFrame, 1000 / this.animations_sequences_canvas_rotating[2]["frameRate"]);  // Adjust the delay for the desired frame rate
+                            };
+                        }
+            
+                        loadNextFrame();
+                        
+
+                    };
+                    
+               
+            }
             }
         }
     }
