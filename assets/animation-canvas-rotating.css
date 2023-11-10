@@ -14,3 +14,83 @@
   transform: translate(-50%, -50%);
   object-fit: contain;
 }
+.animation_rotation_canvas .description_text {
+  position: absolute;
+  left: 13%;
+  top: 65%;
+  width: 40%;
+  transform: translateY(-50%);
+  z-index: 2;
+  opacity: 0;
+  transition: 0.8s ease;
+}
+.animation_rotation_canvas .description_text h1 {
+  font-size: 3.2vw;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  line-height: 1.1;
+  margin-bottom: 3.5vw;
+  color: white;
+}
+.animation_rotation_canvas .description_text p {
+  color: #969696;
+  letter-spacing: 0.03em;
+  font-size: 1.2vw;
+}
+.animation_rotation_canvas .description_text p strong {
+  font-weight: 400;
+  color: #fff;
+}
+.animation_rotation_canvas .behind_title {
+  position: absolute;
+  left: 50%;
+  font-weight: 700;
+  top: 50%;
+  font-size: 6.5vw;
+  transition: 0.8s ease;
+  transform: translate(-50%);
+  width: 100%;
+  text-align: center;
+  height: fit-content;
+  display: flex;
+  color: white;
+  justify-content: center;
+}
+.animation_rotation_canvas .behind_title .span1 {
+  padding-right: 0%;
+  transition: 0.8s ease;
+}
+.animation_rotation_canvas .behind_title .span2 {
+  padding-left: 0%;
+  transition: 0.8s ease;
+}
+
+@media (max-width: 550px) {
+  .animation_rotation_canvas canvas {
+    aspect-ratio: 16/9;
+    width: 220%;
+    top: 45%;
+  }
+  .animation_rotation_canvas .behind_title {
+    left: 0;
+    top: 42%;
+    font-size: 9.5vw;
+    transform: translateY(0);
+  }
+  .animation_rotation_canvas .description_text {
+    width: 90%;
+    top: 30%;
+    left: 5%;
+  }
+  .animation_rotation_canvas .description_text h1 {
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    line-height: 1.1;
+    margin-bottom: 3.5vw;
+    font-size: 7vw;
+  }
+  .animation_rotation_canvas .description_text p {
+    font-size: 3.6vw;
+    line-height: 1.5;
+  }
+}

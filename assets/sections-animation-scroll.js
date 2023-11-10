@@ -28,7 +28,7 @@ class SectionsAnimationScroll extends HTMLElement {
             {
                 "link_begin": "https://cdn.shopify.com/s/files/1/0077/3953/9515/files/tmwhite_",
                 "link_end": ".webp?v=1691663754",
-                "frameRate": 7,
+                "frameRate": 12,
                 "startFrame": 7,
                 "endFrame": 11,
                 "isStarted": false,
@@ -812,9 +812,21 @@ class SectionsAnimationScroll extends HTMLElement {
     initAnimationCanvasWithTitle(scrollTopY,startPoint,scrollDown,breakPoint,previousBreakPoint){
 
         let animation_canvas_with_title = this.querySelector(".animation_canvas_with_title");
+        
+        let title_behind_canvas = animation_canvas_with_title.querySelector(".title_behind_canvas");
+        let bottom_description = animation_canvas_with_title.querySelector(".bottom_description");
+
+        let canvas_layout_desc_1 = animation_canvas_with_title.querySelector(".canvas_layout_desc_1");
+        let canvas_layout_desc_1_span = canvas_layout_desc_1.querySelector("span");
+        let canvas_layout_desc_2 = animation_canvas_with_title.querySelector(".canvas_layout_desc_2");                  
+        let canvas_layout_desc_2_span = canvas_layout_desc_2.querySelector("span");
+        let canvas_layout_desc_3 = animation_canvas_with_title.querySelector(".canvas_layout_desc_3");                  
+        let canvas_layout_desc_3_span = canvas_layout_desc_3.querySelector("span");
+        let canvas_layout_desc_4 = animation_canvas_with_title.querySelector(".canvas_layout_desc_4");                  
+        let canvas_layout_desc_4_span = canvas_layout_desc_4.querySelector("span");
 
         let canvas = animation_canvas_with_title.querySelector("canvas")
-        let ctx = canvas.getContext("2d")
+        let ctx = canvas.getContext("2d")       
 
         let inner_break_1 = startPoint;
         let inner_break_2 = inner_break_1 +  300;
@@ -837,7 +849,12 @@ class SectionsAnimationScroll extends HTMLElement {
             // vertical_tabs_features_component.style.marginTop = (breakPoint - previousBreakPoint) + "px";
             animation_canvas_with_title.style.position = "relative";  
             animation_canvas_with_title.style.removeProperty("z-index");
-            animation_canvas_with_title.style.opacity = "0"
+            animation_canvas_with_title.style.opacity = "0";
+
+            canvas_layout_desc_3.style.opacity = "0";
+            canvas_layout_desc_4.style.opacity = "0";
+            canvas_layout_desc_3_span.style.paddingLeft = "0"
+            canvas_layout_desc_4_span.style.paddingRight = "0";
             
         }else{
             animation_canvas_with_title.style.position = "fixed";
@@ -863,11 +880,24 @@ class SectionsAnimationScroll extends HTMLElement {
                     ctx.clearRect(0, 0, ctx.width, ctx.height);
                     ctx.drawImage(image, 0, 0, ctx.width, ctx.height);
                 }
-                
-                
+                this.animations_sequences_canvas1[0]["isStartedForward"] = false
+                this.animation_frame_canvas1 = 1
+                //reset bottom desc
+                bottom_description.style.opacity = "0"
+                bottom_description.style.bottom = "3%"
+                //reset behind title animation
+                title_behind_canvas.style.opacity = "0";
+                title_behind_canvas.style.bottom = "20%";
+                title_behind_canvas.style.transform = "scale(.7)";
+                title_behind_canvas.style.color = "#4c4c4c";
             }
             else if(scrollTopY>=inner_break_2 && scrollTopY < inner_break_3 ){
-               
+                //reset next anim desc 
+                canvas_layout_desc_1.style.opacity = "0";
+                canvas_layout_desc_2.style.opacity = "0";
+                canvas_layout_desc_1_span.style.paddingLeft = "0"
+                canvas_layout_desc_2_span.style.paddingRight = "0";
+
                 this.animations_sequences_canvas1[0]["scrollDown"] = scrollDown;
                 // ANIMATION 1 START FORWARD
                 if(!this.animations_sequences_canvas1[0]["isStartedForward"] && this.animations_sequences_canvas1[0]["scrollDown"]){ 
@@ -875,13 +905,13 @@ class SectionsAnimationScroll extends HTMLElement {
                     this.animations_sequences_canvas1[0]["isStartedForward"] = true;
                         
                     const image = new Image();
-                    image.src = this.animations_sequences_canvas1[0]["link_begin"] + this.animation_frame_canvas_rotating + this.animations_sequences_canvas1[0]["link_end"]
+                    image.src = this.animations_sequences_canvas1[0]["link_begin"] + this.animation_frame_canvas1 + this.animations_sequences_canvas1[0]["link_end"]
                     image.onload = () => {
                         canvas.width = image.width;
                         canvas.height = image.height;
         
                         const  loadNextFrame = () => {
-                            image.src = this.animations_sequences_canvas1[0]["link_begin"] + this.animation_frame_canvas_rotating + this.animations_sequences_canvas1[0]["link_end"]
+                            image.src = this.animations_sequences_canvas1[0]["link_begin"] + this.animation_frame_canvas1 + this.animations_sequences_canvas1[0]["link_end"]
                             image.onload = () => {
                                 ctx.width = image.width;
                                 ctx.height = image.height;
@@ -889,7 +919,7 @@ class SectionsAnimationScroll extends HTMLElement {
                                 ctx.drawImage(image, 0, 0, ctx.width, ctx.height);
                                 this.animation_frame_canvas1++;
                                 console.log(this.animation_frame_canvas1)
-
+                                console.log("FORWARD 1")
                                 if(!this.animations_sequences_canvas1[0]["scrollDown"]){
                                     
                                     return
@@ -911,9 +941,27 @@ class SectionsAnimationScroll extends HTMLElement {
 
                     };
                     
-                    
+                     //behind title animation
+                    title_behind_canvas.style.opacity = "1";
+                    let mediaQuery = window.matchMedia("(max-width: 550px)");
+                    title_behind_canvas.style.bottom = "43%";
+                    // Check if the media query matches
+                    if (mediaQuery.matches) {
+                        title_behind_canvas.style.bottom = "70%";
+                    }
+                    title_behind_canvas.style.transform = "scale(1)";
+                    title_behind_canvas.style.color = "white";
+                    this.animations_sequences_canvas1[0]["scrollDown"] = scrollDown;
+                    //bottom desc
+                    bottom_description.style.opacity = "1"
+                    bottom_description.style.bottom = "10%"
+                    if (mediaQuery.matches) {
+                        bottom_description.style.bottom = "24%";
+                    }
                 }
+
                 if (!this.animations_sequences_canvas1[0]["scrollDown"] &&  !this.animations_sequences_canvas1[0]["isStartedBackward"]){
+                    
                     console.log("ENTERED THE REVERSE ")
                     this.animations_sequences_canvas1[0]["isStartedBackward"] = true;
                     const image = new Image();
@@ -953,12 +1001,33 @@ class SectionsAnimationScroll extends HTMLElement {
                         
 
                     };
-                    
+                    //reset bottom desc
+                    bottom_description.style.opacity = "0"
+                    bottom_description.style.bottom = "3%"
+                    //reset behind title animation
+                    title_behind_canvas.style.opacity = "0";
+                    title_behind_canvas.style.bottom = "20%";
+                    title_behind_canvas.style.transform = "scale(.7)";
+                    title_behind_canvas.style.color = "#4c4c4c";
                 }
                 this.animations_sequences_canvas1[1]["isStartedForward"] = false;
                 // this.animations_sequences_canvas1[1]["isStartedBackward"] = false;
             }
             else if ( scrollTopY >= inner_break_3 && scrollTopY < inner_break_4){
+                //reset next anim desc
+                canvas_layout_desc_3.style.opacity = "0";
+                canvas_layout_desc_4.style.opacity = "0";
+                canvas_layout_desc_3_span.style.paddingLeft = "0"
+                canvas_layout_desc_4_span.style.paddingRight = "0";
+                //reset bottom desc
+                bottom_description.style.opacity = "0"
+                bottom_description.style.bottom = "3%"
+                //reset behind title animation
+                title_behind_canvas.style.opacity = "0";
+                title_behind_canvas.style.bottom = "20%";
+                title_behind_canvas.style.transform = "scale(.7)";
+                title_behind_canvas.style.color = "#4c4c4c";
+
                 this.animations_sequences_canvas1[2]["isStartedBackward"] = false;
 
                 // this.animations_sequences_canvas1[0]["isStartedForward"] = false;
@@ -994,7 +1063,10 @@ class SectionsAnimationScroll extends HTMLElement {
                                     
                                     console.log("finished")
 
-
+                                    canvas_layout_desc_1.style.opacity = "1";
+                                    canvas_layout_desc_2.style.opacity = "1";
+                                    canvas_layout_desc_1_span.style.paddingLeft = "7vw"
+                                    canvas_layout_desc_2_span.style.paddingRight = "22vw";
                                     return
                                 }
             
@@ -1046,13 +1118,18 @@ class SectionsAnimationScroll extends HTMLElement {
             
                         loadNextFrame();
                         
-
+                    
                     };
                     
                
             }
             }
             else if ( scrollTopY >= inner_break_4 && scrollTopY < inner_break_5){
+                canvas_layout_desc_1.style.opacity = "0";
+                canvas_layout_desc_2.style.opacity = "0";
+                canvas_layout_desc_1_span.style.paddingLeft = "0"
+                canvas_layout_desc_2_span.style.paddingRight = "0";
+
                 // this.animations_sequences_canvas1[0]["isStartedForward"] = false;
                 this.animations_sequences_canvas1[1]["isStartedBackward"] = false;
 
@@ -1089,7 +1166,10 @@ class SectionsAnimationScroll extends HTMLElement {
                                     this.animation_frame_canvas1--
                                     console.log("finished")
                                     this.animations_sequences_canvas1[2]["isStartedBackward"] = false;
-
+                                    canvas_layout_desc_3.style.opacity = "1";
+                                    canvas_layout_desc_4.style.opacity = "1";
+                                    canvas_layout_desc_3_span.style.paddingLeft = "14vw"
+                                    canvas_layout_desc_4_span.style.paddingRight = "22vw";
                                     return
                                 }
 
@@ -1156,6 +1236,10 @@ class SectionsAnimationScroll extends HTMLElement {
     initAnimationCanvasRotating(scrollTopY,startPoint,scrollDown,breakPoint,previousBreakPoint){
 
         let animation_rotation_canvas = this.querySelector(".animation_rotation_canvas");
+        let description_text = animation_rotation_canvas.querySelector(".description_text");
+        let behind_title = animation_rotation_canvas.querySelector(".behind_title");
+        let behind_title_span1 = animation_rotation_canvas.querySelector(".span1")
+        let behind_title_span2 = animation_rotation_canvas.querySelector(".span2")
 
         let canvas = animation_rotation_canvas.querySelector("canvas")
         let ctx = canvas.getContext("2d")
@@ -1179,6 +1263,9 @@ class SectionsAnimationScroll extends HTMLElement {
             // this.animations_sequences_canvas_rotating[0]["isStartedForward"] = false;
             this.animations_sequences_canvas_rotating[0]["isStartedForward"] = false;
             this.animations_sequences_canvas_rotating[0]["isStartedBackward"] = false;
+            behind_title_span1.style.paddingRight = "0%"
+            behind_title_span2.style.paddingLeft = "0%"
+            behind_title.style.opacity = "1"
             
         }else if(scrollTopY > breakPoint){ 
             //When we go to the next section
@@ -1197,6 +1284,7 @@ class SectionsAnimationScroll extends HTMLElement {
 
             
             if(scrollTopY>=inner_break_1 && scrollTopY < inner_break_2){
+                
 
                 const image = new Image();
               
@@ -1240,11 +1328,21 @@ class SectionsAnimationScroll extends HTMLElement {
                                 console.log(this.animation_frame_canvas_rotating)
 
                                 if(!this.animations_sequences_canvas_rotating[0]["scrollDown"]){
-                                    
+                                   
                                     return
                                 }
                                 if (this.animation_frame_canvas_rotating > this.animations_sequences_canvas_rotating[0]["endFrame"]) {
-                                    
+                                    behind_title_span1.style.paddingRight = "8%"
+                                    behind_title_span2.style.paddingLeft = "8%"
+                                    let mediaQuery = window.matchMedia("(max-width: 550px)");
+
+                                    // Check if the media query matches
+                                    if (mediaQuery.matches) {
+                                        behind_title.style.transform = "translateY(-350%)";
+                                        behind_title_span1.style.paddingRight = "5%"
+                                        behind_title_span2.style.paddingLeft = "0%"
+                                    }
+
                                     console.log("finished")
 
 
@@ -1308,6 +1406,8 @@ class SectionsAnimationScroll extends HTMLElement {
                 // this.animations_sequences_canvas_rotating[1]["isStartedBackward"] = false;
             }
             else if ( scrollTopY >= inner_break_3 && scrollTopY < inner_break_4){
+                description_text.style.opacity = "0";
+                behind_title.style.opacity = "0"
                 this.animations_sequences_canvas_rotating[2]["isStartedBackward"] = false;
 
                 // this.animations_sequences_canvas_rotating[0]["isStartedForward"] = false;
@@ -1360,6 +1460,7 @@ class SectionsAnimationScroll extends HTMLElement {
                 }
                 if (!this.animations_sequences_canvas_rotating[1]["scrollDown"] &&  !this.animations_sequences_canvas_rotating[1]["isStartedBackward"]){
                     console.log("ENTERED THE REVERSE ")
+                    description_text.style.opacity = "0";
                     this.animations_sequences_canvas_rotating[1]["isStartedBackward"] = true;
                     const image = new Image();
                     image.src = this.animations_sequences_canvas_rotating[1]["link_begin"] + this.animation_frame_canvas_rotating + this.animations_sequences_canvas_rotating[1]["link_end"]
@@ -1435,6 +1536,7 @@ class SectionsAnimationScroll extends HTMLElement {
                                 this.animation_frame_canvas_rotating++;
 
                                 if (this.animation_frame_canvas_rotating > this.animations_sequences_canvas_rotating[2]["endFrame"] ) {
+                                    description_text.style.opacity = "1";
                                     this.animation_frame_canvas_rotating--
                                     console.log("finished")
                                     this.animations_sequences_canvas_rotating[2]["isStartedBackward"] = false;

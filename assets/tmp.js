@@ -1,3 +1,15 @@
+
+//reset behind title animation
+title_behind_canvas.style.opacity = "0";
+title_behind_canvas.style.bottom = "20%";
+title_behind_canvas.style.transform = "scale(.7)";
+title_behind_canvas.style.color = "#4c4c4c";
+//reset bottom desc
+bottom_description.style.opacity = "0"
+bottom_description.style.bottom = "3%"
+
+
+
 //HERE IS THE LOGIC OF A SCROLLING SECTIONS
 class SectionsAnimationScroll extends HTMLElement {
     constructor() {
