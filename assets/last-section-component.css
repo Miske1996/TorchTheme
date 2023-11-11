@@ -7,6 +7,7 @@
   opacity: 0;
   flex-direction: column;
   overflow-y: scroll;
+  transition: all 0.5s;
 }
 .last_section_component .section_1 {
   width: 100%;

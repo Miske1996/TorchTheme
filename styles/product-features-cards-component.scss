@@ -59,13 +59,13 @@
         flex-wrap: wrap;
         justify-content: space-between;
         display: flex;
-
+        height: 80vh;
         .wide_card_top_feature_container{
             flex: 0 1 100%;
             overflow: hidden;
             border-radius: 1vw;
             transition: .5s ease;
-            height: 42vh;
+            height: 43%;
             position: relative;
             display: flex;
             flex-direction: column;
@@ -104,8 +104,8 @@
             border-radius: 1vw;
             transition: .5s ease;
             margin-bottom: 2vw;
-            flex: 0 1 calc((100% - 8vw)/4);
-            height: 42vh;
+            width: 23%;
+            height: 58%;
             position: relative;
             display: flex;
             flex-direction: column;
@@ -120,7 +120,7 @@
                 img{
                     width: 100%;
                     height: 100%;
-                    object-fit: contain;  
+                    object-fit: cover;
                 }
             }
             .title_card_feature_product{
