@@ -223,19 +223,19 @@ class SectionsAnimationScroll extends HTMLElement {
             //START SECTION 12 ANIMATION
             this.initAnimationPathFinder(scrollTopY,window_height*34,this.isScrollingDown,window_height * 35)
             //RESET SECTION 13 ANIMATION
-            this.initLastSection(scrollTopY,window_height*35,this.isScrollingDown,window_height * 38)
+            this.initLastSection(scrollTopY,window_height*35,this.isScrollingDown,window_height * 36)
         }
 
         // 13 - SECTION 13: LAST SECTION
-        else if( scrollTopY >= (window_height * 35) && scrollTopY <= (window_height * 38)){
+        else if( scrollTopY >= (window_height * 35) && scrollTopY <= (window_height * 36)){
             //START SECTION 12 ANIMATION
             this.initAnimationPathFinder(scrollTopY,window_height*34,this.isScrollingDown,window_height * 35)
             //START SECTION 13 ANIMATION
-            this.initLastSection(scrollTopY,window_height*35,this.isScrollingDown,window_height * 38)
+            this.initLastSection(scrollTopY,window_height*35,this.isScrollingDown,window_height * 36)
         
-        }else if( scrollTopY > (window_height * 38)){
+        }else if( scrollTopY > (window_height * 36)){
             //START SECTION 13 ANIMATION
-            this.initLastSection(scrollTopY,window_height*35,this.isScrollingDown,window_height * 38)
+            this.initLastSection(scrollTopY,window_height*35,this.isScrollingDown,window_height * 36)
         }
 
     }
@@ -1801,6 +1801,7 @@ class SectionsAnimationScroll extends HTMLElement {
 
             last_section_component.style.opacity = "0"
             
+            last_section_component.style.overflowY = "scroll"
             
         }else if(scrollTopY > breakPoint){ 
             //When we go to the next section
@@ -1809,6 +1810,7 @@ class SectionsAnimationScroll extends HTMLElement {
             last_section_component.style.position = "relative";  
             last_section_component.style.removeProperty("z-index");
             last_section_component.style.opacity = "0"
+            last_section_component.style.overflowY = "scroll"
             
         }else{
             last_section_component.style.position = "fixed";
@@ -1839,6 +1841,7 @@ class SectionsAnimationScroll extends HTMLElement {
     initiateLastSectionScroll(){
         
         let last_section_component = this.querySelector(".last_section_component")
+        
         let elements = last_section_component.querySelectorAll(".scroll_el");
         let buttons_click = last_section_component.querySelectorAll(".scroller_container div")
         last_section_component.addEventListener('scroll', (event) => {
@@ -1850,6 +1853,15 @@ class SectionsAnimationScroll extends HTMLElement {
             } else  {
                 this.prevYLastSection = scrollTopY;
                 this.isScrollingDownLastSection = false;
+            }
+
+            
+            if(this.isScrollingDownLastSection && this.prevYLastSection == (last_section_component.scrollHeight - window.innerHeight)){
+                console.log("should remove the scroll")
+                last_section_component.style.overflowY = "hidden"
+            }else if (!this.isScrollingDownLastSection && this.prevYLastSection === 0){
+                console.log("should remove the scroll")
+                last_section_component.style.overflowY = "hidden"
             }
 
             if(this.isScrollingDownLastSection){
