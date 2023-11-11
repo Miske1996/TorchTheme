@@ -1,0 +1,112 @@
+.path_finder_feature_component{
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    top: 0;
+    position: relative;
+    background-color: black;
+
+    video{
+        aspect-ratio: 16/9;
+        width: 143%;
+        z-index: -1;
+    }
+    .text_feature_description{
+        position: absolute;
+        top: 5vw;
+        left: 9%;
+        width: 29%;
+        opacity: 1;
+        display: flex;
+        flex-direction: column;
+        transition: all .5s ;
+        .title_with_background{
+            background: linear-gradient(90deg,#C2AC90 0%,#A5886B 100%);
+            padding: .4vw 2vw;
+            border-radius: .3vw;
+            font-size: 1.25vw;
+            margin-bottom: 1.3vw;
+            color: #ffffff;
+            width: fit-content;
+        }
+        h2{
+            display: none;
+            font-size: 4vw;
+            letter-spacing: .03em;
+            margin-bottom: 4vw;
+            padding: 0;
+            border-radius: 0;
+            background: linear-gradient(90deg,#C2AC90 0%,#A5886B 100%),linear-gradient(0deg,#FFFFFF,#FFFFFF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+            font-weight: 700;
+        }
+        .title_feature{
+            font-size: 3.2vw;
+            font-weight: 700;
+            margin-bottom: 3vw;
+            line-height: 1.2;
+            letter-spacing: .1vw;
+            color: white;
+        }
+        .paragraph1{            
+            font-size: .95vw;
+            color: white;
+            transition: .6s;
+            top: 80%;
+            left: 0%;
+            position: absolute;
+        }
+        .paragraph2{            
+            font-size: .95vw;
+            color: white;
+            transition: .6s;
+            top: 100%;
+            left: 0%;
+            position: absolute;
+            // opacity: 0;
+        }
+        // opacity: 0;
+    }
+}
+@media (max-width: 550px){ 
+    .path_finder_feature_component{
+        .text_feature_description{
+            width: 90%;
+            left: 5%;
+            top: 20%;
+            align-items: center;
+            .title_with_background{
+                display: none;
+                
+            }
+           
+            .title_feature{
+                font-size: 6vw;
+                padding: 0 5vw;
+                margin-bottom: 4vw;
+                letter-spacing: .03em;
+            }
+            .paragraph1{
+                width: 100%;
+                margin-left: 0;
+                font-size: 3.7vw;
+                line-height: 1.4;
+                text-align: center;
+                span{
+                    display: none;
+                }
+            }
+            h2{
+                display: block;
+                text-align: center;
+            }
+        }
+        video{
+           width: auto;
+           height: 113%;
+        }
+    }
+}

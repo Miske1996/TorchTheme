@@ -86,7 +86,14 @@ class SectionsAnimationScroll extends HTMLElement {
         this.animateScroll = this.animateScroll.bind(this);
         
         this.animateScroll();
+
+        // Last Section initiate
+        this.isScrollingDownLastSection = true;
+        this.prevYLastSection = 0
+        this.initiateLastSectionScroll();
+             
     }
+    
     
     animateOnScroll(window_height){
         let scrollTopY = document.documentElement.scrollTop
@@ -174,29 +181,65 @@ class SectionsAnimationScroll extends HTMLElement {
             //START SECTION 8 ANIMATION
             this.initAnimationCanvasWithTitle(scrollTopY,window_height*26,this.isScrollingDown,window_height * 29)
             //START SECTION 9 ANIMATION
-            this.initAnimationCanvasRotating(scrollTopY,window_height*29,this.isScrollingDown,window_height * 34)
+            this.initAnimationCanvasRotating(scrollTopY,window_height*29,this.isScrollingDown,window_height * 32)
 
         }
 
          // 9 - SECTION 9: ANIMATION CANVAS WITH ROTATION
-         else if( scrollTopY >= (window_height * 29) && scrollTopY <= (window_height * 34)){
+         else if( scrollTopY >= (window_height * 29) && scrollTopY <= (window_height * 32)){
 
             //START SECTION 8 ANIMATION
             this.initAnimationCanvasWithTitle(scrollTopY,window_height*26,this.isScrollingDown,window_height * 29)
             //START SECTION 9 ANIMATION
-            this.initAnimationCanvasRotating(scrollTopY,window_height*29,this.isScrollingDown,window_height * 34)
-
-        }else if( scrollTopY > (window_height * 34)){
-           //REET SECTION 9 ANIMATION
-           this.initAnimationCanvasRotating(scrollTopY,window_height*29,this.isScrollingDown,window_height * 34)
+            this.initAnimationCanvasRotating(scrollTopY,window_height*29,this.isScrollingDown,window_height * 32)
+            //RESET SECTION 10 ANIMATION
+            this.initAnimationSectionIndentified(scrollTopY,window_height*32,this.isScrollingDown,window_height * 33)
         }
 
+        // 10 - SECTION 10: ANIMATION OBJECT IDENTIFIED
+        else if( scrollTopY >= (window_height * 32) && scrollTopY <= (window_height * 33)){
+            //RESET SECTION 9 ANIMATION
+           this.initAnimationCanvasRotating(scrollTopY,window_height*29,this.isScrollingDown,window_height * 32)
+            //START SECTION 10 ANIMATION
+            this.initAnimationSectionIndentified(scrollTopY,window_height*32,this.isScrollingDown,window_height * 33)
+            //RESET SECTION 11 ANIMATION
+            this.initAnimationAiAction(scrollTopY,window_height*33,this.isScrollingDown,window_height * 34)
+        }
+
+        // 11 - SECTION 11: ANIMATION AI ACTION
+        else if( scrollTopY >= (window_height * 33) && scrollTopY <= (window_height * 34)){
+            //START SECTION 10 ANIMATION
+            this.initAnimationSectionIndentified(scrollTopY,window_height*32,this.isScrollingDown,window_height * 33)
+            //START SECTION 11 ANIMATION
+            this.initAnimationAiAction(scrollTopY,window_height*33,this.isScrollingDown,window_height * 34)
+            //RESET SECTION 12 ANIMATION
+            this.initAnimationPathFinder(scrollTopY,window_height*34,this.isScrollingDown,window_height * 35)
+        }
+
+        // 12 - SECTION 12: ANIMATION PATH FINDER
+        else if( scrollTopY >= (window_height * 34) && scrollTopY <= (window_height * 35)){
+            //START SECTION 11 ANIMATION
+            this.initAnimationAiAction(scrollTopY,window_height*33,this.isScrollingDown,window_height * 34)
+            //START SECTION 12 ANIMATION
+            this.initAnimationPathFinder(scrollTopY,window_height*34,this.isScrollingDown,window_height * 35)
+            //RESET SECTION 13 ANIMATION
+            this.initLastSection(scrollTopY,window_height*35,this.isScrollingDown,window_height * 38)
+        }
+
+        // 13 - SECTION 13: LAST SECTION
+        else if( scrollTopY >= (window_height * 35) && scrollTopY <= (window_height * 38)){
+            //START SECTION 12 ANIMATION
+            this.initAnimationPathFinder(scrollTopY,window_height*34,this.isScrollingDown,window_height * 35)
+            //START SECTION 13 ANIMATION
+            this.initLastSection(scrollTopY,window_height*35,this.isScrollingDown,window_height * 38)
         
-        
-      
+        }else if( scrollTopY > (window_height * 38)){
+            //START SECTION 13 ANIMATION
+            this.initLastSection(scrollTopY,window_height*35,this.isScrollingDown,window_height * 38)
+        }
 
     }
-
+    
    
     animateScroll() {
         let window_height = window.innerHeight;
@@ -1601,6 +1644,282 @@ class SectionsAnimationScroll extends HTMLElement {
             }
             }
         }
+    }
+
+    // 10 - ANIMATION OVECT IDENTIFIED SECTION
+    initAnimationSectionIndentified(scrollTopY,startPoint,scrollDown,breakPoint,previousBreakPoint){
+
+        let objects_identified_component = this.querySelector(".objects_identified_component");
+       
+
+        let inner_break_1 = startPoint;
+        let inner_break_2 = inner_break_1 +  300;
+        let inner_break_3 = inner_break_2 +  600;
+     
+      
+
+        if(scrollTopY <= startPoint){
+            //When we go to the previous section
+            objects_identified_component.style.removeProperty("position");
+            objects_identified_component.style.removeProperty("z-index");
+
+            objects_identified_component.style.opacity = "0"
+           
+            
+        }else if(scrollTopY > breakPoint){ 
+            //When we go to the next section
+            //The margin is used to appear that we scrolled when the position fixed is over to relative
+            // vertical_tabs_features_component.style.marginTop = (breakPoint - previousBreakPoint) + "px";
+            objects_identified_component.style.position = "relative";  
+            objects_identified_component.style.removeProperty("z-index");
+            objects_identified_component.style.opacity = "0"
+            
+        }else{
+            objects_identified_component.style.position = "fixed";
+            objects_identified_component.style.removeProperty("margin");
+            objects_identified_component.style.zIndex = "1000";
+
+            objects_identified_component.style.opacity = "1";
+
+            
+            if(scrollTopY>=inner_break_1 && scrollTopY < inner_break_2){
+         
+            }
+            else if(scrollTopY>=inner_break_2 && scrollTopY < inner_break_3 ){
+
+            }
+        }        
+    }
+
+    // 11 - ANIMATION AI ACTION SECTION
+    initAnimationAiAction(scrollTopY,startPoint,scrollDown,breakPoint,previousBreakPoint){
+
+        let ai_action_feature_component = this.querySelector(".ai_action_feature_component");
+        let bg_img = ai_action_feature_component.querySelector("img");
+
+        let inner_break_1 = startPoint;
+        let inner_break_2 = inner_break_1 +  300;
+        let inner_break_3 = inner_break_2 +  600;
+     
+      
+
+        if(scrollTopY <= startPoint){
+            //When we go to the previous section
+            ai_action_feature_component.style.removeProperty("position");
+            ai_action_feature_component.style.removeProperty("z-index");
+
+            ai_action_feature_component.style.opacity = "0"
+           
+            
+        }else if(scrollTopY > breakPoint){ 
+            //When we go to the next section
+            //The margin is used to appear that we scrolled when the position fixed is over to relative
+            // vertical_tabs_features_component.style.marginTop = (breakPoint - previousBreakPoint) + "px";
+            ai_action_feature_component.style.position = "relative";  
+            ai_action_feature_component.style.removeProperty("z-index");
+            ai_action_feature_component.style.opacity = "0"
+            
+        }else{
+            ai_action_feature_component.style.position = "fixed";
+            ai_action_feature_component.style.removeProperty("margin");
+            ai_action_feature_component.style.zIndex = "1000";
+
+            ai_action_feature_component.style.opacity = "1";
+
+            
+            if(scrollTopY>=inner_break_1 && scrollTopY < inner_break_2){
+                bg_img.style.opacity = "0";
+            }
+            else if(scrollTopY>=inner_break_2 && scrollTopY < inner_break_3 ){
+                bg_img.style.opacity = "1";
+            }
+        }        
+    }
+
+    // 12 - ANIMATION PATH FINDER SECTION
+    initAnimationPathFinder(scrollTopY,startPoint,scrollDown,breakPoint,previousBreakPoint){
+
+        let path_finder_feature_component = this.querySelector(".path_finder_feature_component");
+        
+
+        let inner_break_1 = startPoint;
+        let inner_break_2 = inner_break_1 +  300;
+        let inner_break_3 = inner_break_2 +  600;
+     
+      
+
+        if(scrollTopY <= startPoint){
+            //When we go to the previous section
+            path_finder_feature_component.style.removeProperty("position");
+            path_finder_feature_component.style.removeProperty("z-index");
+
+            path_finder_feature_component.style.opacity = "0"
+           
+            
+        }else if(scrollTopY > breakPoint){ 
+            //When we go to the next section
+            //The margin is used to appear that we scrolled when the position fixed is over to relative
+            // vertical_tabs_features_component.style.marginTop = (breakPoint - previousBreakPoint) + "px";
+            path_finder_feature_component.style.position = "relative";  
+            path_finder_feature_component.style.removeProperty("z-index");
+            path_finder_feature_component.style.opacity = "0"
+            
+        }else{
+            path_finder_feature_component.style.position = "fixed";
+            path_finder_feature_component.style.removeProperty("margin");
+            path_finder_feature_component.style.zIndex = "1000";
+
+            path_finder_feature_component.style.opacity = "1";
+
+            
+            if(scrollTopY>=inner_break_1 && scrollTopY < inner_break_2){
+                
+            }
+            else if(scrollTopY>=inner_break_2 && scrollTopY < inner_break_3 ){
+                
+            }
+        }        
+    }
+
+    // 13 - LAST SECTION LOGIC
+    initLastSection(scrollTopY,startPoint,scrollDown,breakPoint,previousBreakPoint){
+        let last_section_component = this.querySelector(".last_section_component");
+
+        //section_1
+        let section_1 = last_section_component.querySelector(".section_1");
+        
+
+        let inner_break_1 = startPoint;
+        let inner_break_2 = inner_break_1 +  breakPoint/3;
+     
+      
+
+        if(scrollTopY <= startPoint){
+            //When we go to the previous section
+            last_section_component.style.removeProperty("position");
+            last_section_component.style.removeProperty("z-index");
+
+            last_section_component.style.opacity = "0"
+            
+            
+        }else if(scrollTopY > breakPoint){ 
+            //When we go to the next section
+            //The margin is used to appear that we scrolled when the position fixed is over to relative
+            // vertical_tabs_features_component.style.marginTop = (breakPoint - previousBreakPoint) + "px";
+            last_section_component.style.position = "relative";  
+            last_section_component.style.removeProperty("z-index");
+            last_section_component.style.opacity = "0"
+            
+        }else{
+            last_section_component.style.position = "fixed";
+            last_section_component.style.removeProperty("margin");
+            last_section_component.style.zIndex = "1000";
+
+            last_section_component.style.opacity = "1";
+
+            
+            if(scrollTopY>=inner_break_1 && scrollTopY < inner_break_2){
+                
+            }
+          
+        }        
+    }
+    //Initiate Last Section
+    handleIntersection(entries, observer) {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            // If the target div is in the viewport
+            entry.target.style.animation = ""
+            entry.target.offsetHeight
+            entry.target.style.animation = "fade 1s"
+            // observer.unobserve(entry.target); // Stop observing once the div is visible
+          }
+        });
+      }
+    initiateLastSectionScroll(){
+        
+        let last_section_component = this.querySelector(".last_section_component")
+        let elements = last_section_component.querySelectorAll(".scroll_el");
+        let buttons_click = last_section_component.querySelectorAll(".scroller_container div")
+        last_section_component.addEventListener('scroll', (event) => {
+            let scrollTopY = last_section_component.scrollTop
+            // Finding the scroll direction
+            if (scrollTopY > this.prevYLastSection) {
+                this.prevYLastSection = scrollTopY;
+                this.isScrollingDownLastSection = true;
+            } else  {
+                this.prevYLastSection = scrollTopY;
+                this.isScrollingDownLastSection = false;
+            }
+
+            if(this.isScrollingDownLastSection){
+                elements[0].style.opacity = "0";
+                elements[1].style.opacity = "1";
+                buttons_click[0].style.opacity = "0.3"
+                buttons_click[1].style.opacity = "1"
+            }else{
+                elements[0].style.opacity = "1";
+                elements[1].style.opacity = "0";
+                buttons_click[0].style.opacity = "1"
+                buttons_click[1].style.opacity = "0.3"
+            }
+        });
+        
+        buttons_click[0].addEventListener('click' , () => {
+            elements[0].style.opacity = "1";
+            elements[1].style.opacity = "0";
+            buttons_click[0].style.opacity = "1"
+            buttons_click[1].style.opacity = "0.3"
+            
+        })
+        buttons_click[1].addEventListener('click' , () => {
+            elements[0].style.opacity = "0";
+            elements[1].style.opacity = "1";
+            buttons_click[0].style.opacity = "0.3"
+            buttons_click[1].style.opacity = "1"
+        })
+
+        const observer = new IntersectionObserver(this.handleIntersection, { threshold: 0 });
+        elements.forEach((el) => {
+            observer.observe(el.querySelector(".text_feature_description"));
+        })
+
+        let text1 =  last_section_component.querySelector(".app_container h1")
+        observer.observe(text1);
+        let text2 =  last_section_component.querySelectorAll(".app_container p")
+        text2.forEach((txt) => {
+            observer.observe(txt);
+        })
+        let rows = last_section_component.querySelectorAll(".features_section_rows .feature_row")
+ 
+        rows.forEach((row) => {
+            let header = row.querySelector("h1");
+            let paragraph = row.querySelector("p");
+            let image = row.querySelector("img");
+            observer.observe(header);
+            observer.observe(paragraph);
+            observer.observe(image);
+        })
+        
+        let cards_hovered_on = last_section_component.querySelectorAll(".cell")
+        let changin_card = last_section_component.querySelector(".changing_card")
+        observer.observe(changin_card);
+        let changin_card_img =  changin_card.querySelector("img")
+        let changin_card_title =  changin_card.querySelector("span")
+        console.log(cards_hovered_on)
+        cards_hovered_on.forEach((card) => {
+            observer.observe(card);
+            card.addEventListener('mouseover' , ()=> {
+                changin_card_img.src = card.querySelector(".hidden").src
+                changin_card_title.innerText = card.querySelector(".title").innerHTML
+            })
+        })
+        
+        let specs = last_section_component.querySelectorAll(".main_specifications_content > div")
+        specs.forEach((spec) => {
+            observer.observe(spec);
+        }) 
+        
     }
 }
 customElements.define('sections-animation-scroll', SectionsAnimationScroll);
