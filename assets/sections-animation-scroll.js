@@ -223,19 +223,19 @@ class SectionsAnimationScroll extends HTMLElement {
             //START SECTION 12 ANIMATION
             this.initAnimationPathFinder(scrollTopY,window_height*33,this.isScrollingDown,window_height * 33.5)
             //RESET SECTION 13 ANIMATION
-            this.initLastSection(scrollTopY,window_height*33.5,this.isScrollingDown,window_height * 34)
+            this.initLastSection(scrollTopY,window_height*33.5,this.isScrollingDown,window_height * 35)
         }
 
         // 13 - SECTION 13: LAST SECTION
-        else if( scrollTopY >= (window_height * 33.5) && scrollTopY <= (window_height * 34)){
+        else if( scrollTopY >= (window_height * 33.5) && scrollTopY <= (window_height * 35)){
             //START SECTION 12 ANIMATION
             this.initAnimationPathFinder(scrollTopY,window_height*33,this.isScrollingDown,window_height * 33.5)
             //START SECTION 13 ANIMATION
-            this.initLastSection(scrollTopY,window_height*33.5,this.isScrollingDown,window_height * 34)
+            this.initLastSection(scrollTopY,window_height*33.5,this.isScrollingDown,window_height * 35)
         
-        }else if( scrollTopY > (window_height * 34)){
+        }else if( scrollTopY > (window_height * 35)){
             //START SECTION 13 ANIMATION
-            this.initLastSection(scrollTopY,window_height*33.5,this.isScrollingDown,window_height * 34)
+            this.initLastSection(scrollTopY,window_height*33.5,this.isScrollingDown,window_height * 35)
         }
 
     }
@@ -473,9 +473,9 @@ class SectionsAnimationScroll extends HTMLElement {
         let text_description_overlay_feature_container = overlay_animation_container.querySelector(".text_description_overlay_feature_container");
 
         let inner_break_1 = startPoint;
-        let inner_break_2 = inner_break_1 + ((breakPoint - startPoint)/ 4);
-        let inner_break_3 = inner_break_2  + ((breakPoint - startPoint)*3/8);
-        let inner_break_4 = inner_break_3  + ((breakPoint - startPoint)*3/8);
+        let inner_break_2 = inner_break_1 + ((breakPoint - startPoint)/ 3);
+        let inner_break_3 = inner_break_2  + ((breakPoint - startPoint)/3);
+        let inner_break_4 = inner_break_3  + ((breakPoint - startPoint)/3);
 
         if(scrollTopY <= startPoint){
             //When we go to the previous section
@@ -500,6 +500,8 @@ class SectionsAnimationScroll extends HTMLElement {
             feautres_cards_product_container.style.removeProperty("margin");
 
             if(scrollTopY>=inner_break_1 && scrollTopY < inner_break_2){
+                overlay_animation_container.style.display = "none";
+              
             }else if(scrollTopY>=inner_break_2 && scrollTopY < inner_break_3){
                 
 
@@ -989,7 +991,7 @@ class SectionsAnimationScroll extends HTMLElement {
                      //behind title animation
                     title_behind_canvas.style.opacity = "1";
                     let mediaQuery = window.matchMedia("(max-width: 550px)");
-                    title_behind_canvas.style.bottom = "43%";
+                    title_behind_canvas.style.bottom = "10%";
                     // Check if the media query matches
                     if (mediaQuery.matches) {
                         title_behind_canvas.style.bottom = "70%";
@@ -1812,6 +1814,7 @@ class SectionsAnimationScroll extends HTMLElement {
             last_section_component.style.overflowY = "scroll"
             
         }else{
+            last_section_component.focus();
             last_section_component.style.position = "fixed";
             last_section_component.style.removeProperty("margin");
             last_section_component.style.zIndex = "1000";
@@ -1857,10 +1860,14 @@ class SectionsAnimationScroll extends HTMLElement {
             
             if(this.isScrollingDownLastSection && this.prevYLastSection == (last_section_component.scrollHeight - window.innerHeight)){
                 console.log("should remove the scroll")
-                last_section_component.style.overflowY = "hidden"
+                last_section_component.style.position = "relative";
+                last_section_component.style.opacity = "0";
+                // last_section_component.style.overflowY = "hidden"
             }else if (!this.isScrollingDownLastSection && this.prevYLastSection === 0){
                 console.log("should remove the scroll")
-                last_section_component.style.overflowY = "hidden"
+                // last_section_component.style.overflowY = "hidden"
+                last_section_component.style.position = "relative";
+                last_section_component.style.opacity = "0";
             }
 
             if(this.isScrollingDownLastSection){
