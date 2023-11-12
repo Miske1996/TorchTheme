@@ -1814,8 +1814,11 @@ class SectionsAnimationScroll extends HTMLElement {
             last_section_component.style.overflowY = "scroll"
             
         }else{
-            last_section_component.focus();
+            // last_section_component.focus();
+            // last_section_component.click();
             last_section_component.style.position = "fixed";
+            last_section_component.style.display = "flex";
+
             last_section_component.style.removeProperty("margin");
             last_section_component.style.zIndex = "1000";
 
@@ -1862,12 +1865,23 @@ class SectionsAnimationScroll extends HTMLElement {
                 console.log("should remove the scroll")
                 last_section_component.style.position = "relative";
                 last_section_component.style.opacity = "0";
-                // last_section_component.style.overflowY = "hidden"
+                last_section_component.style.overflowY = "hidden"
+                last_section_component.style.display = "none";
+                last_section_component.blur()
+               
+
+                console.log("finished it ")
             }else if (!this.isScrollingDownLastSection && this.prevYLastSection === 0){
                 console.log("should remove the scroll")
-                // last_section_component.style.overflowY = "hidden"
+                last_section_component.blur()
+                last_section_component.style.overflowY = "hidden"
                 last_section_component.style.position = "relative";
                 last_section_component.style.opacity = "0";
+                last_section_component.style.display = "none";
+
+                console.log("finish it")
+            }else{
+                last_section_component.style.background = "black";
             }
 
             if(this.isScrollingDownLastSection){
