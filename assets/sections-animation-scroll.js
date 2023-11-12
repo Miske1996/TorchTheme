@@ -109,7 +109,7 @@ class SectionsAnimationScroll extends HTMLElement {
     }
     
     handleWheel(event) {
-        event.preventDefault();
+        // event.preventDefault();
 
         const deltaY = event.deltaY;
         const timestamp = performance.now();
@@ -1881,6 +1881,9 @@ class SectionsAnimationScroll extends HTMLElement {
         
         let elements = last_section_component.querySelectorAll(".scroll_el");
         let buttons_click = last_section_component.querySelectorAll(".scroller_container div")
+        last_section_component.addEventListener('click',()=>{
+            console.log("clickckck")
+        })
         last_section_component.addEventListener('scroll', (event) => {
             let scrollTopY = last_section_component.scrollTop
             // Finding the scroll direction
@@ -1901,6 +1904,7 @@ class SectionsAnimationScroll extends HTMLElement {
                 // last_section_component.style.overflowY = "hidden"
             }else if (!this.isScrollingDownLastSection && this.prevYLastSection === 0){
                 last_section_component.click()
+                
                 console.log("should remove the scroll")
                 // last_section_component.style.overflowY = "hidden"
                 last_section_component.style.position = "relative";
