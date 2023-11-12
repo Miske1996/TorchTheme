@@ -1895,14 +1895,17 @@ class SectionsAnimationScroll extends HTMLElement {
             
             if(this.isScrollingDownLastSection && this.prevYLastSection == (last_section_component.scrollHeight - window.innerHeight)){
                 console.log("should remove the scroll")
+                last_section_component.click()
                 last_section_component.style.position = "relative";
                 last_section_component.style.opacity = "0";
                 // last_section_component.style.overflowY = "hidden"
             }else if (!this.isScrollingDownLastSection && this.prevYLastSection === 0){
+                last_section_component.click()
                 console.log("should remove the scroll")
                 // last_section_component.style.overflowY = "hidden"
                 last_section_component.style.position = "relative";
                 last_section_component.style.opacity = "0";
+
             }
 
             if(this.isScrollingDownLastSection){
