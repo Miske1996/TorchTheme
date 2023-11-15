@@ -6,16 +6,16 @@ class SectionsAnimationScroll extends HTMLElement {
         this.initSectionHero()
 
 
-        //Scroll behavior
-        this.scrollSpeedFactor = 0.2;
-        this.lastScrollTop = window.scrollY;
-        this.lastTimestamp = performance.now();
+        // //Scroll behavior
+        // this.scrollSpeedFactor = 0.2;
+        // this.lastScrollTop = window.scrollY;
+        // this.lastTimestamp = performance.now();
 
-        // Bind the handleWheel method to the current instance
-        this.handleWheel = this.handleWheel.bind(this);
+        // // Bind the handleWheel method to the current instance
+        // this.handleWheel = this.handleWheel.bind(this);
 
-        // Add the wheel event listener to the window
-        window.addEventListener('wheel', this.handleWheel);
+        // // Add the wheel event listener to the window
+        // window.addEventListener('wheel', this.handleWheel);
 
 
         // this.initScroll();
@@ -92,15 +92,19 @@ class SectionsAnimationScroll extends HTMLElement {
 
             },
         ]
-       
-    
-
+        //Aimation Canvas Rotating Logic
+        this.initAnimationCanvasRotatingLogic()
+        //Animation Ai Action Logic
+        this.initAnimationAiActionLogic()
+        //Animation Ojects identified horizontal Scroll
+        this.initAnimationSectionIndentifiedLogic();
         // Initialize requestAnimationFrame loop
         this.rafId = null;
         this.animateScroll = this.animateScroll.bind(this);
         
         this.animateScroll();
-
+        //Last Vertical Tabs 
+        this.lastVerticalTabs();
         // Last Section initiate
         this.isScrollingDownLastSection = true;
         this.prevYLastSection = 0
@@ -134,22 +138,22 @@ class SectionsAnimationScroll extends HTMLElement {
         let scrollTopY = document.documentElement.scrollTop
 
         // 1 - FIRST SECTION DESCRIPTION SCROLL ANIMATION LOGIC
-        if(scrollTopY > (this.topTop + window_height * 0.9) && scrollTopY <= (window_height * 6)){
+        if(scrollTopY > (this.topTop + window_height * 0.75) && scrollTopY <= (window_height * 6)){
                                 
             //START SECTION 1 ANIMATION
-            this.initSectionFirstDescription(scrollTopY,window_height*0.9,this.isScrollingDown,window_height * 6)
+            this.initSectionFirstDescription(scrollTopY,window_height*0.75,this.isScrollingDown,window_height * 6)
             //RESET SECTION 2 ANIMATION
             this.initSectionAvailableProducts(scrollTopY,window_height*6,this.isScrollingDown,window_height * 10)
 
-        }else if (scrollTopY <= (this.topTop + window_height * 0.9)){
+        }else if (scrollTopY <= (this.topTop + window_height * 0.75)){
             //RESET SECTION 1 ANIMATION
-            this.initSectionFirstDescription(scrollTopY,window_height*0.9,this.isScrollingDown,window_height * 6)
+            this.initSectionFirstDescription(scrollTopY,window_height*0.75,this.isScrollingDown,window_height * 6)
         } 
 
         // 2 - SECTION 2: AVAILABLE PRODUCTS SCROLL ANIMATION LOGIC
         else if(scrollTopY > (window_height * 6) && scrollTopY <= (window_height * 8)){
             //RESET SECTION 1 ANIMATION
-            this.initSectionFirstDescription(scrollTopY,window_height*0.9,this.isScrollingDown,window_height * 6,window_height*6)
+            this.initSectionFirstDescription(scrollTopY,window_height*0.75,this.isScrollingDown,window_height * 6,window_height*6)
             //START SECTION 2 ANIMATION
             this.initSectionAvailableProducts(scrollTopY,window_height*6,this.isScrollingDown,window_height * 8)
             //RESET SECTION 3 ANIMATION
@@ -238,39 +242,49 @@ class SectionsAnimationScroll extends HTMLElement {
             //START SECTION 10 ANIMATION
             this.initAnimationSectionIndentified(scrollTopY,window_height*32,this.isScrollingDown,window_height * 32.5)
             //RESET SECTION 11 ANIMATION
-            this.initAnimationAiAction(scrollTopY,window_height*32.5,this.isScrollingDown,window_height * 33)
+            this.initAnimationAiAction(scrollTopY,window_height*32.5,this.isScrollingDown,window_height * 33.3)
         }
 
         // 11 - SECTION 11: ANIMATION AI ACTION
-        else if( scrollTopY >= (window_height * 32.5) && scrollTopY <= (window_height * 33)){
+        else if( scrollTopY >= (window_height * 32.5) && scrollTopY <= (window_height * 33.3)){
             //START SECTION 10 ANIMATION
             this.initAnimationSectionIndentified(scrollTopY,window_height*32,this.isScrollingDown,window_height * 32.5)
             //START SECTION 11 ANIMATION
-            this.initAnimationAiAction(scrollTopY,window_height*32.5,this.isScrollingDown,window_height * 33)
+            this.initAnimationAiAction(scrollTopY,window_height*32.5,this.isScrollingDown,window_height * 33.3)
             //RESET SECTION 12 ANIMATION
-            this.initAnimationPathFinder(scrollTopY,window_height*33,this.isScrollingDown,window_height * 33.5)
+            this.initAnimationPathFinder(scrollTopY,window_height*33.3,this.isScrollingDown,window_height * 33.9)
         }
 
         // 12 - SECTION 12: ANIMATION PATH FINDER
-        else if( scrollTopY >= (window_height * 33) && scrollTopY <= (window_height * 33.5)){
+        else if( scrollTopY >= (window_height * 33.3) && scrollTopY <= (window_height * 33.9)){
             //START SECTION 11 ANIMATION
-            this.initAnimationAiAction(scrollTopY,window_height*32.5,this.isScrollingDown,window_height * 33)
+            this.initAnimationAiAction(scrollTopY,window_height*32.5,this.isScrollingDown,window_height * 33.3)
             //START SECTION 12 ANIMATION
-            this.initAnimationPathFinder(scrollTopY,window_height*33,this.isScrollingDown,window_height * 33.5)
-            //RESET SECTION 13 ANIMATION
-            this.initLastSection(scrollTopY,window_height*33.5,this.isScrollingDown,window_height * 35)
+            this.initAnimationPathFinder(scrollTopY,window_height*33,this.isScrollingDown,window_height * 33.9)
+             //START SECTION 13 ANIMATION
+             this.initLastVerticalTabs(scrollTopY,window_height*33.9,this.isScrollingDown,window_height * 35)
         }
 
-        // 13 - SECTION 13: LAST SECTION
-        else if( scrollTopY >= (window_height * 33.5) && scrollTopY <= (window_height * 35)){
-            //START SECTION 12 ANIMATION
-            this.initAnimationPathFinder(scrollTopY,window_height*33,this.isScrollingDown,window_height * 33.5)
+        // 13 - SECTION 13: LAST VERTICAL TABS
+        else if( scrollTopY >= (window_height * 33.9) && scrollTopY <= (window_height * 35)){
+            //RESET SECTION 12 ANIMATION
+            this.initAnimationPathFinder(scrollTopY,window_height*33,this.isScrollingDown,window_height * 33.9)
             //START SECTION 13 ANIMATION
-            this.initLastSection(scrollTopY,window_height*33.5,this.isScrollingDown,window_height * 35)
+            this.initLastVerticalTabs(scrollTopY,window_height*33.9,this.isScrollingDown,window_height * 35)
+            //RESET SECTION 14 ANIMATION
+            this.initLastSection(scrollTopY,window_height*35,this.isScrollingDown,window_height * 36.2)
+        }
+
+        // 14 - SECTION 13: LAST SECTION
+        else if( scrollTopY >= (window_height * 35) && scrollTopY <= (window_height * 36.2)){
+            //RESET SECTION 13 ANIMATION
+            this.initLastVerticalTabs(scrollTopY,window_height*33.9,this.isScrollingDown,window_height * 35)
+            //START SECTION 14 ANIMATION
+            this.initLastSection(scrollTopY,window_height*35,this.isScrollingDown,window_height * 36.2)
         
-        }else if( scrollTopY > (window_height * 35)){
-            //START SECTION 13 ANIMATION
-            this.initLastSection(scrollTopY,window_height*33.5,this.isScrollingDown,window_height * 35)
+        }else if( scrollTopY > (window_height * 36.2)){
+            //START SECTION 14 ANIMATION
+            this.initLastSection(scrollTopY,window_height*35,this.isScrollingDown,window_height * 36.2)
         }
 
     }
@@ -338,6 +352,7 @@ class SectionsAnimationScroll extends HTMLElement {
         let inner_break_3 = inner_break_2 +  (breakPoint - startPoint) / 5;
         let inner_break_4 = inner_break_3 +  (breakPoint - startPoint) / 5;
         let inner_break_5 = inner_break_4 +  (breakPoint - startPoint) / 5;
+        let inner_break_6 = inner_break_5 +  (breakPoint - startPoint) / 5;
         //here we move and fix the section white scrolling
         if(scrollTopY <= startPoint + this.topTop ){
             
@@ -349,6 +364,8 @@ class SectionsAnimationScroll extends HTMLElement {
             white_overlay_video.style.opacity = "1";
             headers_scroll_succession[0].style.opacity = "0";
             headers_scroll_succession[0].style.top = "90%"; 
+            //End of the first animation over
+            // white_overlay_video.style.opacity = "0";
         }else if(scrollTopY >= breakPoint){ 
 
             //When we go to the next section
@@ -361,11 +378,7 @@ class SectionsAnimationScroll extends HTMLElement {
 
 
         }else{
-            // console.log("HERERERERER")
-            // console.log("scrollTopY " + scrollTopY)
-            // console.log("startPoint + this.topTop :  " + startPoint + " + " + this.topTop + `${startPoint + this.topTop}`)
-            // console.log("BreakPoint " + breakPoint)
-            //Succession of scenes logic
+         
 
             first_section_container.style.position = "fixed";
             first_section_container.style.removeProperty("margin");
@@ -374,34 +387,46 @@ class SectionsAnimationScroll extends HTMLElement {
 
 
 
-            //End of the first animation over
-            white_overlay_video.style.opacity = "0";
+            
 
             
 
             //Start Second Animation
             if(scrollTopY >=  (inner_break_1 ) && scrollTopY < (inner_break_2)){
-                //Start first animation
-                white_overlay_video.style.display = "flex";
-                const scaleValue = 1 + ((scrollTopY - startPoint) / (inner_break_1 / 10));
-                first_section_container.style.background = "black"; 
-                white_overlay_video.style.opacity = (1 - (( scrollTopY - startPoint) / (inner_break_1) ));
-                white_overlay_video.style.transform = `scale(${Math.min(scaleValue, 11)})`;
-
-                //remove 2nd animation
-                headers_scroll_succession[0].style.opacity = "0";
-                headers_scroll_succession[0].style.top = "90%"; 
+                
             }else if(scrollTopY >=  (inner_break_2) && scrollTopY < (inner_break_3)) { 
                 
                 
+                //Start first animation
+                white_overlay_video.style.display = "flex";
+                const progress = (scrollTopY - inner_break_2) / (inner_break_3 - inner_break_2);
+  
+                // Calculate new values based on the progress
+                let newScale = 1 + (11 * progress); // Adjust as needed
+                let newOpacity = 1 - (progress); // Adjust as needed
+
+                const scaleValue = 1 + ((scrollTopY - startPoint) / (inner_break_1 / 10));
+                first_section_container.style.background = "black"; 
+                white_overlay_video.style.opacity = `${newOpacity}`;
+                white_overlay_video.style.transform = `scale(${newScale})`;
+                //remove 2nd animation
+                headers_scroll_succession[0].style.opacity = "0";
+                headers_scroll_succession[0].style.top = "90%";  
+              
+            }
+            else if(scrollTopY >=  (inner_break_3) && scrollTopY < (inner_break_4)) {
+                
+                white_overlay_video.style.opacity = `0`;
+
+
                 headers_scroll_succession[0].style.top = "50%"; 
                 headers_scroll_succession[0].style.opacity = "1"; 
 
                 headers_scroll_succession[1].style.opacity = "0";
                 headers_scroll_succession[1].style.top = "90%";  
-              
+                
             }
-            else if(scrollTopY >=  (inner_break_3) && scrollTopY < (inner_break_4)) {
+            else if(scrollTopY >=  (inner_break_4) && scrollTopY < (inner_break_5)) {
                 
                 headers_scroll_succession[0].style.opacity = "0";
                 headers_scroll_succession[0].style.top = "0%"; 
@@ -411,9 +436,9 @@ class SectionsAnimationScroll extends HTMLElement {
 
                 headers_scroll_succession[2].style.opacity = "0";
                 headers_scroll_succession[2].style.top = "90%"; 
+
+            }else if(scrollTopY >= inner_break_5 && scrollTopY < (inner_break_6) ){
                 
-            }
-            else if(scrollTopY >=  (inner_break_4) && scrollTopY < (inner_break_5)) {
                 headers_scroll_succession[1].style.opacity = "0";
                 headers_scroll_succession[1].style.top = "0%"; 
 
@@ -421,16 +446,13 @@ class SectionsAnimationScroll extends HTMLElement {
                 headers_scroll_succession[2].style.opacity = "1"; 
 
                 headers_scroll_succession[3].style.opacity = "0";
-                headers_scroll_succession[3].style.top = "90%"; ;  
-              
-
-            }else if(scrollTopY >= inner_break_5){
+                headers_scroll_succession[3].style.top = "90%"; 
+            }else if(scrollTopY >= inner_break_6){
                 headers_scroll_succession[2].style.opacity = "0";
                 headers_scroll_succession[2].style.top = "0%"; 
 
                 headers_scroll_succession[3].style.top = "50%"; 
                 headers_scroll_succession[3].style.opacity = "1";  
-              
             }
 
         }
@@ -724,12 +746,11 @@ class SectionsAnimationScroll extends HTMLElement {
             if(scrollTopY>=inner_break_1 && scrollTopY < inner_break_2){
                   
                 if(!this.check_animation_1){
-                    console.log("enterere 1")
 
                     const imageCount = 101;  // Number of images in the sequence
                     let currentFrame = 1;
                     
-                    const frameRate = 30; 
+                    const frameRate = 40; 
                     const image = new Image();
                     image.src = `https://cdn.shopify.com/s/files/1/0077/3953/9515/files/Installmops_${currentFrame}.webp?v=1691028939`;
                     image.onload = () => {
@@ -747,6 +768,8 @@ class SectionsAnimationScroll extends HTMLElement {
             
                                 currentFrame++;
                                 if (currentFrame > imageCount) {
+                                    text_description_container.style.opacity = "1"
+
                                     return
                                     // currentFrame = 1;
                                 }
@@ -762,7 +785,6 @@ class SectionsAnimationScroll extends HTMLElement {
                 }
              
                 animation_canvas_feature_product_component_images_container.style.opacity = "1"
-                text_description_container.style.opacity = "0"
 
             }else if(scrollTopY>=inner_break_2 && scrollTopY < inner_break_3){
                 
@@ -935,8 +957,8 @@ class SectionsAnimationScroll extends HTMLElement {
 
             canvas_layout_desc_3.style.opacity = "0";
             canvas_layout_desc_4.style.opacity = "0";
-            canvas_layout_desc_3_span.style.paddingLeft = "0"
-            canvas_layout_desc_4_span.style.paddingRight = "0";
+            // canvas_layout_desc_3_span.style.paddingLeft = "0"
+            // canvas_layout_desc_4_span.style.paddingRight = "0";
             
         }else{
             animation_canvas_with_title.style.position = "fixed";
@@ -977,13 +999,13 @@ class SectionsAnimationScroll extends HTMLElement {
                 //reset next anim desc 
                 canvas_layout_desc_1.style.opacity = "0";
                 canvas_layout_desc_2.style.opacity = "0";
-                canvas_layout_desc_1_span.style.paddingLeft = "0"
-                canvas_layout_desc_2_span.style.paddingRight = "0";
+                // canvas_layout_desc_1_span.style.paddingLeft = "0"
+                // canvas_layout_desc_2_span.style.paddingRight = "0";
 
                 this.animations_sequences_canvas1[0]["scrollDown"] = scrollDown;
                 // ANIMATION 1 START FORWARD
                 if(!this.animations_sequences_canvas1[0]["isStartedForward"] && this.animations_sequences_canvas1[0]["scrollDown"]){ 
-                    console.log("running ....")    
+                     
                     this.animations_sequences_canvas1[0]["isStartedForward"] = true;
                         
                     const image = new Image();
@@ -1000,15 +1022,14 @@ class SectionsAnimationScroll extends HTMLElement {
                                 ctx.clearRect(0, 0, ctx.width, ctx.height);
                                 ctx.drawImage(image, 0, 0, ctx.width, ctx.height);
                                 this.animation_frame_canvas1++;
-                                console.log(this.animation_frame_canvas1)
-                                console.log("FORWARD 1")
+                             
                                 if(!this.animations_sequences_canvas1[0]["scrollDown"]){
                                     
                                     return
                                 }
                                 if (this.animation_frame_canvas1 > this.animations_sequences_canvas1[0]["endFrame"]) {
                                     
-                                    console.log("finished")
+                                 
 
 
                                     return
@@ -1044,7 +1065,7 @@ class SectionsAnimationScroll extends HTMLElement {
 
                 if (!this.animations_sequences_canvas1[0]["scrollDown"] &&  !this.animations_sequences_canvas1[0]["isStartedBackward"]){
                     
-                    console.log("ENTERED THE REVERSE ")
+                 
                     this.animations_sequences_canvas1[0]["isStartedBackward"] = true;
                     const image = new Image();
                     image.src = this.animations_sequences_canvas1[0]["link_begin"] + this.animation_frame_canvas1 + this.animations_sequences_canvas1[0]["link_end"]
@@ -1063,14 +1084,14 @@ class SectionsAnimationScroll extends HTMLElement {
 
                            
                                 this.animation_frame_canvas1--;
-                                console.log(this.animation_frame_canvas1)
+
                                 if(this.animations_sequences_canvas1[0]["scrollDown"]){
                                     this.animation_frame_canvas1++
                                     return
                                 }
                                 if (this.animation_frame_canvas1 < this.animations_sequences_canvas1[0]["startFrame"]) {
                                     this.animation_frame_canvas1++
-                                    console.log("finised reverse")
+
                                     return
                                 }
 
@@ -1099,8 +1120,8 @@ class SectionsAnimationScroll extends HTMLElement {
                 //reset next anim desc
                 canvas_layout_desc_3.style.opacity = "0";
                 canvas_layout_desc_4.style.opacity = "0";
-                canvas_layout_desc_3_span.style.paddingLeft = "0"
-                canvas_layout_desc_4_span.style.paddingRight = "0";
+                // canvas_layout_desc_3_span.style.paddingLeft = "0"
+                // canvas_layout_desc_4_span.style.paddingRight = "0";
                 //reset bottom desc
                 bottom_description.style.opacity = "0"
                 bottom_description.style.bottom = "3%"
@@ -1118,7 +1139,7 @@ class SectionsAnimationScroll extends HTMLElement {
                 this.animations_sequences_canvas1[1]["scrollDown"] = scrollDown;
                 // ANIMATION 1 START FORWARD
                 if(!this.animations_sequences_canvas1[1]["isStartedForward"] && this.animations_sequences_canvas1[1]["scrollDown"]){ 
-                    console.log("running ....")    
+         
                     this.animations_sequences_canvas1[1]["isStartedForward"] = true;
                         
                     const image = new Image();
@@ -1135,7 +1156,6 @@ class SectionsAnimationScroll extends HTMLElement {
                                 ctx.clearRect(0, 0, ctx.width, ctx.height);
                                 ctx.drawImage(image, 0, 0, ctx.width, ctx.height);
                                 this.animation_frame_canvas1++;
-                                console.log(this.animation_frame_canvas1)
 
                                 if(!this.animations_sequences_canvas1[1]["scrollDown"]){
                                     
@@ -1143,12 +1163,12 @@ class SectionsAnimationScroll extends HTMLElement {
                                 }
                                 if (this.animation_frame_canvas1 > this.animations_sequences_canvas1[1]["endFrame"]) {
                                     
-                                    console.log("finished")
+                             
 
                                     canvas_layout_desc_1.style.opacity = "1";
                                     canvas_layout_desc_2.style.opacity = "1";
-                                    canvas_layout_desc_1_span.style.paddingLeft = "7vw"
-                                    canvas_layout_desc_2_span.style.paddingRight = "22vw";
+                                    // canvas_layout_desc_1_span.style.paddingLeft = "7vw"
+                                    // canvas_layout_desc_2_span.style.paddingRight = "22vw";
                                     return
                                 }
             
@@ -1164,7 +1184,7 @@ class SectionsAnimationScroll extends HTMLElement {
                     
                 }
                 if (!this.animations_sequences_canvas1[1]["scrollDown"] &&  !this.animations_sequences_canvas1[1]["isStartedBackward"]){
-                    console.log("ENTERED THE REVERSE ")
+                    
                     this.animations_sequences_canvas1[1]["isStartedBackward"] = true;
                     const image = new Image();
                     image.src = this.animations_sequences_canvas1[1]["link_begin"] + this.animation_frame_canvas1 + this.animations_sequences_canvas1[1]["link_end"]
@@ -1183,13 +1203,12 @@ class SectionsAnimationScroll extends HTMLElement {
 
                            
                                 this.animation_frame_canvas1--;
-                                console.log(this.animation_frame_canvas1)
                                 if(this.animations_sequences_canvas1[1]["scrollDown"]){
                                     
                                     return
                                 }
                                 if (this.animation_frame_canvas1 < this.animations_sequences_canvas1[1]["startFrame"]) {
-                                    console.log("finised reverse")
+                                  
                                     return
                                 }
 
@@ -1209,8 +1228,8 @@ class SectionsAnimationScroll extends HTMLElement {
             else if ( scrollTopY >= inner_break_4 && scrollTopY < inner_break_5){
                 canvas_layout_desc_1.style.opacity = "0";
                 canvas_layout_desc_2.style.opacity = "0";
-                canvas_layout_desc_1_span.style.paddingLeft = "0"
-                canvas_layout_desc_2_span.style.paddingRight = "0";
+                // canvas_layout_desc_1_span.style.paddingLeft = "0"
+                // canvas_layout_desc_2_span.style.paddingRight = "0";
 
                 // this.animations_sequences_canvas1[0]["isStartedForward"] = false;
                 this.animations_sequences_canvas1[1]["isStartedBackward"] = false;
@@ -1218,7 +1237,7 @@ class SectionsAnimationScroll extends HTMLElement {
                 this.animations_sequences_canvas1[2]["scrollDown"] = scrollDown;
                 // ANIMATION 1 START FORWARD
                 if(!this.animations_sequences_canvas1[2]["isStartedForward"] && this.animations_sequences_canvas1[2]["scrollDown"]){ 
-                    console.log("running ....")    
+                     
                     this.animations_sequences_canvas1[2]["isStartedForward"] = true;
                         
                     const image = new Image();
@@ -1235,7 +1254,7 @@ class SectionsAnimationScroll extends HTMLElement {
                                 ctx.clearRect(0, 0, ctx.width, ctx.height);
                                 ctx.drawImage(image, 0, 0, ctx.width, ctx.height);
                                 
-                                console.log(this.animation_frame_canvas1)
+                            
 
                                 if(!this.animations_sequences_canvas1[2]["scrollDown"]){
                                     this.animations_sequences_canvas1[2]["isStartedBackward"] = false;
@@ -1246,12 +1265,12 @@ class SectionsAnimationScroll extends HTMLElement {
 
                                 if (this.animation_frame_canvas1 > this.animations_sequences_canvas1[2]["endFrame"] ) {
                                     this.animation_frame_canvas1--
-                                    console.log("finished")
+                                  
                                     this.animations_sequences_canvas1[2]["isStartedBackward"] = false;
                                     canvas_layout_desc_3.style.opacity = "1";
                                     canvas_layout_desc_4.style.opacity = "1";
-                                    canvas_layout_desc_3_span.style.paddingLeft = "14vw"
-                                    canvas_layout_desc_4_span.style.paddingRight = "22vw";
+                                    // canvas_layout_desc_3_span.style.paddingLeft = "14vw"
+                                    // canvas_layout_desc_4_span.style.paddingRight = "22vw";
                                     return
                                 }
 
@@ -1268,7 +1287,7 @@ class SectionsAnimationScroll extends HTMLElement {
                     
                 }
                 if (!this.animations_sequences_canvas1[2]["scrollDown"] &&  !this.animations_sequences_canvas1[2]["isStartedBackward"]){
-                    console.log("ENTERED THE REVERSE ")
+                  
                     this.animations_sequences_canvas1[2]["isStartedBackward"] = true;
                     const image = new Image();
                     image.src = this.animations_sequences_canvas1[2]["link_begin"] + this.animation_frame_canvas1 + this.animations_sequences_canvas1[2]["link_end"]
@@ -1287,13 +1306,13 @@ class SectionsAnimationScroll extends HTMLElement {
 
                            
                                 this.animation_frame_canvas1--;
-                                console.log(this.animation_frame_canvas1)
+
                                 if(this.animations_sequences_canvas1[2]["scrollDown"]){
                                     this.animations_sequences_canvas1[2]["isStartedForward"] = false;
                                     return
                                 }
                                 if (this.animation_frame_canvas1 < this.animations_sequences_canvas1[2]["startFrame"]) {
-                                    console.log("finised reverse")
+                                 
                                     this.animations_sequences_canvas1[2]["isStartedForward"] = false;
                                     return
                                 }
@@ -1322,6 +1341,7 @@ class SectionsAnimationScroll extends HTMLElement {
         let behind_title = animation_rotation_canvas.querySelector(".behind_title");
         let behind_title_span1 = animation_rotation_canvas.querySelector(".span1")
         let behind_title_span2 = animation_rotation_canvas.querySelector(".span2")
+        let button_container = animation_rotation_canvas.querySelector(".button_container")
 
         let canvas = animation_rotation_canvas.querySelector("canvas")
         let ctx = canvas.getContext("2d")
@@ -1390,7 +1410,7 @@ class SectionsAnimationScroll extends HTMLElement {
                 this.animations_sequences_canvas_rotating[0]["scrollDown"] = scrollDown;
                 // ANIMATION 1 START FORWARD
                 if(!this.animations_sequences_canvas_rotating[0]["isStartedForward"] && this.animations_sequences_canvas_rotating[0]["scrollDown"]){ 
-                    console.log("running ....")    
+                     
                     this.animations_sequences_canvas_rotating[0]["isStartedForward"] = true;
                         
                     const image = new Image();
@@ -1407,14 +1427,14 @@ class SectionsAnimationScroll extends HTMLElement {
                                 ctx.clearRect(0, 0, ctx.width, ctx.height);
                                 ctx.drawImage(image, 0, 0, ctx.width, ctx.height);
                                 this.animation_frame_canvas_rotating++;
-                                console.log(this.animation_frame_canvas_rotating)
+
 
                                 if(!this.animations_sequences_canvas_rotating[0]["scrollDown"]){
                                    
                                     return
                                 }
                                 if (this.animation_frame_canvas_rotating > this.animations_sequences_canvas_rotating[0]["endFrame"]) {
-                                    behind_title_span1.style.paddingRight = "8%"
+                                    behind_title_span1.style.paddingRight = "18%"
                                     behind_title_span2.style.paddingLeft = "8%"
                                     let mediaQuery = window.matchMedia("(max-width: 550px)");
 
@@ -1425,7 +1445,7 @@ class SectionsAnimationScroll extends HTMLElement {
                                         behind_title_span2.style.paddingLeft = "0%"
                                     }
 
-                                    console.log("finished")
+                                    
 
 
                                     return
@@ -1443,7 +1463,7 @@ class SectionsAnimationScroll extends HTMLElement {
                     
                 }
                 if (!this.animations_sequences_canvas_rotating[0]["scrollDown"] &&  !this.animations_sequences_canvas_rotating[0]["isStartedBackward"]){
-                    console.log("ENTERED THE REVERSE ")
+                 
                     this.animations_sequences_canvas_rotating[0]["isStartedBackward"] = true;
                     const image = new Image();
                     image.src = this.animations_sequences_canvas_rotating[0]["link_begin"] + this.animation_frame_canvas_rotating + this.animations_sequences_canvas_rotating[0]["link_end"]
@@ -1462,14 +1482,13 @@ class SectionsAnimationScroll extends HTMLElement {
 
                            
                                 this.animation_frame_canvas_rotating--;
-                                console.log(this.animation_frame_canvas_rotating)
+
                                 if(this.animations_sequences_canvas_rotating[0]["scrollDown"]){
                                     this.animation_frame_canvas_rotating++
                                     return
                                 }
                                 if (this.animation_frame_canvas_rotating < this.animations_sequences_canvas_rotating[0]["startFrame"]) {
                                     this.animation_frame_canvas_rotating++
-                                    console.log("finised reverse")
                                     return
                                 }
 
@@ -1488,6 +1507,7 @@ class SectionsAnimationScroll extends HTMLElement {
                 // this.animations_sequences_canvas_rotating[1]["isStartedBackward"] = false;
             }
             else if ( scrollTopY >= inner_break_3 && scrollTopY < inner_break_4){
+                button_container.style.opacity = "0";
                 description_text.style.opacity = "0";
                 behind_title.style.opacity = "0"
                 this.animations_sequences_canvas_rotating[2]["isStartedBackward"] = false;
@@ -1498,7 +1518,7 @@ class SectionsAnimationScroll extends HTMLElement {
                 this.animations_sequences_canvas_rotating[1]["scrollDown"] = scrollDown;
                 // ANIMATION 1 START FORWARD
                 if(!this.animations_sequences_canvas_rotating[1]["isStartedForward"] && this.animations_sequences_canvas_rotating[1]["scrollDown"]){ 
-                    console.log("running ....")    
+                  
                     this.animations_sequences_canvas_rotating[1]["isStartedForward"] = true;
                         
                     const image = new Image();
@@ -1515,7 +1535,6 @@ class SectionsAnimationScroll extends HTMLElement {
                                 ctx.clearRect(0, 0, ctx.width, ctx.height);
                                 ctx.drawImage(image, 0, 0, ctx.width, ctx.height);
                                 this.animation_frame_canvas_rotating++;
-                                console.log(this.animation_frame_canvas_rotating)
 
                                 if(!this.animations_sequences_canvas_rotating[1]["scrollDown"]){
                                     
@@ -1523,7 +1542,7 @@ class SectionsAnimationScroll extends HTMLElement {
                                 }
                                 if (this.animation_frame_canvas_rotating > this.animations_sequences_canvas_rotating[1]["endFrame"]) {
                                     
-                                    console.log("finished")
+                        
 
 
                                     return
@@ -1541,7 +1560,7 @@ class SectionsAnimationScroll extends HTMLElement {
                     
                 }
                 if (!this.animations_sequences_canvas_rotating[1]["scrollDown"] &&  !this.animations_sequences_canvas_rotating[1]["isStartedBackward"]){
-                    console.log("ENTERED THE REVERSE ")
+               
                     description_text.style.opacity = "0";
                     this.animations_sequences_canvas_rotating[1]["isStartedBackward"] = true;
                     const image = new Image();
@@ -1561,13 +1580,13 @@ class SectionsAnimationScroll extends HTMLElement {
 
                            
                                 this.animation_frame_canvas_rotating--;
-                                console.log(this.animation_frame_canvas_rotating)
+
                                 if(this.animations_sequences_canvas_rotating[1]["scrollDown"]){
                                     
                                     return
                                 }
                                 if (this.animation_frame_canvas_rotating < this.animations_sequences_canvas_rotating[1]["startFrame"]) {
-                                    console.log("finised reverse")
+                                  
                                     return
                                 }
 
@@ -1585,13 +1604,15 @@ class SectionsAnimationScroll extends HTMLElement {
             }
             }
             else if ( scrollTopY >= inner_break_4 && scrollTopY < inner_break_5){
+               
+
                 // this.animations_sequences_canvas_rotating[0]["isStartedForward"] = false;
                 this.animations_sequences_canvas_rotating[1]["isStartedBackward"] = false;
 
                 this.animations_sequences_canvas_rotating[2]["scrollDown"] = scrollDown;
                 // ANIMATION 1 START FORWARD
                 if(!this.animations_sequences_canvas_rotating[2]["isStartedForward"] && this.animations_sequences_canvas_rotating[2]["scrollDown"]){ 
-                    console.log("running ....")    
+                  
                     this.animations_sequences_canvas_rotating[2]["isStartedForward"] = true;
                         
                     const image = new Image();
@@ -1607,8 +1628,7 @@ class SectionsAnimationScroll extends HTMLElement {
                                 ctx.height = image.height;
                                 ctx.clearRect(0, 0, ctx.width, ctx.height);
                                 ctx.drawImage(image, 0, 0, ctx.width, ctx.height);
-                                
-                                console.log(this.animation_frame_canvas_rotating)
+               
 
                                 if(!this.animations_sequences_canvas_rotating[2]["scrollDown"]){
                                     this.animations_sequences_canvas_rotating[2]["isStartedBackward"] = false;
@@ -1620,8 +1640,9 @@ class SectionsAnimationScroll extends HTMLElement {
                                 if (this.animation_frame_canvas_rotating > this.animations_sequences_canvas_rotating[2]["endFrame"] ) {
                                     description_text.style.opacity = "1";
                                     this.animation_frame_canvas_rotating--
-                                    console.log("finished")
+                            
                                     this.animations_sequences_canvas_rotating[2]["isStartedBackward"] = false;
+                                    button_container.style.opacity = "1";
 
                                     return
                                 }
@@ -1639,7 +1660,7 @@ class SectionsAnimationScroll extends HTMLElement {
                     
                 }
                 if (!this.animations_sequences_canvas_rotating[2]["scrollDown"] &&  !this.animations_sequences_canvas_rotating[2]["isStartedBackward"]){
-                    console.log("ENTERED THE REVERSE ")
+             
                     this.animations_sequences_canvas_rotating[2]["isStartedBackward"] = true;
                     const image = new Image();
                     image.src = this.animations_sequences_canvas_rotating[2]["link_begin"] + this.animation_frame_canvas_rotating + this.animations_sequences_canvas_rotating[2]["link_end"]
@@ -1658,13 +1679,13 @@ class SectionsAnimationScroll extends HTMLElement {
 
                            
                                 this.animation_frame_canvas_rotating--;
-                                console.log(this.animation_frame_canvas_rotating)
                                 if(this.animations_sequences_canvas_rotating[2]["scrollDown"]){
                                     this.animations_sequences_canvas_rotating[2]["isStartedForward"] = false;
                                     return
                                 }
                                 if (this.animation_frame_canvas_rotating < this.animations_sequences_canvas_rotating[2]["startFrame"]) {
-                                    console.log("finised reverse")
+                                   
+                              
                                     this.animations_sequences_canvas_rotating[2]["isStartedForward"] = false;
                                     return
                                 }
@@ -1684,7 +1705,37 @@ class SectionsAnimationScroll extends HTMLElement {
             }
         }
     }
+    initAnimationCanvasRotatingLogic(){
+        let animation_rotation_canvas = this.querySelector(".animation_rotation_canvas");
+        let button = animation_rotation_canvas.querySelector(".img_click_container");
+        let horizontal_scroll = animation_rotation_canvas.querySelector(".horizontal_scroll_container")
+        let horizontal_scroll__inner = animation_rotation_canvas.querySelector(".inside_container_horizontal_scroll")
+        let remove_button_scroll = animation_rotation_canvas.querySelector(".remove_button_scroll")
+        let  progress_horizontal_scroll = animation_rotation_canvas.querySelector(".progress_horizontal_scroll")
+        
 
+        // Calculate new values based on the progress
+        let startSize = 0; // Initial size
+        let endSize = horizontal_scroll.scrollWidth / 2 ; // Target size
+        let mediaQuery = window.matchMedia("(max-width: 550px)");
+        
+                // Check if the media query matches
+        if (mediaQuery.matches) {
+            endSize = horizontal_scroll.clientWidth * 4; 
+        }
+        horizontal_scroll.addEventListener('scroll',()=>{
+    
+            const progress = (horizontal_scroll.scrollLeft - startSize) / (endSize - startSize);
+
+            progress_horizontal_scroll.style.width = progress*100 +"%"
+        })
+        button.addEventListener('click',()=>{
+            horizontal_scroll.style.transform = "translateX(0)";
+        })
+        remove_button_scroll.addEventListener('click',() => {
+            horizontal_scroll.style.transform = "translateX(100%)";
+        })
+    }
     // 10 - ANIMATION OVECT IDENTIFIED SECTION
     initAnimationSectionIndentified(scrollTopY,startPoint,scrollDown,breakPoint,previousBreakPoint){
 
@@ -1729,15 +1780,47 @@ class SectionsAnimationScroll extends HTMLElement {
             }
         }        
     }
+    initAnimationSectionIndentifiedLogic(){
+        let objects_identified_component = this.querySelector(".objects_identified_component");
+        let button = objects_identified_component.querySelector(".img_click_container");
+        let horizontal_scroll = objects_identified_component.querySelector(".horizontal_scroll_container")
+        let horizontal_scroll__inner = objects_identified_component.querySelector(".inside_container_horizontal_scroll")
+        let remove_button_scroll = objects_identified_component.querySelector(".remove_button_scroll")
+        let  progress_horizontal_scroll = objects_identified_component.querySelector(".progress_horizontal_scroll")
+        
 
+        // Calculate new values based on the progress
+        let startSize = 0; // Initial size
+        let endSize = horizontal_scroll__inner.clientWidth/2; // Target size
+        let mediaQuery = window.matchMedia("(max-width: 550px)");
+        
+                // Check if the media query matches
+        if (mediaQuery.matches) {
+            endSize = horizontal_scroll.clientWidth * 2 ; 
+        }
+        horizontal_scroll.addEventListener('scroll',()=>{
+        
+
+            const progress = (horizontal_scroll.scrollLeft - startSize) / (endSize - startSize);
+
+            progress_horizontal_scroll.style.width = progress*100 +"%"
+        })
+        button.addEventListener('click',()=>{
+            horizontal_scroll.style.transform = "translateX(0)";
+        })
+        remove_button_scroll.addEventListener('click',() => {
+            horizontal_scroll.style.transform = "translateX(100%)";
+        })
+    }
     // 11 - ANIMATION AI ACTION SECTION
     initAnimationAiAction(scrollTopY,startPoint,scrollDown,breakPoint,previousBreakPoint){
 
         let ai_action_feature_component = this.querySelector(".ai_action_feature_component");
-        let bg_img = ai_action_feature_component.querySelector("img");
+        let bg_img = ai_action_feature_component.querySelector(".bg_img");
 
         let inner_break_1 = startPoint;
-        let inner_break_2 = inner_break_1 +  300;
+        let inner_break_2 = inner_break_1 +  150;
+
      
       
 
@@ -1763,15 +1846,45 @@ class SectionsAnimationScroll extends HTMLElement {
             ai_action_feature_component.style.zIndex = "1000";
 
             ai_action_feature_component.style.opacity = "1";
-            bg_img.style.opacity = "1";
-            
-            if(scrollTopY>=inner_break_1 && scrollTopY < inner_break_2){
-               
+            if(scrollTopY > inner_break_2){
+                bg_img.style.opacity = "1";      
             }
            
         }        
     }
+    initAnimationAiActionLogic(){
+        
+        let ai_action_feature_component = this.querySelector(".ai_action_feature_component");
+        let button = ai_action_feature_component.querySelector(".img_click_container");
+        let horizontal_scroll = ai_action_feature_component.querySelector(".horizontal_scroll_container")
+        let horizontal_scroll__inner = ai_action_feature_component.querySelector(".inside_container_horizontal_scroll")
+        let remove_button_scroll = ai_action_feature_component.querySelector(".remove_button_scroll")
+        let  progress_horizontal_scroll = ai_action_feature_component.querySelector(".progress_horizontal_scroll")
+        
 
+        // Calculate new values based on the progress
+        let startSize = 0; // Initial size
+        let endSize = horizontal_scroll.scrollWidth / 2 ; // Target size
+        let mediaQuery = window.matchMedia("(max-width: 550px)");
+        
+                // Check if the media query matches
+        if (mediaQuery.matches) {
+          
+            endSize = horizontal_scroll.clientWidth * 4; 
+        }
+        horizontal_scroll.addEventListener('scroll',()=>{
+    
+            const progress = (horizontal_scroll.scrollLeft - startSize) / (endSize - startSize);
+
+            progress_horizontal_scroll.style.width = progress*100 +"%"
+        })
+        button.addEventListener('click',()=>{
+            horizontal_scroll.style.transform = "translateX(0)";
+        })
+        remove_button_scroll.addEventListener('click',() => {
+            horizontal_scroll.style.transform = "translateX(100%)";
+        })
+    }
     // 12 - ANIMATION PATH FINDER SECTION
     initAnimationPathFinder(scrollTopY,startPoint,scrollDown,breakPoint,previousBreakPoint){
 
@@ -1817,7 +1930,85 @@ class SectionsAnimationScroll extends HTMLElement {
         }        
     }
 
-    // 13 - LAST SECTION LOGIC
+    //SECTION 13 - LAST VERTICAL TABS
+    initLastVerticalTabs(scrollTopY,startPoint,scrollDown,breakPoint,previousBreakPoint){
+        let last_vertical_tabs_component = this.querySelector(".last_vertical_tabs_component");
+        let elements = last_vertical_tabs_component.querySelectorAll(".scroll_el");
+        let buttons_click = last_vertical_tabs_component.querySelectorAll(".scroller_container div")
+
+        let inner_break_1 = startPoint;
+        let inner_break_2 = inner_break_1 +  (breakPoint - startPoint)/2;
+        let inner_break_3 = inner_break_2 +  (breakPoint - startPoint)/2;
+     
+      
+        if(scrollTopY <= startPoint){
+            //When we go to the previous section
+            last_vertical_tabs_component.style.removeProperty("position");
+            last_vertical_tabs_component.style.removeProperty("z-index");
+
+            last_vertical_tabs_component.style.opacity = "0"
+            
+         
+            
+        }else if(scrollTopY > breakPoint){ 
+            //When we go to the next section
+            //The margin is used to appear that we scrolled when the position fixed is over to relative
+            // vertical_tabs_features_component.style.marginTop = (breakPoint - previousBreakPoint) + "px";
+            last_vertical_tabs_component.style.position = "relative";  
+            last_vertical_tabs_component.style.removeProperty("z-index");
+            last_vertical_tabs_component.style.opacity = "0"
+            last_vertical_tabs_component.style.overflowY = "scroll"
+            
+        }else{
+            // last_vertical_tabs_component.focus();
+            last_vertical_tabs_component.style.position = "fixed";
+            last_vertical_tabs_component.style.removeProperty("margin");
+            last_vertical_tabs_component.style.zIndex = "1000";
+
+            last_vertical_tabs_component.style.opacity = "1";
+
+            
+            if(scrollTopY>=inner_break_1 && scrollTopY < inner_break_2){
+                elements[0].style.opacity = "1";
+                elements[1].style.opacity = "0";
+                buttons_click[0].style.opacity = "1"
+                buttons_click[1].style.opacity = "0.3"
+
+                
+            }
+            else if(scrollTopY>=inner_break_2 && scrollTopY < inner_break_3){
+                elements[0].style.opacity = "0";
+                elements[1].style.opacity = "1";
+                buttons_click[0].style.opacity = "0.3"
+                buttons_click[1].style.opacity = "1"
+
+     
+
+            }
+          
+        }        
+    } 
+    
+    lastVerticalTabs(){
+        let last_vertical_tabs_component = this.querySelector(".last_vertical_tabs_component");
+        let elements = last_vertical_tabs_component.querySelectorAll(".scroll_el");
+        let buttons_click = last_vertical_tabs_component.querySelectorAll(".scroller_container div")
+        buttons_click[0].addEventListener('click' , () => {
+            elements[0].style.opacity = "1";
+            elements[1].style.opacity = "0";
+            buttons_click[0].style.opacity = "1"
+            buttons_click[1].style.opacity = "0.3"
+            
+        })
+        buttons_click[1].addEventListener('click' , () => {
+          
+            elements[0].style.opacity = "0";
+            elements[1].style.opacity = "1";
+            buttons_click[0].style.opacity = "0.3"
+            buttons_click[1].style.opacity = "1"
+        })
+    }
+    // 14 - LAST SECTION LOGIC
     initLastSection(scrollTopY,startPoint,scrollDown,breakPoint,previousBreakPoint){
         let last_section_component = this.querySelector(".last_section_component");
 
@@ -1863,6 +2054,8 @@ class SectionsAnimationScroll extends HTMLElement {
           
         }        
     }
+ 
+   
     //Initiate Last Section
     handleIntersection(entries, observer) {
         entries.forEach(entry => {
@@ -1878,11 +2071,43 @@ class SectionsAnimationScroll extends HTMLElement {
     initiateLastSectionScroll(){
         
         let last_section_component = this.querySelector(".last_section_component")
+
+        // HORIZONTAL SCROLL LOGIC
+        let button = last_section_component.querySelector(".img_click_container");
+        let horizontal_scroll = last_section_component.querySelector(".horizontal_scroll_container")
+        let horizontal_scroll__inner = last_section_component.querySelector(".inside_container_horizontal_scroll")
+        let remove_button_scroll = last_section_component.querySelector(".remove_button_scroll")
+        let  progress_horizontal_scroll = last_section_component.querySelector(".progress_horizontal_scroll")
         
-        let elements = last_section_component.querySelectorAll(".scroll_el");
-        let buttons_click = last_section_component.querySelectorAll(".scroller_container div")
+
+        // Calculate new values based on the progress
+        let startSize = 0; // Initial size
+        let endSize = horizontal_scroll.scrollWidth / 2 ; // Target size
+        let mediaQuery = window.matchMedia("(max-width: 550px)");
+        
+                // Check if the media query matches
+        if (mediaQuery.matches) {
+            endSize = horizontal_scroll.clientWidth * 4; 
+        }
+        horizontal_scroll.addEventListener('scroll',()=>{
+    
+            const progress = (horizontal_scroll.scrollLeft - startSize) / (endSize - startSize);
+
+            progress_horizontal_scroll.style.width = progress*100 +"%"
+        })
+        button.addEventListener('click',()=>{
+            horizontal_scroll.style.transform = "translateX(0)";
+        })
+        remove_button_scroll.addEventListener('click',() => {
+            horizontal_scroll.style.transform = "translateX(100%)";
+        })
+
+
+
+        // let elements = document.querySelectorAll(".scroll_el");
+        // let buttons_click = document.querySelectorAll(".scroller_container div")
         last_section_component.addEventListener('click',()=>{
-            console.log("clickckck")
+           
         })
         last_section_component.addEventListener('scroll', (event) => {
             let scrollTopY = last_section_component.scrollTop
@@ -1897,7 +2122,7 @@ class SectionsAnimationScroll extends HTMLElement {
 
             
             if(this.isScrollingDownLastSection && this.prevYLastSection == (last_section_component.scrollHeight - window.innerHeight)){
-                console.log("should remove the scroll")
+                
                 last_section_component.click()
                 last_section_component.style.position = "relative";
                 last_section_component.style.opacity = "0";
@@ -1905,44 +2130,32 @@ class SectionsAnimationScroll extends HTMLElement {
             }else if (!this.isScrollingDownLastSection && this.prevYLastSection === 0){
                 last_section_component.click()
                 
-                console.log("should remove the scroll")
+               
                 // last_section_component.style.overflowY = "hidden"
                 last_section_component.style.position = "relative";
                 last_section_component.style.opacity = "0";
 
             }
 
-            if(this.isScrollingDownLastSection){
-                elements[0].style.opacity = "0";
-                elements[1].style.opacity = "1";
-                buttons_click[0].style.opacity = "0.3"
-                buttons_click[1].style.opacity = "1"
-            }else{
-                elements[0].style.opacity = "1";
-                elements[1].style.opacity = "0";
-                buttons_click[0].style.opacity = "1"
-                buttons_click[1].style.opacity = "0.3"
-            }
+            // if(this.isScrollingDownLastSection){
+            //     elements[0].style.opacity = "0";
+            //     elements[1].style.opacity = "1";
+            //     buttons_click[0].style.opacity = "0.3"
+            //     buttons_click[1].style.opacity = "1"
+            // }else{
+            //     elements[0].style.opacity = "1";
+            //     elements[1].style.opacity = "0";
+            //     buttons_click[0].style.opacity = "1"
+            //     buttons_click[1].style.opacity = "0.3"
+            // }
         });
         
-        buttons_click[0].addEventListener('click' , () => {
-            elements[0].style.opacity = "1";
-            elements[1].style.opacity = "0";
-            buttons_click[0].style.opacity = "1"
-            buttons_click[1].style.opacity = "0.3"
-            
-        })
-        buttons_click[1].addEventListener('click' , () => {
-            elements[0].style.opacity = "0";
-            elements[1].style.opacity = "1";
-            buttons_click[0].style.opacity = "0.3"
-            buttons_click[1].style.opacity = "1"
-        })
+        
 
         const observer = new IntersectionObserver(this.handleIntersection, { threshold: 0 });
-        elements.forEach((el) => {
-            observer.observe(el.querySelector(".text_feature_description"));
-        })
+        // elements.forEach((el) => {
+        //     observer.observe(el.querySelector(".text_feature_description"));
+        // })
 
         let text1 =  last_section_component.querySelector(".app_container h1")
         observer.observe(text1);
@@ -1966,7 +2179,6 @@ class SectionsAnimationScroll extends HTMLElement {
         observer.observe(changin_card);
         let changin_card_img =  changin_card.querySelector("img")
         let changin_card_title =  changin_card.querySelector("span")
-        console.log(cards_hovered_on)
         cards_hovered_on.forEach((card) => {
             observer.observe(card);
             card.addEventListener('mouseover' , ()=> {

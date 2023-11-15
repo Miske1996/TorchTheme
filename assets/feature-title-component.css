@@ -16,16 +16,16 @@
   line-height: 1.2;
   letter-spacing: 0.02em;
   width: 50%;
-  margin-top: 55vh;
-  margin-left: 20vw;
-  color: white;
+  margin-top: 40vh;
+  margin-left: 13vw;
+  color: rgb(218, 218, 218);
 }
 .feature_title_component p {
   font-size: 0.95vw;
   color: #969696;
   letter-spacing: 0.03em;
   width: 50%;
-  margin-left: 20vw;
+  margin-left: 13vw;
 }
 .feature_title_component p strong {
   color: white;

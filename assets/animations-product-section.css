@@ -3,10 +3,11 @@
   height: fit-content;
   display: flex;
   margin-top: 100vh;
+  font-family: "SSP";
 }
 .animated-sections-product .animated-sections-product-container {
   width: 100vw;
-  height: 3500vh;
+  height: 3800vh;
   display: flex;
   flex-direction: column;
   background-color: black;

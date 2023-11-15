@@ -4,7 +4,243 @@
     overflow: hidden;
     top: 0;
     position: relative;
+    background-color: black;
+    .button_container{
+        width: 10vw;
+        margin-left: 68%;
+        margin-top: 25%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        position: relative;
+        z-index: 3;
+        opacity: 0;
+        transition: all .5s;
+        .img_click_container{
+            position: absolute;
+            height: 2.5vw;
+            width: 2.5vw;
+            background: linear-gradient(90deg,#C2AC90 0%,#A5886B 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            padding: 0.7vw;
+            cursor: pointer;
+                top: 50%;
+                left: 56%;
+                transform: translate(25%, -45%);
+           img{
+                width: 60%;
+                height: 60%;
+                object-fit: contain;
+                z-index: 1;
+            } 
+        }
+        
+    }
+    .horizontal_scroll_container{
+        width: 100vw;
+        height: 100%;
+        position: absolute;
+        z-index: 4;
+        background-color: beige;
+        // overflow-x: scroll;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        overflow-x: auto;
+        transform: translateX(100%);
+        transition: transform .7s;
+        &::-webkit-scrollbar {
+            display: none;
+        }
+          
+        .inside_container_horizontal_scroll{
+            width: 200vw;
+            height: 100%;
+            background-color: black;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            .row_1_{
+                width: 90%;
+                height: 35%;
+                margin-top: 2%;
+                margin-left: 3%;
+                display: flex;
+                .title_part{
+                    height: 100%;
+                    width: 16vw;
+                    display: flex;
+                    align-items: center;
+                    margin-right: 12vw;
+                    .part_1_title{
+                        background: linear-gradient(90deg,#C2AC90 0%,#A5886B 100%);
+                        -webkit-background-clip: text;
+                        -webkit-text-fill-color: transparent;
+                        background-clip: text;
+                        text-fill-color: transparent;
+                        color: transparent;
+                        font-weight: 700;
+                        font-size: 65px;
+                    }
+                    .part2_title{
+                        color: white;
+                        line-height: 1.2;
+                        font-size: 26px;
+                        font-weight: 500;
+                        margin-left: 1vw;
+                    }
+                }
 
+                .card_top{
+                    width: 40vw;
+                    height: 100%;
+                    margin-right: 10vw;
+                    display: flex;
+                    justify-content: space-between;
+                    .text_part_container{
+                        width: 35%;
+                        height: 100%;
+                        justify-content: center;
+                        display: flex;
+                        flex-direction: column;
+                        .top_title_card{
+                            display: block;
+                            color: white;
+                            font-size: 22px;
+                            line-height: 1.1;
+                            margin-bottom: 15px;
+                        }
+                        p{
+                            font-size: .95vw; 
+                            color: #969696;
+                            letter-spacing: .03em;
+                            line-height: 1.3;
+                            strong{
+                                color: white;
+                            }
+                        }
+                    }
+                    .image_container_card{
+                        width: 75%;
+                        height: 100%;
+                        display: flex;
+                        img{
+                            width: 100%;
+                            height: 100%;
+                            object-fit: contain;
+                        }
+                    }
+                }
+            }
+            .row_2_{
+                width: 90%;
+                height: 30%;
+                margin-top: 1%;
+                margin-left: 3%;
+                display: flex;
+                .title_part{
+                    height: 100%;
+                    width: 16vw;
+                    display: flex;
+                    align-items: center;
+                    margin-right: 12vw;
+                    .part_1_title{
+                        background: linear-gradient(90deg,#C2AC90 0%,#A5886B 100%);
+                        -webkit-background-clip: text;
+                        -webkit-text-fill-color: transparent;
+                        background-clip: text;
+                        text-fill-color: transparent;
+                        color: transparent;
+                        font-weight: 700;
+                        font-size: 65px;
+                    }
+                    .part2_title{
+                        color: white;
+                        line-height: 1.2;
+                        font-size: 26px;
+                        font-weight: 500;
+                        margin-left: 1vw;
+                    }
+                }
+
+                .card_top{
+                    width: 40vw;
+                    height: 100%;
+                    margin-right: 10vw;
+                    display: flex;
+                    flex-direction: row-reverse;
+                    justify-content: space-between;
+                    .text_part_container{
+                        width: 35%;
+                        height: 100%;
+                        justify-content: center;
+                        display: flex;
+                        flex-direction: column;
+                        margin-left: 5vw;
+                        .top_title_card{
+                            display: block;
+                            color: white;
+                            font-size: 22px;
+                            line-height: 1.1;
+                            margin-bottom: 15px;
+                        }
+                        p{
+                            font-size: .95vw; 
+                            color: #969696;
+                            letter-spacing: .03em;
+                            line-height: 1.3;
+                            strong{
+                                color: white;
+                            }
+                        }
+                    }
+                    .image_container_card{
+                        width: 75%;
+                        height: 100%;
+                        display: flex;
+                        img{
+                            width: 100%;
+                            height: 100%;
+                            object-fit: contain;
+                        }
+                    }
+                }
+            }
+            .scroll_bar_horizontal{
+                position: sticky;
+                width: 48vw;
+                background: #423A32;
+                height: 3px;
+                top: 85%;
+                left:50%;
+                transform : translateX(-50%);
+
+                .remove_button_scroll {
+                    cursor: pointer;
+                    position: absolute;
+                    background: linear-gradient(90deg,#C2AC90 0%,#A5886B 100%);
+                    height: 1.5vw;
+                    width: 1.5vw;
+                    border-radius: 50%;
+                    right: 0;
+                    transform: translate(50%,-50%);
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+                .progress_horizontal_scroll{
+                    position: absolute;
+                    height: 3px;
+                    width: 0%;
+                    background: linear-gradient(90deg,#C2AC90 -.07%,#A5886B 99.88%);
+                }
+            }
+           
+        }    
+   }  
     canvas{
         width: 100%;
         height: 95%;
@@ -13,6 +249,7 @@
         top: 50%;
         transform: translate(-50%,-50%);
         object-fit: contain;
+        background-color: transparent;
     }
     .description_text{
         position: absolute;
@@ -73,7 +310,61 @@
 @media (max-width: 550px){ 
 
     .animation_rotation_canvas{
-
+        
+        .horizontal_scroll_container{
+            .inside_container_horizontal_scroll{
+                width: 500vw;
+                .row_1_{
+                    height: 18%;
+                    .title_part{
+                        width: 90vw;
+                        align-items: flex-start;
+                    }
+                    .card_top{
+                        width: 200vw;
+                        .text_part_container{
+                            p{
+                                font-size: 2.95vw;
+                                    width: 77%;
+                            }
+                        }
+                    }
+                }
+                .row_2_{
+                    height: 10%;
+                    margin-top: 8vh;
+                    .title_part{
+                        width: 90vw;
+                        align-items: flex-start;
+                    }
+                    .card_top{ 
+                        width: 200vw;
+                        .text_part_container{
+                            p{
+                                font-size: 2.95vw;
+                                width: 77%;
+                            }
+                        }
+                    }
+                }
+                .scroll_bar_horizontal{
+                    width: 70vw;
+                    top: 60%;
+                    z-index: 1;
+                    .remove_button_scroll {
+                        width: 30px;
+                        height: 30px;
+                    }
+                }
+            }
+        }
+        .button_container{
+            margin-top: 98%; 
+            .img_click_container{
+                width: 8vw;
+                height: 8vw;
+            }
+        }
         canvas{
             aspect-ratio: 16/9;
             width: 220%;

@@ -22,6 +22,7 @@
   top: 50%;
   z-index: 2;
   opacity: 0;
+  width: 30%;
 }
 .animation_canvas_with_title .canvas_layout_desc_1 span {
   border-top: 1px solid #A5886B;
@@ -31,7 +32,7 @@
   padding-top: 0.85vw;
   transition: 0.7s ease;
   color: white;
-  padding-left: 0;
+  padding-left: 30%;
   transition: padding-left 0.7s ease;
 }
 .animation_canvas_with_title .canvas_layout_desc_2 {
@@ -41,9 +42,11 @@
   left: 19%;
   top: 28%;
   z-index: 2;
+  width: 30%;
   opacity: 0;
 }
 .animation_canvas_with_title .canvas_layout_desc_2 span {
+  width: 100%;
   border-top: 1px solid #A5886B;
   display: block;
   font-size: 1.3vw;
@@ -51,7 +54,8 @@
   padding-top: 0.85vw;
   transition: padding-right 0.7s ease;
   color: white;
-  padding-right: 0;
+  padding-right: 30%;
+  width: 95%;
 }
 .animation_canvas_with_title .canvas_layout_desc_3 {
   display: flex;
@@ -61,6 +65,7 @@
   top: 50%;
   z-index: 2;
   opacity: 0;
+  width: 30%;
 }
 .animation_canvas_with_title .canvas_layout_desc_3 span {
   border-top: 1px solid #A5886B;
@@ -70,7 +75,8 @@
   padding-top: 0.85vw;
   transition: 0.7s ease;
   color: white;
-  padding-left: 0;
+  padding-left: 55%;
+  width: 77%;
   transition: padding-left 0.7s ease;
 }
 .animation_canvas_with_title .canvas_layout_desc_4 {
@@ -81,8 +87,10 @@
   top: 43%;
   z-index: 2;
   opacity: 0;
+  width: 31%;
 }
 .animation_canvas_with_title .canvas_layout_desc_4 span {
+  width: 100%;
   border-top: 1px solid #A5886B;
   display: block;
   font-size: 1.3vw;
@@ -163,30 +171,70 @@
   }
   .animation_canvas_with_title .canvas_layout_desc_1 {
     left: 68%;
-    top: 41%;
+    top: 50%;
   }
   .animation_canvas_with_title .canvas_layout_desc_1 span {
     font-size: 3.8vw;
+    padding-left: 0;
+  }
+  .animation_canvas_with_title .canvas_layout_desc_1::after {
+    content: "";
+    display: block;
+    width: 1px;
+    height: 138%;
+    transform-origin: 100% 100%;
+    transform: translateY(-100%) rotate(-2deg);
+    position: absolute;
+    background-color: #A5886B;
   }
   .animation_canvas_with_title .canvas_layout_desc_2 {
     left: 9%;
     top: 29%;
+    width: 40%;
   }
   .animation_canvas_with_title .canvas_layout_desc_2 span {
     font-size: 3.8vw;
+    width: 100%;
+    padding-left: 0;
   }
   .animation_canvas_with_title .canvas_layout_desc_3 {
     left: 71%;
-    top: 41%;
+    top: 57%;
+    width: 30%;
+  }
+  .animation_canvas_with_title .canvas_layout_desc_3::after {
+    content: "";
+    display: block;
+    width: 1px;
+    height: 643%;
+    transform-origin: 100% 100%;
+    transform: translateY(-100%) rotate(-2deg);
+    position: absolute;
+    background-color: #A5886B;
   }
   .animation_canvas_with_title .canvas_layout_desc_3 span {
     font-size: 3.8vw;
+    width: 75%;
+    padding-left: 0;
   }
   .animation_canvas_with_title .canvas_layout_desc_4 {
-    left: 2%;
-    top: 36%;
+    left: 10%;
+    top: 20%;
+    width: 30%;
+  }
+  .animation_canvas_with_title .canvas_layout_desc_4::after {
+    content: "";
+    display: block;
+    width: 1px;
+    height: 716%;
+    transform-origin: 100% 100%;
+    transform: translate(29.3vw, -100%) rotate(145deg);
+    position: absolute;
+    background-color: #A5886B;
   }
   .animation_canvas_with_title .canvas_layout_desc_4 span {
+    width: 100%;
     font-size: 3.8vw;
+    padding-left: 0;
   }
 }

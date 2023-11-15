@@ -5,7 +5,121 @@
   top: 0;
   position: relative;
   background-color: black;
+  display: flex;
+}
+.ai_action_feature_component .button_container {
+  z-index: 4;
+  width: 10vw;
+  margin-left: 45vw;
+  margin-top: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  z-index: 3;
+  opacity: 1;
   transition: all 0.5s;
+}
+.ai_action_feature_component .button_container .img_click_container {
+  position: absolute;
+  height: 2.5vw;
+  width: 2.5vw;
+  background: linear-gradient(90deg, #C2AC90 0%, #A5886B 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  padding: 0.7vw;
+  cursor: pointer;
+  top: 50%;
+  left: 56%;
+  transform: translate(25%, -45%);
+}
+.ai_action_feature_component .button_container .img_click_container img {
+  width: 60%;
+  height: 60%;
+  object-fit: contain;
+  z-index: 1;
+}
+.ai_action_feature_component .horizontal_scroll_container {
+  width: 100vw;
+  height: 100%;
+  position: absolute;
+  z-index: 4;
+  background-color: beige;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  overflow-x: auto;
+  transform: translateX(100%);
+  transition: transform 0.7s;
+}
+.ai_action_feature_component .horizontal_scroll_container::-webkit-scrollbar {
+  display: none;
+}
+.ai_action_feature_component .horizontal_scroll_container .inside_container_horizontal_scroll {
+  width: 100vw;
+  height: 100%;
+  background-color: black;
+  position: relative;
+  display: flex;
+}
+.ai_action_feature_component .horizontal_scroll_container .inside_container_horizontal_scroll .middle_section_identified_objects {
+  height: 55vh;
+  display: flex;
+  flex-direction: column;
+  margin-top: 3%;
+  margin-left: 9%;
+  width: 40vw;
+}
+.ai_action_feature_component .horizontal_scroll_container .inside_container_horizontal_scroll .middle_section_identified_objects .image_container {
+  width: 100%;
+  height: 103%;
+}
+.ai_action_feature_component .horizontal_scroll_container .inside_container_horizontal_scroll .middle_section_identified_objects .image_container img {
+  width: 90%;
+  object-fit: contain;
+}
+.ai_action_feature_component .horizontal_scroll_container .inside_container_horizontal_scroll .middle_section_identified_objects p {
+  font-size: 0.95vw;
+  padding: 1vw 0.5vw;
+  color: #969696;
+  margin-left: 0.6vw;
+}
+.ai_action_feature_component .horizontal_scroll_container .inside_container_horizontal_scroll .middle_section_identified_objects p strong {
+  color: white;
+}
+.ai_action_feature_component .horizontal_scroll_container .inside_container_horizontal_scroll .end_section_scroll {
+  margin-left: 5%;
+}
+.ai_action_feature_component .horizontal_scroll_container .inside_container_horizontal_scroll .scroll_bar_horizontal {
+  z-index: 3;
+  position: sticky;
+  width: 48vw;
+  background: #423A32;
+  height: 3px;
+  top: 85%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.ai_action_feature_component .horizontal_scroll_container .inside_container_horizontal_scroll .scroll_bar_horizontal .remove_button_scroll {
+  cursor: pointer;
+  position: absolute;
+  background: linear-gradient(90deg, #C2AC90 0%, #A5886B 100%);
+  height: 1.5vw;
+  width: 1.5vw;
+  border-radius: 50%;
+  right: 0;
+  transform: translate(50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ai_action_feature_component .horizontal_scroll_container .inside_container_horizontal_scroll .scroll_bar_horizontal .progress_horizontal_scroll {
+  position: absolute;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(90deg, #C2AC90 -0.07%, #A5886B 99.88%);
 }
 .ai_action_feature_component .text_feature_description {
   position: absolute;
@@ -71,7 +185,7 @@
   left: 0%;
   position: absolute;
 }
-.ai_action_feature_component img {
+.ai_action_feature_component .bg_img {
   width: 100%;
   position: absolute;
   top: 50%;
@@ -83,6 +197,46 @@
 }
 
 @media (max-width: 550px) {
+  .ai_action_feature_component .horizontal_scroll_container .inside_container_horizontal_scroll {
+    width: 200vw;
+  }
+  .ai_action_feature_component .horizontal_scroll_container .inside_container_horizontal_scroll .middle_section_identified_objects {
+    height: fit-content;
+    margin-top: 3%;
+    width: 90vw;
+    margin-left: -50vw;
+  }
+  .ai_action_feature_component .horizontal_scroll_container .inside_container_horizontal_scroll .middle_section_identified_objects .image_container {
+    width: 100%;
+    height: 103%;
+  }
+  .ai_action_feature_component .horizontal_scroll_container .inside_container_horizontal_scroll .middle_section_identified_objects .image_container img {
+    width: 90%;
+  }
+  .ai_action_feature_component .horizontal_scroll_container .inside_container_horizontal_scroll .middle_section_identified_objects p {
+    font-size: 13px;
+    margin-left: 0.6vw;
+  }
+  .ai_action_feature_component .horizontal_scroll_container .inside_container_horizontal_scroll .end_section_scroll {
+    margin-left: 0;
+  }
+  .ai_action_feature_component .horizontal_scroll_container .inside_container_horizontal_scroll .scroll_bar_horizontal {
+    width: 60vw;
+    top: 60%;
+    z-index: 1;
+  }
+  .ai_action_feature_component .horizontal_scroll_container .inside_container_horizontal_scroll .scroll_bar_horizontal .remove_button_scroll {
+    width: 30px;
+    height: 30px;
+  }
+  .ai_action_feature_component .button_container {
+    margin-top: -17%;
+    margin-left: 40vw;
+  }
+  .ai_action_feature_component .button_container .img_click_container {
+    width: 8vw;
+    height: 8vw;
+  }
   .ai_action_feature_component .text_feature_description {
     width: 90%;
     left: 5%;

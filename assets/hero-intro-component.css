@@ -13,7 +13,7 @@
   flex-direction: column;
   align-items: center;
   margin-top: 27vh;
-  gap: 1.5vw;
+  gap: 0.8vw;
 }
 .hero_intro_container .text_content_container .title_product {
   font-size: 43px;
@@ -55,7 +55,7 @@
   height: 17px;
 }
 .hero_intro_container .text_content_container .video_container {
-  width: 85vw;
+  width: 65vw;
   display: none;
   position: absolute;
   top: 50%;

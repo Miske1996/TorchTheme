@@ -7,9 +7,8 @@ body,
 body{
     font-family: 'LatoRegular';
     overflow-x: hidden;
-    width: 100vw;
-    
-      
+    width: 100vw;  
+    // width: 100%; 
 }
 a{
     color: none;
@@ -40,3 +39,25 @@ a{
     src: url('Lato-Thin.woff2');
     font-weight: 400;
 }
+
+
+@font-face {
+    font-family: "SSP";
+    src: url("sourcesanspro-black-webfont.woff2");
+    font-weight: 700;
+  }
+  @font-face {
+    font-family: "SSP";
+    src: url("sourcesanspro-bold-webfont.woff2");
+    font-weight: 600;
+  }
+  @font-face {
+    font-family: "SSP";
+    src: url("sourcesanspro-regular-webfont.woff2");
+    font-weight: 500;
+  }
+  @font-face {
+    font-family: "SSP";
+    src: url("sourcesanspro-light-webfont.woff2");
+    font-weight: 400;
+  }

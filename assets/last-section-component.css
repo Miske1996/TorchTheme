@@ -7,7 +7,6 @@
   opacity: 0;
   flex-direction: column;
   overflow-y: scroll;
-  transition: all 0.5s;
 }
 .last_section_component .section_1 {
   width: 100%;
@@ -15,119 +14,6 @@
   background-color: black;
   display: flex;
   flex-direction: column;
-}
-.last_section_component .section_1 .list_scroll_elements {
-  width: 100%;
-  height: 100vh;
-  position: relative;
-}
-.last_section_component .section_1 .list_scroll_elements .scroll_el {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  transition: all 0.6s;
-}
-.last_section_component .section_1 .list_scroll_elements .scroll_el .text_feature_description {
-  position: absolute;
-  top: 15vw;
-  left: 13%;
-  width: 35%;
-  opacity: 1;
-  display: flex;
-  flex-direction: column;
-  transition: all 0.5s;
-}
-.last_section_component .section_1 .list_scroll_elements .scroll_el .text_feature_description .title_with_background {
-  background: linear-gradient(90deg, #C2AC90 0%, #A5886B 100%);
-  padding: 0.3vw 1.8vw;
-  border-radius: 0.3vw;
-  font-size: 1.2vw;
-  margin-bottom: 1.2vw;
-  color: white;
-  width: fit-content;
-}
-.last_section_component .section_1 .list_scroll_elements .scroll_el .text_feature_description h2 {
-  display: none;
-  font-size: 4vw;
-  letter-spacing: 0.03em;
-  margin-bottom: 4vw;
-  padding: 0;
-  border-radius: 0;
-  background: linear-gradient(90deg, #C2AC90 0%, #A5886B 100%), linear-gradient(0deg, #FFFFFF, #FFFFFF);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-fill-color: transparent;
-  font-weight: 700;
-}
-.last_section_component .section_1 .list_scroll_elements .scroll_el .text_feature_description .title_feature {
-  font-size: 2.8vw;
-  font-weight: 700;
-  margin-bottom: 2.8vw;
-  line-height: 1.1;
-  letter-spacing: 0.1vw;
-  color: white;
-}
-.last_section_component .section_1 .list_scroll_elements .scroll_el .text_feature_description .paragraph1 {
-  font-size: 0.88vw;
-  color: white;
-  transition: 0.6s;
-  top: 80%;
-  left: 0%;
-  position: absolute;
-  color: #969696;
-  letter-spacing: 0.03em;
-}
-.last_section_component .section_1 .list_scroll_elements .scroll_el .text_feature_description .paragraph1 strong {
-  color: white;
-}
-.last_section_component .section_1 .list_scroll_elements .scroll_el .text_feature_description .paragraph2 {
-  font-size: 0.95vw;
-  color: white;
-  transition: 0.6s;
-  top: 100%;
-  left: 0%;
-  position: absolute;
-}
-.last_section_component .section_1 .list_scroll_elements .scroll_el img {
-  position: absolute;
-  left: 61%;
-  top: 50vh;
-  transform: translateY(-50%);
-  object-fit: contain;
-  width: 27%;
-}
-.last_section_component .section_1 .list_scroll_elements .el1 {
-  opacity: 1;
-}
-.last_section_component .section_1 .list_scroll_elements .el2 {
-  opacity: 0;
-}
-.last_section_component .section_1 .list_scroll_elements .scroller_container {
-  width: 10px;
-  height: fit-content;
-  display: flex;
-  flex-direction: column;
-  z-index: 1;
-  position: absolute;
-  top: 23vh;
-  left: 10%;
-}
-.last_section_component .section_1 .list_scroll_elements .scroller_container .top {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: linear-gradient(90deg, #C2AC90 0%, #A5886B 100.07%);
-  cursor: pointer;
-}
-.last_section_component .section_1 .list_scroll_elements .scroller_container .bottom {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: linear-gradient(90deg, #C2AC90 0%, #A5886B 100.07%);
-  opacity: 0.3;
-  margin-top: 25px;
-  cursor: pointer;
 }
 .last_section_component .section_1 .app_container {
   width: 67%;
@@ -138,6 +24,174 @@
   justify-content: start;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 25vh;
+  position: relative;
+}
+.last_section_component .section_1 .app_container .button_container {
+  z-index: 4;
+  width: 10vw;
+  top: 111%;
+  left: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  z-index: 3;
+  opacity: 1;
+  transition: all 0.5s;
+}
+.last_section_component .section_1 .app_container .button_container .img_click_container {
+  position: absolute;
+  height: 2.5vw;
+  width: 2.5vw;
+  background: linear-gradient(90deg, #C2AC90 0%, #A5886B 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  padding: 0.7vw;
+  cursor: pointer;
+  top: 50%;
+  left: 56%;
+  transform: translate(25%, -45%);
+}
+.last_section_component .section_1 .app_container .button_container .img_click_container img {
+  width: 60%;
+  height: 60%;
+  object-fit: contain;
+  z-index: 1;
+}
+.last_section_component .section_1 .app_container .horizontal_scroll_container {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 4;
+  background-color: beige;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  overflow-x: auto;
+  transform: translateX(100%);
+  transition: transform 0.7s;
+}
+.last_section_component .section_1 .app_container .horizontal_scroll_container::-webkit-scrollbar {
+  display: none;
+}
+.last_section_component .section_1 .app_container .horizontal_scroll_container .inside_container_horizontal_scroll {
+  width: 200vw;
+  height: 100vh;
+  background-color: black;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.last_section_component .section_1 .app_container .horizontal_scroll_container .inside_container_horizontal_scroll .row_1_ {
+  width: 90%;
+  height: 35%;
+  margin-top: 2%;
+  margin-left: 3%;
+  display: flex;
+}
+.last_section_component .section_1 .app_container .horizontal_scroll_container .inside_container_horizontal_scroll .row_1_ .title_part {
+  height: 100%;
+  width: 16vw;
+  display: flex;
+  align-items: center;
+  margin-right: 12vw;
+}
+.last_section_component .section_1 .app_container .horizontal_scroll_container .inside_container_horizontal_scroll .row_1_ .title_part .part_1_title {
+  background: linear-gradient(90deg, #C2AC90 0%, #A5886B 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  color: transparent;
+  font-weight: 700;
+  font-size: 65px;
+}
+.last_section_component .section_1 .app_container .horizontal_scroll_container .inside_container_horizontal_scroll .row_1_ .title_part .part2_title {
+  color: white;
+  line-height: 1.2;
+  font-size: 26px;
+  font-weight: 500;
+  margin-left: 1vw;
+}
+.last_section_component .section_1 .app_container .horizontal_scroll_container .inside_container_horizontal_scroll .row_1_ .card_top {
+  width: 40vw;
+  height: 100%;
+  margin-right: 10vw;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+.last_section_component .section_1 .app_container .horizontal_scroll_container .inside_container_horizontal_scroll .row_1_ .card_top .text_part_container {
+  width: 35%;
+  height: 100%;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  left: 34%;
+  top: -43%;
+}
+.last_section_component .section_1 .app_container .horizontal_scroll_container .inside_container_horizontal_scroll .row_1_ .card_top .text_part_container .top_title_card {
+  display: block;
+  color: white;
+  font-size: 22px;
+  line-height: 1.1;
+  margin-bottom: 15px;
+}
+.last_section_component .section_1 .app_container .horizontal_scroll_container .inside_container_horizontal_scroll .row_1_ .card_top .text_part_container p {
+  font-size: 0.95vw;
+  color: #969696;
+  letter-spacing: 0.03em;
+  line-height: 1.3;
+}
+.last_section_component .section_1 .app_container .horizontal_scroll_container .inside_container_horizontal_scroll .row_1_ .card_top .text_part_container p strong {
+  color: white;
+}
+.last_section_component .section_1 .app_container .horizontal_scroll_container .inside_container_horizontal_scroll .row_1_ .card_top .image_container_card {
+  width: 75%;
+  height: 100%;
+  display: flex;
+}
+.last_section_component .section_1 .app_container .horizontal_scroll_container .inside_container_horizontal_scroll .row_1_ .card_top .image_container_card img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.last_section_component .section_1 .app_container .horizontal_scroll_container .inside_container_horizontal_scroll .row_1_ .increase-margin {
+  margin-top: 10vh;
+}
+.last_section_component .section_1 .app_container .horizontal_scroll_container .inside_container_horizontal_scroll .scroll_bar_horizontal {
+  position: sticky;
+  width: 48vw;
+  background: #423A32;
+  height: 3px;
+  top: 85%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.last_section_component .section_1 .app_container .horizontal_scroll_container .inside_container_horizontal_scroll .scroll_bar_horizontal .remove_button_scroll {
+  cursor: pointer;
+  position: absolute;
+  background: linear-gradient(90deg, #C2AC90 0%, #A5886B 100%);
+  height: 1.5vw;
+  width: 1.5vw;
+  border-radius: 50%;
+  right: 0;
+  transform: translate(50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.last_section_component .section_1 .app_container .horizontal_scroll_container .inside_container_horizontal_scroll .scroll_bar_horizontal .progress_horizontal_scroll {
+  position: absolute;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(90deg, #C2AC90 -0.07%, #A5886B 99.88%);
 }
 .last_section_component .section_1 .app_container .textual_content {
   width: 100%;
@@ -356,6 +410,7 @@
   margin-bottom: 0.4vw;
   padding: 0px 5px;
   text-align: center;
+  line-height: 1;
 }
 .last_section_component .section_1 .grid_features .main_content_grid .right_card .cell .image_container {
   width: 85%;
@@ -522,6 +577,48 @@
   }
   .last_section_component .section_1 .app_container {
     width: 90%;
+  }
+  .last_section_component .section_1 .app_container .button_container {
+    top: 82%;
+    left: 47%;
+  }
+  .last_section_component .section_1 .app_container .button_container .img_click_container {
+    width: 8vw;
+    height: 8vw;
+  }
+  .last_section_component .section_1 .app_container .horizontal_scroll_container .inside_container_horizontal_scroll {
+    width: 500vw;
+  }
+  .last_section_component .section_1 .app_container .horizontal_scroll_container .inside_container_horizontal_scroll .row_1_ {
+    height: 18%;
+  }
+  .last_section_component .section_1 .app_container .horizontal_scroll_container .inside_container_horizontal_scroll .row_1_ .title_part {
+    width: 90vw;
+    align-items: flex-start;
+  }
+  .last_section_component .section_1 .app_container .horizontal_scroll_container .inside_container_horizontal_scroll .row_1_ .card_top {
+    margin-top: 0;
+    width: 200vw;
+  }
+  .last_section_component .section_1 .app_container .horizontal_scroll_container .inside_container_horizontal_scroll .row_1_ .card_top .image_container_card {
+    width: 90vw;
+    height: 30vh;
+  }
+  .last_section_component .section_1 .app_container .horizontal_scroll_container .inside_container_horizontal_scroll .row_1_ .card_top .text_part_container {
+    left: 37%;
+  }
+  .last_section_component .section_1 .app_container .horizontal_scroll_container .inside_container_horizontal_scroll .row_1_ .card_top .text_part_container p {
+    font-size: 2.95vw;
+    width: 77%;
+  }
+  .last_section_component .section_1 .app_container .horizontal_scroll_container .inside_container_horizontal_scroll .scroll_bar_horizontal {
+    width: 70vw;
+    top: 60%;
+    z-index: 1;
+  }
+  .last_section_component .section_1 .app_container .horizontal_scroll_container .inside_container_horizontal_scroll .scroll_bar_horizontal .remove_button_scroll {
+    width: 30px;
+    height: 30px;
   }
   .last_section_component .section_1 .app_container .textual_content {
     flex-direction: column;
