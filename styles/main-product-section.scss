@@ -177,8 +177,9 @@
                                     justify-content: center;
                                     align-items: center;
                                     position: relative;
+                                    background-color: #e0e0e0; 
                                     img{
-                                        width: 50%;
+                                        width: 100%;
                                         height: 100%;
                                         object-fit: contain;
                                     }
@@ -784,6 +785,7 @@
               }
               .size_guide{
                 margin-bottom: respDimM(25);
+                margin-top: respDimM(25);
                 font-size: respDimM(18);
               }
             }

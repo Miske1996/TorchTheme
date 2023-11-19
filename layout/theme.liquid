@@ -41,7 +41,19 @@
     {{ content_for_header }}
     {{ 'global.css' | asset_url | stylesheet_tag }}
   </head>
-
+  <script>
+    
+    //Routes 
+    window.shopUrl = '{{ request.origin }}';
+      window.routes = {
+        cart_add_url: '{{ routes.cart_add_url }}',
+        cart_change_url: '{{ routes.cart_change_url }}',
+        cart_update_url: '{{ routes.cart_update_url }}',
+        cart_url: '{{ routes.cart_url }}',
+        predictive_search_url: '{{ routes.predictive_search_url }}',
+        search_url: '{{ routes.search_url }}',
+      };
+  </script>
   <body>
     {% section 'header-section' %}
     <main class="main_content_layout">{{ content_for_layout }}</main>

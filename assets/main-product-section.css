@@ -179,9 +179,10 @@
   justify-content: center;
   align-items: center;
   position: relative;
+  background-color: #e0e0e0;
 }
 .main_product_section .product-ui .main_info .product_main_info_container .product_info_ .options_container_product .product_types_option_container .types_container_input_radio .option_type img {
-  width: 50%;
+  width: 100%;
   height: 100%;
   object-fit: contain;
 }
@@ -765,6 +766,7 @@
   }
   .main_product_section .product-ui .main_info .product_main_info_container .product_info_ .options_container_product .size_guide {
     margin-bottom: 5.56vw;
+    margin-top: 5.56vw;
     font-size: 4vw;
   }
   .main_product_section .product-ui .main_info .product_main_info_container .product_info_ .order_container {

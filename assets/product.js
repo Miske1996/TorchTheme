@@ -56,6 +56,46 @@ class ProductUI extends HTMLElement {
                 })
             })
         })
+        const bundleDataFetch = () => {
+            //from a snippet take the json directly because it is a metafield
+            var boughTogether = document.querySelector('.productBoughTogether[type="application/json"]');
+            if (!boughTogether) return;
+            //Take the variantData
+            var variantData = JSON.parse(boughTogether.innerText);
+            var query = '';
+
+            //create the query from the json to retrieve the products
+            variantData.forEach((e, key, variantData) => {
+            if (!Object.is(variantData.length - 1, key)) {
+                //this create a query of ids seperate by OR ex: 123 OR 321
+                query += e + '%20OR%20id:';
+            } else {
+                query += e;
+            }
+            });
+
+            //get these products
+            var productAjaxURL = '?q=id:' + query + '&section_id=product-bough-together';
+            //Searching for this products using the routes.search_url provided from shopify
+            //the search url when used  return a search result and replace in liquid file
+        
+            fetch(`${window.shopUrl}${routes.search_url}${productAjaxURL}`)
+            .then((response) => response.text())
+            .then(async (responseText) => {
+                const html = new DOMParser().parseFromString(responseText, 'text/html');
+                //change the section inner html with the products retrieved
+                document.querySelector('products_bundle_container').innerHTML =
+                html.querySelector("products_bundle_container").innerHTML;
+            })
+            .catch((e) => {
+                throw error;
+            })
+            .finally(() => {
+                //Add event listeners to new checkboxes of the products
+                // this.eventProductBoughTogetherAction();
+            });
+            }
+        bundleDataFetch();
     }
 
     initReviewSlide(){
