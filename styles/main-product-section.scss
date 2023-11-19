@@ -746,6 +746,152 @@
             .main_media{
               height: 90vw;
             }
+            .sub_media{
+              height: respDimM(150);
+            }
+          }
+          .product_info_{
+            width: 100%;
+            .seprator{
+              margin-top: respDimM(25);
+            }
+            .title_product{
+              font-size: respDimM(26);
+            }
+            .price{
+              font-size: respDimM(18);
+            }
+            .options_container_product{
+              .product_types_option_container{
+                margin-top: respDimM(25);
+                .title_type{
+                  font-size: respDimM(18);
+                }
+                .types_container_input_radio{
+                  .option_type{
+                    width: respDimM(85);
+                  }
+                }
+              }
+              .size_container{
+                margin-top: respDimM(20);
+                .option_size{
+                  width: respDimM(85);
+                  .size_value{
+                    font-size: respDimM(16);
+                  }
+                }      
+              }
+              .size_guide{
+                margin-bottom: respDimM(25);
+                font-size: respDimM(18);
+              }
+            }
+            .order_container{
+              margin-top: respDimM(25);
+              height: respDimM(60);
+              .order_quantity_container{
+                .plus_btn{font-size: respDimM(22);}
+                .quantity{font-size: respDimM(22);}
+                .minus_btn{font-size: respDimM(22);}
+              }
+              .order_button{font-size: respDimM(22);}
+            }
+            .bundle_container{
+              margin-top: respDimM(25);
+              .bundle_title_container{font-size: respDimM(18);}
+              .products_bundle_container{
+                .card_container{
+                  height: respDimM(250);
+                  width: 32%;
+                  .img_container{
+                    .options_container{
+                      width: 80%;
+                      height: respDimM(50);
+                      border-radius: respDimM(8);
+                      .option{
+                        width: respDimM(32);
+                        height: respDimM(32);
+                        border: 2px solid #DCDCD6;
+                        .color{
+                          height: 100%;
+                        }
+                      }
+                    }
+                  }
+                  .main_info_product_card{
+                    h1{
+                      font-size: respDimM(15);
+                    }
+                    span{
+                      font-size: respDimM(13);
+                    }
+                  }
+                  .buy_button{
+                    height: respDimM(30);
+                    span{
+                      a{
+                        img{
+                          width: respDimM(20);
+                          height: respDimM(20);
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+            .reviews_container{
+              margin-top: respDimM(50);
+              .title_span_review{
+                font-size: respDimM(18);
+              }
+              .reviews_wrapper{
+                height: respDimM(200);
+                
+                .arrows_container{
+                  .arrow_container_left{
+                    .img_arrow{
+                      width: respDimM(17);
+                      height: respDimM(17);
+                    }
+                  }
+                  .arrow_container_right{
+                    .img_arrow{
+                      width: respDimM(17);
+                      height: respDimM(17);
+                    }
+                  }
+                }
+                .review_cards_container{
+                  height: respDimM(200);
+                  .review_card{
+                    .stars_container{
+                      margin-bottom: respDimM(10);
+                      height: respDimM(20);
+                      img{
+                        width: respDimM(20);
+                        height: respDimM(20);
+                      }
+                    }
+                    .review_text{
+                      font-size: respDimM(16);
+                    }
+                  }
+                }
+              }
+            }
+            .description_product{
+              margin-top: respDimM(25);
+              .title_description{
+                margin-top: respDimM(25);
+                font-size: respDimM(18);
+              }
+              .text_description{
+                font-size: respDimM(16);
+                margin-bottom: respDimM(25);
+              }
+            }
           }
         }
        
