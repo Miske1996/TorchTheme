@@ -5,20 +5,6 @@ class SectionsAnimationScroll extends HTMLElement {
         super();
         this.initSectionHero()
 
-
-        // //Scroll behavior
-        // this.scrollSpeedFactor = 0.2;
-        // this.lastScrollTop = window.scrollY;
-        // this.lastTimestamp = performance.now();
-
-        // // Bind the handleWheel method to the current instance
-        // this.handleWheel = this.handleWheel.bind(this);
-
-        // // Add the wheel event listener to the window
-        // window.addEventListener('wheel', this.handleWheel);
-
-
-        // this.initScroll();
         this.prevY = 0;
         this.isScrollingDown = true;
         window.scrollTo(0, 0);
@@ -208,83 +194,83 @@ class SectionsAnimationScroll extends HTMLElement {
             //START SECTION 7 ANIMATION
             this.initTitleFeautreAnimation(scrollTopY,window_height*24,this.isScrollingDown,window_height * 26)
             //RESET SECTION 8 ANIMATION
-            this.initAnimationCanvasWithTitle(scrollTopY,window_height*26,this.isScrollingDown,window_height * 29)
+            this.initAnimationCanvasWithTitle(scrollTopY,window_height*26,this.isScrollingDown,window_height * 31.8)
 
         }
 
         // 8 - SECTION 8: ANIMATION CANVAS WITH TITLE SECTION
-        else if( scrollTopY >= (window_height * 26) && scrollTopY <= (window_height * 29)){
+        else if( scrollTopY >= (window_height * 26) && scrollTopY <= (window_height * 31.8)){
 
             //RESET SECTION 7 ANIMATION
             this.initTitleFeautreAnimation(scrollTopY,window_height*24,this.isScrollingDown,window_height * 26)
             //START SECTION 8 ANIMATION
-            this.initAnimationCanvasWithTitle(scrollTopY,window_height*26,this.isScrollingDown,window_height * 29)
+            this.initAnimationCanvasWithTitle(scrollTopY,window_height*26,this.isScrollingDown,window_height * 31.8)
             //START SECTION 9 ANIMATION
-            this.initAnimationCanvasRotating(scrollTopY,window_height*29,this.isScrollingDown,window_height * 32)
+            this.initAnimationCanvasRotating(scrollTopY,window_height*31.8,this.isScrollingDown,window_height * 38)
 
         }
 
          // 9 - SECTION 9: ANIMATION CANVAS WITH ROTATION
-         else if( scrollTopY >= (window_height * 29) && scrollTopY <= (window_height * 32)){
+         else if( scrollTopY >= (window_height * 31.8) && scrollTopY <= (window_height * 38)){
 
             //START SECTION 8 ANIMATION
-            this.initAnimationCanvasWithTitle(scrollTopY,window_height*26,this.isScrollingDown,window_height * 29)
+            this.initAnimationCanvasWithTitle(scrollTopY,window_height*26,this.isScrollingDown,window_height * 31.8)
             //START SECTION 9 ANIMATION
-            this.initAnimationCanvasRotating(scrollTopY,window_height*29,this.isScrollingDown,window_height * 32)
+            this.initAnimationCanvasRotating(scrollTopY,window_height*31.8,this.isScrollingDown,window_height * 38)
             //RESET SECTION 10 ANIMATION
-            this.initAnimationSectionIndentified(scrollTopY,window_height*32,this.isScrollingDown,window_height * 32.5)
+            this.initAnimationSectionIndentified(scrollTopY,window_height*38,this.isScrollingDown,window_height * 40)
         }
 
         // 10 - SECTION 10: ANIMATION OBJECT IDENTIFIED
-        else if( scrollTopY >= (window_height * 32) && scrollTopY <= (window_height * 32.5)){
+        else if( scrollTopY >= (window_height * 38) && scrollTopY <= (window_height * 40)){
             //RESET SECTION 9 ANIMATION
-           this.initAnimationCanvasRotating(scrollTopY,window_height*29,this.isScrollingDown,window_height * 32)
+           this.initAnimationCanvasRotating(scrollTopY,window_height*31.8,this.isScrollingDown,window_height * 38)
             //START SECTION 10 ANIMATION
-            this.initAnimationSectionIndentified(scrollTopY,window_height*32,this.isScrollingDown,window_height * 32.5)
+            this.initAnimationSectionIndentified(scrollTopY,window_height*38,this.isScrollingDown,window_height * 40)
             //RESET SECTION 11 ANIMATION
-            this.initAnimationAiAction(scrollTopY,window_height*32.5,this.isScrollingDown,window_height * 33.3)
+            this.initAnimationAiAction(scrollTopY,window_height*40,this.isScrollingDown,window_height * 41.5)
         }
 
         // 11 - SECTION 11: ANIMATION AI ACTION
-        else if( scrollTopY >= (window_height * 32.5) && scrollTopY <= (window_height * 33.3)){
+        else if( scrollTopY >= (window_height * 40) && scrollTopY <= (window_height * 41.5)){
             //START SECTION 10 ANIMATION
-            this.initAnimationSectionIndentified(scrollTopY,window_height*32,this.isScrollingDown,window_height * 32.5)
+            this.initAnimationSectionIndentified(scrollTopY,window_height*38,this.isScrollingDown,window_height * 40)
             //START SECTION 11 ANIMATION
-            this.initAnimationAiAction(scrollTopY,window_height*32.5,this.isScrollingDown,window_height * 33.3)
+            this.initAnimationAiAction(scrollTopY,window_height*40,this.isScrollingDown,window_height * 41.5)
             //RESET SECTION 12 ANIMATION
-            this.initAnimationPathFinder(scrollTopY,window_height*33.3,this.isScrollingDown,window_height * 33.9)
+            this.initAnimationPathFinder(scrollTopY,window_height*41.5,this.isScrollingDown,window_height * 43)
         }
 
         // 12 - SECTION 12: ANIMATION PATH FINDER
-        else if( scrollTopY >= (window_height * 33.3) && scrollTopY <= (window_height * 33.9)){
+        else if( scrollTopY >= (window_height * 41.5) && scrollTopY <= (window_height * 43)){
             //START SECTION 11 ANIMATION
-            this.initAnimationAiAction(scrollTopY,window_height*32.5,this.isScrollingDown,window_height * 33.3)
+            this.initAnimationAiAction(scrollTopY,window_height*40,this.isScrollingDown,window_height * 41.5)
             //START SECTION 12 ANIMATION
-            this.initAnimationPathFinder(scrollTopY,window_height*33,this.isScrollingDown,window_height * 33.9)
+            this.initAnimationPathFinder(scrollTopY,window_height*41.5,this.isScrollingDown,window_height * 43)
              //START SECTION 13 ANIMATION
-             this.initLastVerticalTabs(scrollTopY,window_height*33.9,this.isScrollingDown,window_height * 35)
+             this.initLastVerticalTabs(scrollTopY,window_height*43,this.isScrollingDown,window_height * 44.5)
         }
 
         // 13 - SECTION 13: LAST VERTICAL TABS
-        else if( scrollTopY >= (window_height * 33.9) && scrollTopY <= (window_height * 35)){
+        else if( scrollTopY >= (window_height * 43) && scrollTopY <= (window_height * 44.5)){
             //RESET SECTION 12 ANIMATION
-            this.initAnimationPathFinder(scrollTopY,window_height*33,this.isScrollingDown,window_height * 33.9)
+            this.initAnimationPathFinder(scrollTopY,window_height*33,this.isScrollingDown,window_height * 43)
             //START SECTION 13 ANIMATION
-            this.initLastVerticalTabs(scrollTopY,window_height*33.9,this.isScrollingDown,window_height * 35)
+            this.initLastVerticalTabs(scrollTopY,window_height*43,this.isScrollingDown,window_height * 44.5)
             //RESET SECTION 14 ANIMATION
-            this.initLastSection(scrollTopY,window_height*35,this.isScrollingDown,window_height * 36.2)
+            this.initLastSection(scrollTopY,window_height*44.5,this.isScrollingDown,window_height * 46)
         }
 
         // 14 - SECTION 13: LAST SECTION
-        else if( scrollTopY >= (window_height * 35) && scrollTopY <= (window_height * 36.2)){
+        else if( scrollTopY >= (window_height * 44.5) && scrollTopY <= (window_height * 46)){
             //RESET SECTION 13 ANIMATION
-            this.initLastVerticalTabs(scrollTopY,window_height*33.9,this.isScrollingDown,window_height * 35)
+            this.initLastVerticalTabs(scrollTopY,window_height*43,this.isScrollingDown,window_height * 44.5)
             //START SECTION 14 ANIMATION
-            this.initLastSection(scrollTopY,window_height*35,this.isScrollingDown,window_height * 36.2)
+            this.initLastSection(scrollTopY,window_height*44.5,this.isScrollingDown,window_height * 46)
         
-        }else if( scrollTopY > (window_height * 36.2)){
+        }else if( scrollTopY > (window_height * 46)){
             //START SECTION 14 ANIMATION
-            this.initLastSection(scrollTopY,window_height*35,this.isScrollingDown,window_height * 36.2)
+            this.initLastSection(scrollTopY,window_height*44.5,this.isScrollingDown,window_height * 46)
         }
 
     }
@@ -933,10 +919,10 @@ class SectionsAnimationScroll extends HTMLElement {
         let ctx = canvas.getContext("2d")       
 
         let inner_break_1 = startPoint;
-        let inner_break_2 = inner_break_1 +  300;
-        let inner_break_3 = inner_break_2 +  600;
-        let inner_break_4 = inner_break_3 +  600;
-        let inner_break_5 = inner_break_4 +  600;
+        let inner_break_2 = inner_break_1 +  ((breakPoint - startPoint)/ 4);
+        let inner_break_3 = inner_break_2 +  ((breakPoint - startPoint)/ 4);
+        let inner_break_4 = inner_break_3 +  ((breakPoint - startPoint)/ 4);
+        let inner_break_5 = inner_break_4 +  ((breakPoint - startPoint)/ 4);
 
         if(scrollTopY <= startPoint){
             //When we go to the previous section
@@ -1347,12 +1333,14 @@ class SectionsAnimationScroll extends HTMLElement {
         let ctx = canvas.getContext("2d")
 
         let inner_break_1 = startPoint;
-        let inner_break_2 = inner_break_1 +  300;
-        let inner_break_3 = inner_break_2 +  600;
-        let inner_break_4 = inner_break_3 +  600;
-        let inner_break_5 = inner_break_4 +  600;
-        let inner_break_6 = inner_break_5 +  600;
-        let inner_break_7 = inner_break_6 +  600;
+        let inner_break_2 = inner_break_1 +  ((breakPoint - startPoint)/ 6);
+        let inner_break_3 = inner_break_2 +  ((breakPoint - startPoint)/ 6);
+        let inner_break_4 = inner_break_3 +  ((breakPoint - startPoint)/ 6);
+        let inner_break_5 = inner_break_4 +  ((breakPoint - startPoint)/ 6);
+        let inner_break_6 = inner_break_5 +  ((breakPoint - startPoint)/ 6);
+        let inner_break_7 = inner_break_6 +  ((breakPoint - startPoint)/ 6);
+
+        
         // let inner_break_6 = inner_break_5 +  ((breakPoint - startPoint)* ((1 - 1/8)/4));
 
         if(scrollTopY <= startPoint){
@@ -1743,8 +1731,8 @@ class SectionsAnimationScroll extends HTMLElement {
        
 
         let inner_break_1 = startPoint;
-        let inner_break_2 = inner_break_1 +  300;
-        let inner_break_3 = inner_break_2 +  600;
+        let inner_break_2 = inner_break_1 +  ((breakPoint - startPoint)/ 2);
+        let inner_break_3 = inner_break_2 +  ((breakPoint - startPoint)/ 2);
      
       
 
@@ -1819,7 +1807,7 @@ class SectionsAnimationScroll extends HTMLElement {
         let bg_img = ai_action_feature_component.querySelector(".bg_img");
 
         let inner_break_1 = startPoint;
-        let inner_break_2 = inner_break_1 +  150;
+        let inner_break_2 = inner_break_1 +  ((breakPoint - startPoint)/ 2);
 
      
       
@@ -1892,8 +1880,8 @@ class SectionsAnimationScroll extends HTMLElement {
         
 
         let inner_break_1 = startPoint;
-        let inner_break_2 = inner_break_1 +  300;
-        let inner_break_3 = inner_break_2 +  600;
+        let inner_break_2 = inner_break_1 +  ((breakPoint - startPoint)/ 2);
+        let inner_break_3 = inner_break_2 +  ((breakPoint - startPoint)/ 2);
      
       
 
