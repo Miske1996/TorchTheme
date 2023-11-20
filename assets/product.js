@@ -88,7 +88,7 @@ class ProductUI extends HTMLElement {
                 html.querySelector("products_bundle_container").innerHTML;
             })
             .catch((e) => {
-                throw error;
+                throw e;
             })
             .finally(() => {
                 //Add event listeners to new checkboxes of the products
