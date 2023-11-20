@@ -79,7 +79,7 @@ class ProductUI extends HTMLElement {
             //Searching for this products using the routes.search_url provided from shopify
             //the search url when used  return a search result and replace in liquid file
         
-            fetch(`${routes.search_url}${productAjaxURL}`)
+            fetch(`${routes.search_url}`)
             .then((response) => response.text())
             .then(async (responseText) => {
                 const html = new DOMParser().parseFromString(responseText, 'text/html');
