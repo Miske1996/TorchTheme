@@ -75,19 +75,21 @@ class ProductUI extends HTMLElement {
             });
 
             //get these products
-            var productAjaxURL = '?q=id:' + query + '&section_id=product-bough-together';
+            var productAjaxURL = '?q=id:' + query + '&section_id=product-bought-together-section';
             //Searching for this products using the routes.search_url provided from shopify
             //the search url when used  return a search result and replace in liquid file
         
-            fetch(`${routes.search_url}`)
+            fetch(`${routes.search_url}${productAjaxURL}`)
             .then((response) => response.text())
             .then(async (responseText) => {
+                
                 const html = new DOMParser().parseFromString(responseText, 'text/html');
                 //change the section inner html with the products retrieved
-                document.querySelector('products_bundle_container').innerHTML =
-                html.querySelector("products_bundle_container").innerHTML;
+                this.querySelector(".products_bundle_container_wrapper").innerHTML = html.querySelector(".products_bundle_container").innerHTML
+          
             })
             .catch((e) => {
+                console.log(e)
                 throw e;
             })
             .finally(() => {

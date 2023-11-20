@@ -316,20 +316,20 @@
   font-size: 1.11vw;
   font-family: "LatoBold";
 }
-.main_product_section .product-ui .main_info .product_main_info_container .product_info_ .bundle_container .products_bundle_container {
+.main_product_section .product-ui .main_info .product_main_info_container .product_info_ .bundle_container .products_bundle_container_wrapper {
   width: 100%;
   height: fit-content;
   display: flex;
   margin-top: 1.04vw;
   justify-content: space-between;
 }
-.main_product_section .product-ui .main_info .product_main_info_container .product_info_ .bundle_container .products_bundle_container .card_container {
+.main_product_section .product-ui .main_info .product_main_info_container .product_info_ .bundle_container .products_bundle_container_wrapper .card_container {
   width: 30%;
   height: 24.31vw;
   display: flex;
   flex-direction: column;
 }
-.main_product_section .product-ui .main_info .product_main_info_container .product_info_ .bundle_container .products_bundle_container .card_container .img_container {
+.main_product_section .product-ui .main_info .product_main_info_container .product_info_ .bundle_container .products_bundle_container_wrapper .card_container .img_container {
   width: 100%;
   height: 80%;
   display: flex;
@@ -338,7 +338,7 @@
   position: relative;
   overflow: hidden;
 }
-.main_product_section .product-ui .main_info .product_main_info_container .product_info_ .bundle_container .products_bundle_container .card_container .img_container img {
+.main_product_section .product-ui .main_info .product_main_info_container .product_info_ .bundle_container .products_bundle_container_wrapper .card_container .img_container img {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -346,16 +346,16 @@
   cursor: pointer;
   display: none;
 }
-.main_product_section .product-ui .main_info .product_main_info_container .product_info_ .bundle_container .products_bundle_container .card_container .img_container .show {
+.main_product_section .product-ui .main_info .product_main_info_container .product_info_ .bundle_container .products_bundle_container_wrapper .card_container .img_container .show {
   display: block;
 }
-.main_product_section .product-ui .main_info .product_main_info_container .product_info_ .bundle_container .products_bundle_container .card_container .img_container form {
+.main_product_section .product-ui .main_info .product_main_info_container .product_info_ .bundle_container .products_bundle_container_wrapper .card_container .img_container form {
   width: 100%;
   height: 100%;
   border: none;
   display: flex;
 }
-.main_product_section .product-ui .main_info .product_main_info_container .product_info_ .bundle_container .products_bundle_container .card_container .img_container .options_container {
+.main_product_section .product-ui .main_info .product_main_info_container .product_info_ .bundle_container .products_bundle_container_wrapper .card_container .img_container .options_container {
   position: absolute;
   left: 50%;
   top: 110%;
@@ -370,7 +370,7 @@
   align-items: center;
   justify-content: center;
 }
-.main_product_section .product-ui .main_info .product_main_info_container .product_info_ .bundle_container .products_bundle_container .card_container .img_container .options_container .option {
+.main_product_section .product-ui .main_info .product_main_info_container .product_info_ .bundle_container .products_bundle_container_wrapper .card_container .img_container .options_container .option {
   width: 1.81vw;
   height: 1.81vw;
   border-radius: 50%;
@@ -380,41 +380,41 @@
   overflow: hidden;
   cursor: pointer;
 }
-.main_product_section .product-ui .main_info .product_main_info_container .product_info_ .bundle_container .products_bundle_container .card_container .img_container .options_container .option input[type=radio] {
+.main_product_section .product-ui .main_info .product_main_info_container .product_info_ .bundle_container .products_bundle_container_wrapper .card_container .img_container .options_container .option input[type=radio] {
   appearance: none;
   width: 100%;
   height: 100%;
   position: absolute;
   cursor: pointer;
 }
-.main_product_section .product-ui .main_info .product_main_info_container .product_info_ .bundle_container .products_bundle_container .card_container .img_container .options_container .option:hover {
+.main_product_section .product-ui .main_info .product_main_info_container .product_info_ .bundle_container .products_bundle_container_wrapper .card_container .img_container .options_container .option:hover {
   border: 1.3px solid black;
 }
-.main_product_section .product-ui .main_info .product_main_info_container .product_info_ .bundle_container .products_bundle_container .card_container .img_container .options_container .option .color {
+.main_product_section .product-ui .main_info .product_main_info_container .product_info_ .bundle_container .products_bundle_container_wrapper .card_container .img_container .options_container .option .color {
   height: 1.81vw;
   display: flex;
 }
-.main_product_section .product-ui .main_info .product_main_info_container .product_info_ .bundle_container .products_bundle_container .card_container .img_container:hover .options_container {
+.main_product_section .product-ui .main_info .product_main_info_container .product_info_ .bundle_container .products_bundle_container_wrapper .card_container .img_container:hover .options_container {
   top: 60%;
 }
-.main_product_section .product-ui .main_info .product_main_info_container .product_info_ .bundle_container .products_bundle_container .card_container .main_info_product_card {
+.main_product_section .product-ui .main_info .product_main_info_container .product_info_ .bundle_container .products_bundle_container_wrapper .card_container .main_info_product_card {
   width: 100%;
   display: flex;
   justify-content: space-between;
   margin-top: 1.74vw;
 }
-.main_product_section .product-ui .main_info .product_main_info_container .product_info_ .bundle_container .products_bundle_container .card_container .main_info_product_card h1 {
+.main_product_section .product-ui .main_info .product_main_info_container .product_info_ .bundle_container .products_bundle_container_wrapper .card_container .main_info_product_card h1 {
   color: black;
   font-size: 1.46vw;
   font-family: "LatoBold";
 }
-.main_product_section .product-ui .main_info .product_main_info_container .product_info_ .bundle_container .products_bundle_container .card_container .main_info_product_card span {
+.main_product_section .product-ui .main_info .product_main_info_container .product_info_ .bundle_container .products_bundle_container_wrapper .card_container .main_info_product_card span {
   display: block;
   color: black;
   font-size: 1.11vw;
   font-family: "LatoLight";
 }
-.main_product_section .product-ui .main_info .product_main_info_container .product_info_ .bundle_container .products_bundle_container .card_container .buy_button {
+.main_product_section .product-ui .main_info .product_main_info_container .product_info_ .bundle_container .products_bundle_container_wrapper .card_container .buy_button {
   width: 100%;
   height: 2.71vw;
   border-radius: 5px;
@@ -426,18 +426,18 @@
   margin-left: auto;
   margin-top: 0.49vw;
 }
-.main_product_section .product-ui .main_info .product_main_info_container .product_info_ .bundle_container .products_bundle_container .card_container .buy_button span {
+.main_product_section .product-ui .main_info .product_main_info_container .product_info_ .bundle_container .products_bundle_container_wrapper .card_container .buy_button span {
   display: block;
   font-size: 1.11vw;
   color: white;
   font-family: "LatoLight";
 }
-.main_product_section .product-ui .main_info .product_main_info_container .product_info_ .bundle_container .products_bundle_container .card_container .buy_button span a {
+.main_product_section .product-ui .main_info .product_main_info_container .product_info_ .bundle_container .products_bundle_container_wrapper .card_container .buy_button span a {
   color: white;
   text-decoration: none;
   display: flex;
 }
-.main_product_section .product-ui .main_info .product_main_info_container .product_info_ .bundle_container .products_bundle_container .card_container .buy_button span a img {
+.main_product_section .product-ui .main_info .product_main_info_container .product_info_ .bundle_container .products_bundle_container_wrapper .card_container .buy_button span a img {
   width: 1.39vw;
   height: 1.39vw;
   object-fit: contain;
@@ -550,6 +550,7 @@
   width: 100%;
   height: fit-content;
   margin-top: 1.74vw;
+  margin-bottom: 1.74vw;
   background-color: #F2F2F2;
   border-radius: 1.39vw;
   display: flex;
@@ -791,33 +792,33 @@
   .main_product_section .product-ui .main_info .product_main_info_container .product_info_ .bundle_container .bundle_title_container {
     font-size: 4vw;
   }
-  .main_product_section .product-ui .main_info .product_main_info_container .product_info_ .bundle_container .products_bundle_container .card_container {
+  .main_product_section .product-ui .main_info .product_main_info_container .product_info_ .bundle_container .products_bundle_container_wrapper .card_container {
     height: 55.56vw;
     width: 32%;
   }
-  .main_product_section .product-ui .main_info .product_main_info_container .product_info_ .bundle_container .products_bundle_container .card_container .img_container .options_container {
+  .main_product_section .product-ui .main_info .product_main_info_container .product_info_ .bundle_container .products_bundle_container_wrapper .card_container .img_container .options_container {
     width: 80%;
     height: 11.11vw;
     border-radius: 1.78vw;
   }
-  .main_product_section .product-ui .main_info .product_main_info_container .product_info_ .bundle_container .products_bundle_container .card_container .img_container .options_container .option {
+  .main_product_section .product-ui .main_info .product_main_info_container .product_info_ .bundle_container .products_bundle_container_wrapper .card_container .img_container .options_container .option {
     width: 7.11vw;
     height: 7.11vw;
     border: 2px solid #DCDCD6;
   }
-  .main_product_section .product-ui .main_info .product_main_info_container .product_info_ .bundle_container .products_bundle_container .card_container .img_container .options_container .option .color {
+  .main_product_section .product-ui .main_info .product_main_info_container .product_info_ .bundle_container .products_bundle_container_wrapper .card_container .img_container .options_container .option .color {
     height: 100%;
   }
-  .main_product_section .product-ui .main_info .product_main_info_container .product_info_ .bundle_container .products_bundle_container .card_container .main_info_product_card h1 {
+  .main_product_section .product-ui .main_info .product_main_info_container .product_info_ .bundle_container .products_bundle_container_wrapper .card_container .main_info_product_card h1 {
     font-size: 3.33vw;
   }
-  .main_product_section .product-ui .main_info .product_main_info_container .product_info_ .bundle_container .products_bundle_container .card_container .main_info_product_card span {
+  .main_product_section .product-ui .main_info .product_main_info_container .product_info_ .bundle_container .products_bundle_container_wrapper .card_container .main_info_product_card span {
     font-size: 2.89vw;
   }
-  .main_product_section .product-ui .main_info .product_main_info_container .product_info_ .bundle_container .products_bundle_container .card_container .buy_button {
+  .main_product_section .product-ui .main_info .product_main_info_container .product_info_ .bundle_container .products_bundle_container_wrapper .card_container .buy_button {
     height: 6.67vw;
   }
-  .main_product_section .product-ui .main_info .product_main_info_container .product_info_ .bundle_container .products_bundle_container .card_container .buy_button span a img {
+  .main_product_section .product-ui .main_info .product_main_info_container .product_info_ .bundle_container .products_bundle_container_wrapper .card_container .buy_button span a img {
     width: 4.44vw;
     height: 4.44vw;
   }
@@ -854,6 +855,7 @@
   }
   .main_product_section .product-ui .main_info .product_main_info_container .product_info_ .description_product {
     margin-top: 5.56vw;
+    margin-bottom: 5.56vw;
   }
   .main_product_section .product-ui .main_info .product_main_info_container .product_info_ .description_product .title_description {
     margin-top: 5.56vw;

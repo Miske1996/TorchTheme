@@ -1,8 +1,8 @@
 <div class="products_bundle_container" id="bought-together-id">
   {%- if search.results != blank -%}
-    {%- assign products = search.terms | remove: 'id:' | split: ' OR ' | uniq -%}
+    {%- assign products = search.results -%}
   {% endif %}
-  {% for p in products %}
+  {% for p in products limit: 3 %}
     <article class="card_container">
       <div class="img_container">
         {% if p.options.size > 0 -%}
