@@ -1,0 +1,10 @@
+{%- liquid
+  assign products_upsell = product.metafields.custom.upsell_products | split: ',' | uniq
+-%}
+{% if products_upsell.size > 0 %}
+  <div id="products-upsell">
+    <script type="application/json" class="productsUpsell">
+        [{{ product.id }},{%- for item in products_upsell -%}{{ item | split: 'Product/' | last | split: '"' | first }}{%- unless forloop.last -%},{%- endunless forloop.last -%}{%- endfor -%}]
+    </script>
+  </div>
+{% endif %}

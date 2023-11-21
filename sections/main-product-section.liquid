@@ -100,7 +100,12 @@
                     </div>
                   </div>
                   <div class="review_cards_container">
-
+                    <script>
+                      console.log(`{{ product.metafields.custom.product_reviews }} `)
+                    </script>
+                    {% for item in product.metafields.custom.product_reviews.value %}
+                      {{ item }}
+                    {% endfor %}
                     <div class="review_card">
                       <div class="stars_container">
                         <img src="{{ 'star.png' |  asset_url }}" alt="">
@@ -253,8 +258,8 @@
       </div>
     </div>
     {% comment %} 
-                BUNDLE PRODUCTS DATA 
-          {% endcomment %}
+                                                                                                                                                                                                                                                                BUNDLE PRODUCTS DATA 
+                                                                                                                                                                          {% endcomment %}
     {%- liquid
       assign products_bought_together = product.metafields.custom.bundle_products | split: ',' | uniq
     -%}

@@ -1,0 +1,34 @@
+.congrats_purchase_decision_container {
+  width: 100%;
+  height: 58px;
+  margin-bottom: 10px;
+  background-color: #E8EFD8;
+  display: flex;
+  align-items: center;
+}
+.congrats_purchase_decision_container .check_label_container {
+  width: 33px;
+  height: 33px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  border-radius: 50%;
+  margin-left: 13px;
+}
+.congrats_purchase_decision_container .check_label_container img {
+  width: 18px;
+  height: 10px;
+  object-fit: contain;
+}
+.congrats_purchase_decision_container .text_content {
+  width: 240px;
+  font-family: "Poppins";
+  color: black;
+  font-weight: 400;
+  font-size: 13px;
+  margin-left: 12px;
+}
+.congrats_purchase_decision_container .text_content .bold {
+  font-weight: 700;
+}
