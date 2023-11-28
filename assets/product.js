@@ -6,6 +6,28 @@ class ProductUI extends HTMLElement {
         this.quantity = 0;
         this.initOrderQuantity();
         
+        //SWATCH VARIANT LOGIC 
+        this.current_variant_name = this.querySelector('.types_container_input_radio input[type="radio"]:checked').value;
+        this.variants = JSON.parse(this.querySelector('.variantsData[type="application/json"]').innerText).variants;
+        this.current_variant_product = this.variants[0].id 
+        this.variantProductSwatch();
+        Object.defineProperty(this, 'current_variant_name', {
+            get: function () {
+                return this._current_variant_name;
+            },
+            set: function (newVariant) {
+                if (newVariant !== this._current_variant_name) {
+                    this._current_variant_name = newVariant;
+                    this.variants.forEach((v) => {
+                        if(v.title.split("|")[0] === newVariant){
+                            this.current_variant_product = v.id;
+                        }
+                    })
+                    this.changeTheImagesInOverlay(); // Call the function when the property changes
+                }
+            }
+        });
+        
         //Bundle Products Cards
         this.initCardProductBundle();
 
@@ -16,7 +38,22 @@ class ProductUI extends HTMLElement {
         //overlayZoomImage
         this.overlayZoomImage();
 
+        //Cart Drawer
+        this.cart = document.querySelector("cart-drawer");
+        this.cart.close();
+        this.addToCart();
     }
+
+    addToCart(){
+        let add_to_button = this.querySelector(".order_button");
+        add_to_button.addEventListener('click', () => {
+            this.cart.addToCart(this.current_variant_product,this.quantity)
+            this.cart.open();
+
+        })
+
+    }
+
     initOrderQuantity(){
         let minus_btn = this.querySelector(".minus_btn")
         let quantity = this.querySelector(".quantity")
@@ -46,7 +83,6 @@ class ProductUI extends HTMLElement {
                 var selectedOption = this.querySelector('.card_container input[type="radio"]:checked').value;
                 let images = radio.closest(".card_container .img_container").querySelectorAll("img");
                 images.forEach((img) => {
-                    console.log("Alt : " + img.alt + " *** " + "Option :" + selectedOption)
                     if (img.alt === selectedOption) {
 
                         img.classList.add("show")
@@ -93,8 +129,6 @@ class ProductUI extends HTMLElement {
                 throw e;
             })
             .finally(() => {
-                //Add event listeners to new checkboxes of the products
-                // this.eventProductBoughTogetherAction();
             });
             }
         bundleDataFetch();
@@ -111,7 +145,6 @@ class ProductUI extends HTMLElement {
         }
 
         arrow_right.addEventListener('click',()=>{
-            console.log("clicked right")
 
             let transform =  this.current_review_counter * -100;
             arrow_right.style.opacity = "1";   
@@ -143,13 +176,8 @@ class ProductUI extends HTMLElement {
                 this.current_review_counter++;
                 arrow_left.style.opacity = "0"; 
                 return;
-            }
-
-            
-
-            
-        })   
-          
+            }            
+        })             
     }
 
     overlayZoomImage(){
@@ -168,7 +196,82 @@ class ProductUI extends HTMLElement {
             overlay_images_zoom_container.style.display = "none";
             document.querySelector("body").style.overflowY = "scroll"
         })
+
+        this.changeTheImagesInOverlay();   
     }
+    changeTheImagesInOverlay(){
+         //Select variant image
+         let img_zoom_container = this.querySelectorAll(".img_zoom_container");
+         img_zoom_container.forEach((img_zoom)=>{
+            let option = this.querySelector('.types_container_input_radio input[type="radio"]:checked').value
+            if(img_zoom.querySelector("img").alt === option){
+                img_zoom.style.display = "flex";
+            }else{
+                img_zoom.style.display = "none";
+            }
+         })
+    }
+
+    variantProductSwatch(){
+        const card = this.querySelector('.types_container_input_radio');
+
+        let media_images = this.querySelectorAll(".sub_media .image_card");
+        var selectedOption = this.querySelector('.types_container_input_radio input[type="radio"]:checked').value;
+        this.current_variant_name = selectedOption
+        let title_type = this.querySelector(".product_types_option_container .title_type");
+        title_type.innerHTML = selectedOption
+        let main_image = this.querySelector(".main_media img")
+        let current_variation_images = []
+        let non_current_variation_images = []
+        media_images.forEach((media_image,key) => {
+            let img = media_image.querySelector("img");
+            if(img.alt === selectedOption){
+                current_variation_images.push(media_image);
+            }else{
+                non_current_variation_images.push(media_image)
+            }      
+        })
+        main_image.src = current_variation_images[0].querySelector("img").src
+        main_image.alt = current_variation_images[0].querySelector("img").alt
+        // current_variation_images.shift();
+        current_variation_images.forEach((current_img) => {
+            current_img.style.display = "flex";
+        })
+        non_current_variation_images.forEach((non_current_img) => {
+            non_current_img.style.display = "none";
+        })
+
+        card.querySelectorAll('input[type="radio"]').forEach((radio) => {
+            radio.addEventListener('change', () => {
+                let media_images = this.querySelectorAll(".sub_media .image_card");
+                var selectedOption = this.querySelector('.types_container_input_radio input[type="radio"]:checked').value;
+                this.current_variant_name = selectedOption;
+                let title_type = this.querySelector(".product_types_option_container .title_type");
+                title_type.innerHTML = selectedOption
+                let main_image = this.querySelector(".main_media img")
+                let current_variation_images = []
+                let non_current_variation_images = []
+                media_images.forEach((media_image,key) => {
+                    let img = media_image.querySelector("img");
+                    if(img.alt === selectedOption){
+                        current_variation_images.push(media_image);
+                    }else{
+                         non_current_variation_images.push(media_image)
+                    }      
+                })
+                main_image.src = current_variation_images[0].querySelector("img").src
+                main_image.alt = current_variation_images[0].querySelector("img").alt
+                // current_variation_images.shift();
+                current_variation_images.forEach((current_img) => {
+                    current_img.style.display = "flex";
+                })
+                non_current_variation_images.forEach((non_current_img) => {
+                    non_current_img.style.display = "none";
+                })
+            })
+        })
+    }
+
 }
 customElements.define('product-ui', ProductUI);
 
@@ -182,7 +285,6 @@ class ProductVariantsCollection extends HTMLElement {
                 var selectedOption = this.querySelector('.card_container input[type="radio"]:checked').value;
                 let images = radio.closest(".card_container .img_container").querySelectorAll("img");
                 images.forEach((img) => {
-                    console.log("Alt : " + img.alt + " *** " + "Option :" + selectedOption)
                     if (img.alt === selectedOption) {
 
                         img.classList.add("show")

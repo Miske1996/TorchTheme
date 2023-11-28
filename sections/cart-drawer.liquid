@@ -1,0 +1,20 @@
+{{ 'cart-drawer.css' | asset_url | stylesheet_tag }}
+<cart-drawer class="cart_drawer" id="cart-drawer">
+  <div class="cart_drawer_container">
+    <div class="overlay_dark"></div>
+    <div class="cart_inner">
+      <div class="cart_cart_header">
+        <div class="cart_title">Your Bag</div>
+        <div class="close_icon">
+          <img src="{{ 'x_close.png' |  asset_url }}" alt="">
+        </div>
+      </div>
+      <div class="items_cart_container" id="items_cart_container">
+        {% for cart_item in cart.items %}
+          <span>{{ cart_item.title }} ## {{ cart_item.quantity }}</span>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</cart-drawer>
+{{ 'cart.js' | asset_url | script_tag }}

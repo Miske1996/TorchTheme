@@ -6,38 +6,40 @@
         <div class="close_button">
           <img src="{{ 'x_close.png' |  asset_url }}" alt="">
         </div>
-        <div class="img_zoom_container"><img src="{{ product.images[0].src |  image_url  }}" alt=""></div>
-        <div class="img_zoom_container"><img src="{{ product.images[1].src |  image_url  }}" alt=""></div>
-        <div class="img_zoom_container"><img src="{{ product.images[2].src |  image_url  }}" alt=""></div>
-        <div class="img_zoom_container"><img src="{{ product.images[3].src |  image_url  }}" alt=""></div>
-        <div class="img_zoom_container"><img src="{{ product.images[4].src |  image_url  }}" alt=""></div>
+        {% for zoom_image in product.images %}
+          <div class="img_zoom_container"><img src="{{ zoom_image.src |  image_url  }}" alt="{{ zoom_image.alt }}"></div>
+        {% endfor %}
       </div>
     </div>
     <div class="main_info">
       <div class="product_main_info_container">
         <div class="product_media_container">
           <div class="main_media">
-            <video
-              poster="https://underarmour.scene7.com/is/image/Underarmour/3026535-001_DEFAULT?bgc=f0f0f0&amp;wid=640&amp;hei=480&amp;size=440,420"
-              autoplay
-              loop
-              muted><source src="https://underarmour.scene7.com/is/content/Underarmour/auto_dim7_3026535-001-0x480-300k" type="video/mp4"></video>
+            <img src="" alt="">
           </div>
           <div class="sub_media">
+            {% for image_product in product.images %}
+              {% if forloop.index == 0 %}
+                {% continue %}
+              {% endif %}
+              <div class="image_card"><img src="{{ image_product.src |  image_url  }}" alt="{{ image_product.alt }}"></div>
+            {% endfor %}
 
-            <div class="image_card"><img src="{{ product.images[0].src |  image_url  }}" alt=""></div>
-            <div class="image_card"><img src="{{ product.images[1].src |  image_url  }}" alt=""></div>
-            <div class="image_card"><img src="{{ product.images[2].src |  image_url  }}" alt=""></div>
-            <div class="image_card"><img src="{{ product.images[3].src |  image_url  }}" alt=""></div>
           </div>
         </div>
         <div class="product_info_">
-          <h1 class="title_product">Women's Project Rock 6 Training Shoes</h1>
-          <span class="price">$160.00</span>
+          <h1 class="title_product">{{ product.title }}</h1>
+          <span class="price">{{ product.price | money }}</span>
           <div class="options_container_product">
             <div class="product_types_option_container">
-              <span class="title_type">Black / Stealth Gray / Neptune - 001</span>
+              <span class="title_type"></span>
               <div class="types_container_input_radio">
+                {% if product.variants.size > 0 %}
+                  <script type="application/json" class="variantsData">
+                      {{ product | json}}
+                  </script>
+                {% endif %}
+
                 {% if product.options.size > 0 -%}
                   {% for option in product.options_with_values -%}
                     {% if option.name == 'Color' %}
@@ -58,7 +60,10 @@
                                 {% endif %}
                                 type="radio"
                                 name="type-product"
-                                id="option-{{ forloop.index }}">
+                                id="option-{{ forloop.index }}"
+                                data-url="{{ product.url }}"
+                                data-section="{{ section.id}}"
+                                value="{{ title }}">
                             </div>
                             {% break %}
                           {% else %}
@@ -252,9 +257,7 @@
         {% endfor %}
       </div>
     </div>
-    {% comment %} 
-                BUNDLE PRODUCTS DATA 
-          {% endcomment %}
+    {% comment %}BUNDLE PRODUCTS DATA {% endcomment %}
     {%- liquid
       assign products_bought_together = product.metafields.custom.bundle_products | split: ',' | uniq
     -%}

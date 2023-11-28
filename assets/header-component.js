@@ -7,7 +7,19 @@ class HeaderComponent extends HTMLElement {
         this.open();
         this.close();
 
+        //Cart drawer
+        this.cart_drawer = document.querySelector("cart-drawer");
+        this.headerCartIconCart();
+
     }
+
+    headerCartIconCart(){
+        let icon_header = this.querySelector(".cart_icon_container");
+        icon_header.addEventListener('click',() => {
+            this.cart_drawer.open();
+        })
+    }
+
     open() {
         let menu_dropdown_button = this.querySelector(".dropdown_menu_logo_container");
         menu_dropdown_button.addEventListener('click', () => {
@@ -23,6 +35,7 @@ class HeaderComponent extends HTMLElement {
 
         })
     }
+
     close() {
         let close_button = this.querySelector(".close_container");
         close_button.addEventListener('click', () => {
@@ -30,7 +43,6 @@ class HeaderComponent extends HTMLElement {
             document.body.style.overflow = "scroll";
             this.menu_opened = false;
         })
-
     }
 }
 customElements.define('header-component', HeaderComponent);

@@ -6,14 +6,12 @@ class AnimatedCard extends HTMLElement {
       super();
       const obsever = new IntersectionObserver(entries => {
         entries.forEach((entry) => {
-          console.log("enetereredd")
           entry.target.classList.toggle("forwardAnimation");
           entry.target.offsetWidth
           entry.target.classList.toggle("backwardAnimation");
         })
       })
     const cards = this.querySelectorAll(".image_container .card_img");
-    console.log(cards)
     cards.forEach((card) => {
         obsever.observe(card)
     })

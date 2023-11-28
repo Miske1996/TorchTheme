@@ -1,0 +1,87 @@
+.cart_drawer {
+  width: 100vw;
+  height: 100vh;
+  display: none;
+  position: fixed;
+  z-index: 20;
+}
+.cart_drawer .cart_drawer_container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.8);
+  overflow-y: scroll;
+}
+.cart_drawer .cart_drawer_container .overlay_dark {
+  width: 70%;
+  height: 100%;
+}
+.cart_drawer .cart_drawer_container .cart_inner {
+  margin-left: auto;
+  height: 100%;
+  width: 34.72vw;
+  background-color: white;
+  animation: cart_animate 0.15s ease-in;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  height: 150vh;
+  padding-left: 2.08vw;
+  padding-right: 2.08vw;
+}
+.cart_drawer .cart_drawer_container .cart_inner .cart_cart_header {
+  width: 100%;
+  height: 6.94vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cart_drawer .cart_drawer_container .cart_inner .cart_cart_header .close_icon {
+  width: 1.53vw;
+  height: 1.53vw;
+  display: flex;
+  cursor: pointer;
+  margin-left: auto;
+}
+.cart_drawer .cart_drawer_container .cart_inner .cart_cart_header .close_icon img {
+  width: 100%;
+  height: 100%;
+}
+.cart_drawer .cart_drawer_container .cart_inner .cart_cart_header .cart_title {
+  margin-left: auto;
+  font-size: 1.39vw;
+  font-family: "LatoBold";
+}
+.cart_drawer .cart_drawer_container .cart_inner .items_cart_container {
+  width: 100%;
+  height: 30vh;
+  display: flex;
+  flex-direction: column;
+}
+.cart_drawer .cart_drawer_container .cart_inner .items_cart_container span {
+  display: block;
+  font-size: 12px;
+}
+@keyframes cart_animate {
+  0% {
+    transform: translate(100%);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .cart_drawer .cart_drawer_container .overlay_dark {
+    width: 10%;
+  }
+  .cart_drawer .cart_drawer_container .cart_inner {
+    width: 90%;
+  }
+  .cart_drawer .cart_drawer_container .cart_inner .close_icon {
+    top: 6.67vw;
+    right: 6.67vw;
+    width: 5.56vw;
+    height: 5.56vw;
+  }
+}
